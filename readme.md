@@ -29,5 +29,5 @@ Example of embedding n image:
 Syntax:
 
 ```
-![](URL)
+![Crazy me](https://cloud.githubusercontent.com/assets/25203185/22071559/81deab5c-dd6d-11e6-8012-6b8bd448d9c0.JPG)
 ```
