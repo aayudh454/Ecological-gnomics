@@ -22,4 +22,12 @@ Syntax:
 ```
 Implementation:
 
-This is my cool[notepad](https://notepad-plus-plus.org/download/v6.8.1.html)
+This is my cool[notepad](https://notepad-plus-plus.org/download/v6.8.1.html).
+
+Example of embedding n image:
+
+Syntax:
+
+```
+![](URL)
+```
