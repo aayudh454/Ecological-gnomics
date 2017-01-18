@@ -18,5 +18,6 @@ Syntax for creating a list
 Example of embedding a URL:
 Syntax:
 ```
+[hyperlinked words](https://notepad-plus-plus.org/download/v6.8.1.html)
 ```
 Implementation:
