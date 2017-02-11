@@ -64,3 +64,7 @@
 
 #### Learning activity
 
+### Discussion paper: Ellegren et al. 2014
+
+* Genome sequencing and population genomics in non-model organisms
+* High-throughput sequencing technologies are revolutionizing the life sciences.
