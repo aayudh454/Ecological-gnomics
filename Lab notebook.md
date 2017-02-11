@@ -40,22 +40,25 @@
 * AiSeqXTen-2014 Illumina, 1day, 45 whole genomes in a day, $100 each.
 
 #### Range of Application
-Whole genome sequencing (WGS), RNA seq, ChIP seq, targeted/ capture seq (design a probe) 
-Where is genetic variation Phenotypes?
-Number of samples comparative studies already modeled or not (1st thing to consider)
-demographic activity, adaptive genetic variation, gene expression, length of the reads, 
-# of reads (short 50bp, long 100, 150, 300 bp in MiSeq 10000-60000 SMRT; reads single vs paired end), distribution
-3.	General Library Prep workflow
-•	Extraction of DNA or RNA to cDNA
-•	Fragment sample
-•	Ligate adaptors
-o	Individual barcode
-•	Add seq adaptors
-•	PCR
+* Whole genome sequencing (WGS), RNA seq, ChIP seq, targeted/ capture seq (design a probe) 
+* Where is genetic variation Phenotypes?
+* Number of samples 
+* Comparative studies already modeled or not (1st thing to consider)
+* Demographic activity, adaptive genetic variation, gene expression, length of the reads, 
+* Number of reads (short 50bp, long 100, 150, 300 bp in MiSeq 10000-60000 SMRT; reads single vs paired end), distribution
 
-4.	Sequencing by synthesis (SBS)
-Bridge amp, cluster generation, labeled dNTP (ATCG)
-5.	Other technologies
+#### General Library Prep workflow
+* Extraction of DNA or RNA to cDNA
+* Fragment sample
+* Ligate adaptors
+* Individual barcode
+* Add seq adaptors
+* PCR
 
-6.	Learning activity
+#### Sequencing by synthesis (SBS)
+* Bridge amp, cluster generation, labeled dNTP (ATCG)
+
+#### Other technologies
+
+#### Learning activity
 
