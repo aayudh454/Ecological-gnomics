@@ -33,7 +33,4 @@
 ### Page 2: 2017-01-23. The next-generation sequencing
 
 ### **Discussion format**
-####Outline-20min
-####Engaging activity
-####Use board effectively
-####Example from literature
+*Outline-20min time, Engaging activity, Use board effectively, Example from literature.
