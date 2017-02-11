@@ -24,16 +24,18 @@
 ### Page 1: 2017-01-18. Ecological genomics, first class
 
 ### **Steve and Melissa's intro**    
-  * Steve: It is a young field, trying to establish it's own identity    
-	* Ecological genomics institute, KSU: emphasis on adaptation to environment   
-	* Gordon Research Conference: Integrating different levels of biological organization on **ANY SYSTEM**; approach and tool focused! Field going towards new data and new analytic techniques  
-	* Intro to eco genomics, oxford press; Using technology to address ecological issues such as nutrient cycling, population structure, life history vairation , trophic interaction, stress responess, and adpatation to environmental change   
+* Introduction to transcriptomics. The goals of learning in this course. Lots of RNA seq analysis.
+* Ecological genomics institute, KSU: emphasis on adaptation to environment   
+* Gordon Research Conference: Integrating different levels of biological organization on any system. approach and tool focused! Field going towards new data and new analytic techniques  
+* Intro to eco genomics, oxford press; Using technology to address ecological issues such as nutrient cycling, population structure, life history vairation , trophic interaction, stress responess, and adpatation to environmental change   
 
 <div id='id-section2'/>
 ### Page 2: 2017-01-23. The next-generation sequencing
 
 ### **Discussion format**
 * Outline-20min time, Engaging activity, Use board effectively, Example from literature.
+
+### Info update: Next generation sequencing 
 
 #### Advances in sequence Tech
 * Human Genome project 2001-2003, Sanger, 15 years, 1genome, $3B
