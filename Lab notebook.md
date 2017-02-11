@@ -11,7 +11,7 @@
 ### Table of contents    
 * [Page 1: 2017-01-18](#id-section1). Ecological genomics, first class
 * [Page 2: 2017-01-23](#id-section2). The next-generation sequencing 
-* [Page 3:](#id-section3).
+* [Page 3:2017-01-25](#id-section3). Thinking critically about genomic discovery of ecological adaptation
 * [Page 4:](#id-section4).
 * [Page 5:](#id-section5).
 * [Page 6:](#id-section6).
@@ -29,6 +29,7 @@
 * Gordon Research Conference: Integrating different levels of biological organization on any system. approach and tool focused! Field going towards new data and new analytic techniques  
 * Intro to eco genomics, oxford press; Using technology to address ecological issues such as nutrient cycling, population structure, life history vairation , trophic interaction, stress responess, and adpatation to environmental change   
 
+------
 <div id='id-section2'/>
 ### Page 2: 2017-01-23. The next-generation sequencing
 
@@ -68,3 +69,8 @@
 
 * Genome sequencing and population genomics in non-model organisms
 * High-throughput sequencing technologies are revolutionizing the life sciences.
+
+------
+<div id='id-section3'/>
+### Page 3: 2017-01-25. Thinking critically about genomic discovery of ecological adaptation
+
