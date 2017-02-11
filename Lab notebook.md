@@ -34,17 +34,15 @@
 
 ### **Discussion format**
 * Outline-20min time, Engaging activity, Use board effectively, Example from literature.
+
 #### Advances in sequence Tech
 * Human Genome project 2001-2003, Sanger, 15 years, 1genome, $3B
 * AiSeqXTen-2014 Illumina, 1day, 45 whole genomes in a day, $100 each.
+
 #### Range of Application
-Whole genome sequencing (WGS), RNA seq, ChIP seq
-targeted/ capture seq (design a probe) 
-Where is genetic variation
-Phenotypes
-Number of samples
-comparative studies
-already modeled or not (1st thing to consider)
+Whole genome sequencing (WGS), RNA seq, ChIP seq, targeted/ capture seq (design a probe) 
+Where is genetic variation Phenotypes?
+Number of samples comparative studies already modeled or not (1st thing to consider)
 demographic activity, adaptive genetic variation, gene expression, length of the reads, 
 # of reads (short 50bp, long 100, 150, 300 bp in MiSeq 10000-60000 SMRT; reads single vs paired end), distribution
 3.	General Library Prep workflow
