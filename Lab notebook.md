@@ -70,7 +70,7 @@
 ```
 [Ellegren et al. 2014] (http://www.sciencedirect.com.ezproxy.uvm.edu/science/article/pii/S0169534713002310)
 ```
-Go to the paper[Ellegren et al. 2014] (http://www.sciencedirect.com.ezproxy.uvm.edu/science/article/pii/S0169534713002310). 
+Go to the paper [Ellegren et al. 2014] (http://www.sciencedirect.com.ezproxy.uvm.edu/science/article/pii/S0169534713002310). 
 
 * Genome sequencing and population genomics in non-model organisms
 * High-throughput sequencing technologies are revolutionizing the life sciences.
