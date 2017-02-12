@@ -124,3 +124,8 @@ Go to the paper [Lee et al.2014] (https://academic-oup-com.ezproxy.uvm.edu/aobpl
 * H vs S (day 9, 12, 15)
 * H vs H (day 9, 12, 15)
 * S vs S (day 9, 12, 15) 
+
+```
+[Project proposal] (https://docs.google.com/document/d/13YSQoPu9I8blGWvmKFSttaG6CcuCs3YCZ7mMc9_hxxc/edit?ts=58928c12#heading=h.59c9l1pt0wvm)
+```
+Propsal link [Project proposal] (https://docs.google.com/document/d/13YSQoPu9I8blGWvmKFSttaG6CcuCs3YCZ7mMc9_hxxc/edit?ts=58928c12#heading=h.59c9l1pt0wvm)
