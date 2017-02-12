@@ -109,4 +109,17 @@ Go to the paper [Lee et al.2014] (https://academic-oup-com.ezproxy.uvm.edu/aobpl
 <div id='id-section4'/>
 ### Page 4: 2017-01-30. Group presentations of project ideas
 
-### Info update:
+### Discussion on Sea Star RNA seq data set
+  * one page proposal due in 2nd Feb
+#### Our grop idea:
+* Immune related gene expression
+  * Reverse pathology
+  * Looking specific classes of genes
+  * A prior test of resistance genes
+      * Compare individual that stayed healthy vs those got sick.
+      * Looking at the sick to healthy transition.
+
+##### We are looking the gene expression, up arms paper.
+* H vs S (day 9, 12, 15)
+* H vs H (day 9, 12, 15)
+* S vs S (day 9, 12, 15) 
