@@ -111,6 +111,7 @@ Go to the paper [Lee et al.2014] (https://academic-oup-com.ezproxy.uvm.edu/aobpl
 
 ### Discussion on Sea Star RNA seq data set
   * one page proposal due in 2nd Feb
+  
 #### Our grop idea:
 * Immune related gene expression
   * Reverse pathology
