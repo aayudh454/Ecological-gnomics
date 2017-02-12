@@ -11,7 +11,7 @@
 * [Page 1: 2017-01-18](#id-section1). Ecological genomics, first class
 * [Page 2: 2017-01-23](#id-section2). The next-generation sequencing 
 * [Page 3:2017-01-25](#id-section3). Thinking critically about genomic discovery of ecological adaptation
-* [Page 4:](#id-section4).
+* [Page 4:2017-01-30](#id-section4). Group presentations of project ideas
 * [Page 5:](#id-section5).
 * [Page 6:](#id-section6).
 * [Page 7:](#id-section7).
@@ -105,3 +105,8 @@ Go to the paper [Rockman 2012] (https://www-ncbi-nlm-nih-gov.ezproxy.uvm.edu/pmc
 Go to the paper [Lee et al.2014] (https://academic-oup-com.ezproxy.uvm.edu/aobpla/article/doi/10.1093/aobpla/plu004/156429/Identifying-the-genes-underlying-quantitative)
 
 
+------
+<div id='id-section4'/>
+### Page 4: 2017-01-30. Group presentations of project ideas
+
+### Info update:
