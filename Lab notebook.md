@@ -1,9 +1,8 @@
 # Ecological Genomics Lab notebook    
 
 ## Author: Aayudh Das     
-## Ecological Genomics:
 
-## We are going to discuss various aspects of Transcriptomics
+### We are going to discuss various aspects of Transcriptomics
 
 ### Date started: (2017-01-18)   
 ### Date end:   (2017-05-02)
