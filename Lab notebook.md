@@ -65,12 +65,12 @@
 
 #### Learning activity
 
-### Discussion paper: Ellegren et al. 2014
+### Discussion paper: Ellegren 2014
 
 ```
 [Ellegren et al. 2014] (http://www.sciencedirect.com.ezproxy.uvm.edu/science/article/pii/S0169534713002310)
 ```
-Go to the paper [Ellegren et al. 2014] (http://www.sciencedirect.com.ezproxy.uvm.edu/science/article/pii/S0169534713002310). 
+Go to the paper [Ellegren 2014] (http://www.sciencedirect.com.ezproxy.uvm.edu/science/article/pii/S0169534713002310). 
 
 * Genome sequencing and population genomics in non-model organisms
 * High-throughput sequencing technologies are revolutionizing the life sciences.
@@ -78,4 +78,31 @@ Go to the paper [Ellegren et al. 2014] (http://www.sciencedirect.com.ezproxy.uvm
 ------
 <div id='id-section3'/>
 ### Page 3: 2017-01-25. Thinking critically about genomic discovery of ecological adaptation
+
+### Info update: Quantitative trait nucleotides (QTNs)
+
+#### What are QTN?
+Identifying quantitative trait nucleotide; example trait-flowering time, flower color, venom potency, tolerance, defense compounds, toxin tol, drought tol, altitude tol.  
+
+#### Quantitative genetic theory of adaptive traits 
+* Va
+* h2
+
+#### Methods
+* Linkage mapping
+* GWAS
+* Selection scan
+
+### Discussion paper: Rockman 2012; Lee et al.2014
+
+```
+[Rockman 2012] (https://www-ncbi-nlm-nih-gov.ezproxy.uvm.edu/pmc/articles/PMC3386609/)
+```
+Go to the paper [Rockman 2012] (https://www-ncbi-nlm-nih-gov.ezproxy.uvm.edu/pmc/articles/PMC3386609/)
+
+```
+[Lee et al.2014] (https://academic-oup-com.ezproxy.uvm.edu/aobpla/article/doi/10.1093/aobpla/plu004/156429/Identifying-the-genes-underlying-quantitative)
+```
+Go to the paper [Lee et al.2014] (https://academic-oup-com.ezproxy.uvm.edu/aobpla/article/doi/10.1093/aobpla/plu004/156429/Identifying-the-genes-underlying-quantitative)
+
 
