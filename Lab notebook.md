@@ -153,15 +153,25 @@ It was me who was giving all the updates
   
 * To see your present working directory
   * [aadas@pbio381 ~]$ pwd
-* To see what's in there
+* To see what's the current contents of any folders and files in our current location
   * [aadas@pbio381 ~]$ ll
   
 * Let’s make a new folder (aka, directory) using the mkdir command. Let’s name this folder “mydata”
   * [aadas@pbio381 ~]$ mkdir mydata
   * [aadas@pbio381 ~]$ ll
+  * [aadas@pbio381 ~]$ mkdir scripts
+  
+* We can change our current location within the directory structure using the cd command. Let’s use cd to move inside the mydata/ directory and ll to list its contents:
+  * [aadas@pbio381 ~]$ cd mydata
+  * [aadas@pbio381 mydata]$ ll
+total 0
+[aadas@pbio381 mydata]$ cd /data/
+[aadas@pbio381 data]$ ll
 
-
-
+* We’ve placed the text file containing all the metadata information on the seastar sampling under a shared space on the server. The path to this shared space is:
+  * /data/ Try using cd to navigate over to this location. Then ll to show its contents. You should see something like this:
+    * aadas@pbio381 mydata]$ cd /data/
+    * [aadas@pbio381 data]$ ll
 
 ------
 <div id='id-section6'/>
