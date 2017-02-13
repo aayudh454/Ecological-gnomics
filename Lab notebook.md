@@ -140,6 +140,27 @@ Propsal link [Project proposal] (https://docs.google.com/document/d/13YSQoPu9I8b
 
 ### INFO UPDATE
 
+It was me who was giving all the updates
+
+### Terminal outputs
+* How to login to the terminal?
+  * aayudhdas$ ssh aadas@pbio381.uvm.edu
+  * Then give your UVM password to login
+  
+* Command: top 
+  * Shows you whoever is working in the server
+  * to quit: [aadas@pbio381 ~]$ q
+  
+* To see your present working directory
+  * [aadas@pbio381 ~]$ pwd
+* To see what's in there
+  * [aadas@pbio381 ~]$ ll
+  
+* Let’s make a new folder (aka, directory) using the mkdir command. Let’s name this folder “mydata”
+  * [aadas@pbio381 ~]$ mkdir mydata
+  * [aadas@pbio381 ~]$ ll
+
+
 
 
 ------
