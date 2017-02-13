@@ -12,7 +12,7 @@
 * [Page 2: 2017-01-23](#id-section2). The next-generation sequencing 
 * [Page 3:2017-01-25](#id-section3). Thinking critically about genomic discovery of ecological adaptation
 * [Page 4:2017-01-30](#id-section4). Group presentations of project ideas
-* [Page 5:](#id-section5).
+* [Page 5:2017-02-01](#id-section5). Sequencing strategies applied to biological questions: WGS, RNA-Seq; RAD/GBS, Amplicons
 * [Page 6:](#id-section6).
 * [Page 7:](#id-section7).
 * [Page 8:](#id-section8).
@@ -130,6 +130,13 @@ Go to the paper [Lee et al.2014] (https://academic-oup-com.ezproxy.uvm.edu/aobpl
 ```
 Propsal link [Project proposal] (https://docs.google.com/document/d/13YSQoPu9I8blGWvmKFSttaG6CcuCs3YCZ7mMc9_hxxc/edit?ts=58928c12#heading=h.59c9l1pt0wvm)
 
+------
+<div id='id-section5'/>
+### Page 5: 2017-02-01. Sequencing strategies applied to biological questions: WGS, RNA-Seq; RAD/GBS, Amplicons
+
+### INFO UPDATE
+
+
 
 ------
 <div id='id-section9'/>
@@ -145,8 +152,19 @@ Propsal link [Project proposal] (https://docs.google.com/document/d/13YSQoPu9I8b
   
 * Molecular Mechanism 
   * Phenotypical/ behaviroal plasticity (migration pattern)
+  
+#### Limitation
+* Refernce genome quality gene annotation availablility expense per sample library preparation
 
+#### Issues
+* Under utilization of biological replicates
+  * Requiring indep. library preparations
+  * Doesn't involved pooled samples
+  * 23/158 studies 
+  * Derive broad bio colclusions
+* Priotonize sequence depth over replication (problem)   
 
+------
 
 
 
