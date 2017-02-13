@@ -177,9 +177,10 @@ Propsal link [Project proposal] (https://docs.google.com/document/d/13YSQoPu9I8b
 * Priotonize sequence depth over replication (problem)
 
 * Nice dynamic range of RNA seq data-- Noisy
-                                       * Poisson counting error
-                                       * Biological variance
-                                       * Technical variance
+  * Poisson counting error
+  * Biological variance
+  * Technical variance
+
 #### Rules of thumb
 * Use of more biological replicates instead of depth
 * Seq. depth > 10 reads / transcript 
