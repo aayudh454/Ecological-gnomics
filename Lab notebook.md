@@ -172,9 +172,38 @@ total 0
   * /data/ Try using cd to navigate over to this location. Then ll to show its contents. You should see something like this:
     * aadas@pbio381 mydata]$ cd /data/
     * [aadas@pbio381 data]$ ll
+    
+* Now, cd into the folder called “project_data” and ll. Do you see this?
+  * [aadas@pbio381 data]$ cd project_data/
+  * [aadas@pbio381 project_data]$ ll
 
+* The file called “ssw_samples.txt” is the one with the seastar metadata. We don’t want to open and make changes to this file in the shared space, because we don’t want to have our edits affect the rest of the group. So, let’s first make a copy of this file over to our home directory and put it inside the “mydata” folder. Use the cp command, followed by the filename, and the path to your destination (remember the ~ signals your home directory, and each subdirectory is then separated by a /):
+  * [aadas@pbio381 project_data]$ cp ssw_samples.txt ~/mydata
+  
+* cd back to your ~/mydata/ directory and look inside. You should see your file… 
+  * [aadas@pbio381 project_data]$ cd ~/mydata/
+  * [aadas@pbio381 mydata]$ ll
+  
+* Let’s take a peek at this file with the head command, which prints the first 10 lines to screen.
+  * [aadas@pbio381 mydata]$ head ssw_samples.txt 
+  * Customize your lines-
+    * [aadas@pbio381 mydata]$ head -n 15 ssw_samples.txt 
 
+* Let’s see the last 10 lines
+  * [aadas@pbio381 mydata]$ tail ssw_samples.txt 
 
+* What if we want to extract just the rows of data that correspond to Healthy (HH) individuals? We can use the search tool grep to search for a target query. Any line matching our search string will be printed to screen.
+  * [aadas@pbio381 mydata]$ grep 'HH'ssw_samples.txt
+  * [aadas@pbio381 mydata]$ grep 'SS' ssw_samples.txt
+  
+* What if instead of printing it to screen, we want to save the output of our search to a new file? This is easy, just use the “>” symbol to redirect the results of any command to an output file with your choice of name.
+  * [aadas@pbio381 mydata]$ grep 'SS' ssw_samples.txt >ssw_SSonly.txt
+  * [aadas@pbio381 mydata]$ ll
+  
+  * [aadas@pbio381 mydata]$ mkdir sample_by_disease/
+  * [aadas@pbio381 mydata]$ grep 'HH' ssw_samples.txt >ssw_HHonly.txt
+  * [aadas@pbio381 mydata]$ ll
+ 
 ------
 <div id='id-section6'/>
 ### Page 6: 2017-02-06. Transcriptomics 1
