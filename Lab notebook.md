@@ -13,10 +13,10 @@
 * [Page 3:2017-01-25](#id-section3). Thinking critically about genomic discovery of ecological adaptation
 * [Page 4:2017-01-30](#id-section4). Group presentations of project ideas
 * [Page 5:2017-02-01](#id-section5). Sequencing strategies applied to biological questions: WGS, RNA-Seq; RAD/GBS, Amplicons
-* [Page 6:](#id-section6).
+* [Page 6:2017-02-06](#id-section6). Transcriptomics 1
 * [Page 7:](#id-section7).
 * [Page 8:](#id-section8).
-* [Page 9:2017-02-13](#id-section9). Transcriptomics 
+* [Page 9:2017-02-13](#id-section9). Transcriptomics 3
 
 ------
 <div id='id-section1'/>
@@ -139,6 +139,14 @@ Propsal link [Project proposal] (https://docs.google.com/document/d/13YSQoPu9I8b
 
 
 ------
+<div id='id-section6'/>
+### Page 6: 2017-02-06. Transcriptomics 1
+
+### INFO UPDATE
+
+
+
+------
 <div id='id-section9'/>
 ### Page 9: 2017-02-13. Transcriptomics
 
@@ -162,7 +170,13 @@ Propsal link [Project proposal] (https://docs.google.com/document/d/13YSQoPu9I8b
   * Doesn't involved pooled samples
   * 23/158 studies 
   * Derive broad bio colclusions
-* Priotonize sequence depth over replication (problem)   
+  
+* Priotonize sequence depth over replication (problem)
+
+* Nice dynamic range of RNA seq data-- Noisy
+                                       * Poisson counting error
+                                       * Biological variance
+                                       * Technical variance
 
 ------
 
