@@ -190,4 +190,10 @@ Propsal link [Project proposal] (https://docs.google.com/document/d/13YSQoPu9I8b
    * What's the best/ powerful experiment I can afford? 
    * What's the smallest fold change I conduct?
 
+### Discussion paper: Ellegren 2014
+
+```
+[Johnston et al. 2016 (http://onlinelibrary.wiley.com/doi/10.1111/mec.13879/abstract)
+```
+Go to the paper [Johnston et al. 2016] (http://onlinelibrary.wiley.com/doi/10.1111/mec.13879/abstract). 
 ------
