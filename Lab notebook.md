@@ -16,7 +16,7 @@
 * [Page 6:](#id-section6).
 * [Page 7:](#id-section7).
 * [Page 8:](#id-section8).
-* [Page 9:](#id-section9).
+* [Page 9:2017-02-13](#id-section9). Transcriptomics 
 
 ------
 <div id='id-section1'/>
@@ -129,3 +129,26 @@ Go to the paper [Lee et al.2014] (https://academic-oup-com.ezproxy.uvm.edu/aobpl
 [Project proposal] (https://docs.google.com/document/d/13YSQoPu9I8blGWvmKFSttaG6CcuCs3YCZ7mMc9_hxxc/edit?ts=58928c12#heading=h.59c9l1pt0wvm)
 ```
 Propsal link [Project proposal] (https://docs.google.com/document/d/13YSQoPu9I8blGWvmKFSttaG6CcuCs3YCZ7mMc9_hxxc/edit?ts=58928c12#heading=h.59c9l1pt0wvm)
+
+
+------
+
+### Page 9: 2017-02-13. Transcriptomics
+
+### INFO UPDATE
+
+#### Background 
+* Enables Dt examination (inter poplulation individual)
+  * Disease resistance 
+  * Mating behavious 
+  * Adaptive behaviour
+  
+* Molecular Mechanism 
+  * Phenotypical/ behaviroal plasticity (migration pattern)
+
+
+
+
+
+
+
