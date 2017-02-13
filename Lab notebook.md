@@ -180,10 +180,13 @@ Propsal link [Project proposal] (https://docs.google.com/document/d/13YSQoPu9I8b
                                        * Poisson counting error
                                        * Biological variance
                                        * Technical variance
+#### Rules of thumb
+* Use of more biological replicates instead of depth
+* Seq. depth > 10 reads / transcript 
+  * ~10-20 Million mapped reads/sample
+* 3 Biological replicates per condition
+* Conduct a pilot experiment- 
+   * What's the best/ powerful experiment I can afford? 
+   * What's the smallest fold change I conduct?
 
 ------
-
-
-
-
-
