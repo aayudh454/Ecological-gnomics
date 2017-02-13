@@ -157,10 +157,11 @@ It was me who was giving all the updates
   * [aadas@pbio381 ~]$ ll
   
 * Let’s make a new folder (aka, directory) using the mkdir command. Let’s name this folder “mydata”
-  * [aadas@pbio381 ~]$ mkdir mydata
-  * [aadas@pbio381 ~]$ ll
-  * [aadas@pbio381 ~]$ mkdir scripts
-  
+```  
+[aadas@pbio381 ~]$ mkdir mydata
+[aadas@pbio381 ~]$ ll
+[aadas@pbio381 ~]$ mkdir scripts
+```  
 * We can change our current location within the directory structure using the cd command. Let’s use cd to move inside the mydata/ directory and ll to list its contents:
   * [aadas@pbio381 ~]$ cd mydata
   * [aadas@pbio381 mydata]$ ll
