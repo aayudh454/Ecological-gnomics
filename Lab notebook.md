@@ -143,11 +143,15 @@ Propsal link [Project proposal] (https://docs.google.com/document/d/13YSQoPu9I8b
 
 ### INFO UPDATE
 
+------
+<div id='id-section7'/>
+### Page 7: 2017-02-08. Transcriptomics 2
 
+### INFO UPDATE
 
 ------
 <div id='id-section8'/>
-### Page 8: 2017-02-13. Transcriptomics
+### Page 8: 2017-02-13. Transcriptomics 3
 
 ### INFO UPDATE
 
