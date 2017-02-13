@@ -220,6 +220,96 @@ Customize your lines-
 
 ### INFO UPDATE
 
+
+### Terminal codes
+
+```
+#how to login
+ssh aadas@pbio381.uvm.edu
+And then give your netID pwd
+
+# how to go to the directory
+[aadas@pbio381 ~]$ cd /data/project_data/fastq
+
+# do ls to view all the file
+[aadas@pbio381 fastq]$ ll
+
+#dataset I will be working
+-rw-r--r--. 1 mlloyd   users  756575578 Feb  2 12:21 10_5-08_H_0_R1.fq.gz
+-rw-r--r--. 1 mlloyd   users  820537378 Feb  2 12:21 10_5-08_H_0_R2.fq.gz
+
+# To view the file
+[aadas@pbio381 fastq]$ zcat 10_5-08_H_0_R1.fq.gz | head
+
+#navigate to 
+[aadas@pbio381 fastq]$ cd /data/scripts/
+[aadas@pbio381 scripts]$ ll
+
+# Just copied 
+[aadas@pbio381 scripts]$ cp trim_example.sh ~/scripts/
+
+[aadas@pbio381 scripts]$ cd ~
+[aadas@pbio381 ~]$ ll
+total 0
+drwxr-xr-x. 3 aadas users 93 Feb  1 11:29 mydata
+drwxr-xr-x. 2 aadas users 36 Feb  6 11:07 scripts
+[aadas@pbio381 ~]$ cd scripts/
+[aadas@pbio381 scripts]$ ll
+total 4
+-rwxr--r--. 1 aadas users 711 Feb  6 11:07 trim_example.sh
+
+#to see the file
+[aadas@pbio381 scripts]$ head trim_example.sh 
+
+#vim and file name to edit it
+vim trim_example.sh 
+
+#edit the script
+    /data/project_data/fastq/10_5-08_H_0_R1.fq.gz \
+                 /data/project_data/fastq/10_5-08_H_0_R2.fq.gz \
+                /data/project_data/fastq/cleanreads/"samp_R1_clean_paired.fq" \
+                /data/project_data/fastq/cleanreads/"samp_R1_clean_unpaired.fq" \
+                /data/project_data/fastq/cleanreads/"samp_R2_clean_paired.fq" \
+                /data/project_data/fastq/cleanreads/"samp_R2_clean_unpaired.fq" \
+
+#to save
+i for insert
+Esc then :w to save
+q: for quit
+:wq! Save quit at the same time
+
+#how to run the file
+[aadas@pbio381 scripts]$ bash trim_example.sh 
+# open a new window and login and do top to see whether it’s running or not.
+
+#running stat
+Input Read Pairs: 13271979 Both Surviving: 11213144 (84.49%) Forward Only Surviving: 1510836 (11.38%) Reverse Only Surviving: 262066 (1.97%) Dropped: 285933 (2.15%)
+
+# to rename the file
+mv samp_R1_clean_unpaired.fq 10_5-08_H_0_R1_clean_unpaired.fq 
+
+# to create the html file
+[aadas@pbio381 cleanreads]$ fastqc 10_5-08_H_0_R
+10_5-08_H_0_R1_clean_paired.fq    10_5-08_H_0_R2_cleaned_paired.fq  
+10_5-08_H_0_R1_clean_unpaired.fq  10_5-08_H_0_R2_clean_unpaired.fq  
+[aadas@pbio381 cleanreads]$ fastqc 10_5-08_H_0_R
+10_5-08_H_0_R1_clean_paired.fq    10_5-08_H_0_R2_cleaned_paired.fq  
+10_5-08_H_0_R1_clean_unpaired.fq  10_5-08_H_0_R2_clean_unpaired.fq  
+[aadas@pbio381 cleanreads]$ fastqc 10_5-08_H_0_R*
+
+#to copy the html file to my desktop
+aayudhdas$ scp aadas@pbio381.uvm.edu:/data/project_data/fastq/cleanreads/10_5-08_H_0_R1_clean_paired_fastqc.html ~/Desktop/
+
+# only the paired files should be considered.
+
+# copied one file from the class directory to my folder
+cp command 
+
+
+```
+
+
+
 ------
 <div id='id-section7'/>
 ### Page 7: 2017-02-08. Transcriptomics 2
