@@ -14,10 +14,9 @@
 * [Page 4:2017-01-30](#id-section4). Group presentations of project ideas
 * [Page 5:2017-02-01](#id-section5). Sequencing strategies applied to biological questions: WGS, RNA-Seq; RAD/GBS, Amplicons
 * [Page 6:2017-02-06](#id-section6). Transcriptomics 1
-* [Page 7:](#id-section7).
-* [Page 8:](#id-section8).
-* [Page 9:2017-02-13](#id-section9). Transcriptomics 3
-
+* [Page 7:2017-02-08](#id-section7). Transcriptomics 2
+* [Page 8:2017-02-13](#id-section8). Transcriptomics 3
+* [Page 9:](#id-section9).
 ------
 <div id='id-section1'/>
 ### Page 1: 2017-01-18. Ecological genomics, first class
@@ -147,8 +146,8 @@ Propsal link [Project proposal] (https://docs.google.com/document/d/13YSQoPu9I8b
 
 
 ------
-<div id='id-section9'/>
-### Page 9: 2017-02-13. Transcriptomics
+<div id='id-section8'/>
+### Page 8: 2017-02-13. Transcriptomics
 
 ### INFO UPDATE
 
