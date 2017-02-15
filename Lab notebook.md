@@ -310,8 +310,9 @@ cp command
 ### Page 7: 2017-02-08. Transcriptomics 2
 
 ### INFO UPDATE
+
 #### Introduction
-  a.	Why wild systems: 
+* Why wild systems: 
      * Non-model and non-traditional model organisms.
      * Silent genes responding to multiple stimuli
      * Novel transcript without homologs and closely related model organism
