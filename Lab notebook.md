@@ -304,17 +304,57 @@ aayudhdas$ scp aadas@pbio381.uvm.edu:/data/project_data/fastq/cleanreads/10_5-08
 
 # copied one file from the class directory to my folder
 cp command 
-
-
 ```
-
-
-
 ------
 <div id='id-section7'/>
 ### Page 7: 2017-02-08. Transcriptomics 2
 
 ### INFO UPDATE
+#### Introduction
+  a.	Why wild systems: 
+     * Non-model and non-traditional model organisms.
+     * Silent genes responding to multiple stimuli
+     * Novel transcript without homologs and closely related model organism
+
+#### Brief overview of transcriptomics
+*	Microarray 
+     * Easy for ecological analysis
+* RNA seq: 
+     * genome wide ecological transcripts, more involved analysis.
+
+#### Main questions
+* Variation is there in gene expression and how’s it structured?
+     * Evolutionary process
+     * Gene expression is heritable (natural selection)
+     * Epigenetics 
+     * Qst-Fst comparison
+     * qQTL expression and quantitative trait loci mapping 
+     
+* How does the gene expression affect phenotype?
+ 
+* How to environmental stimuli affect gene expression?
+  * Abiotic stress
+  * Env heterogeneity 
+  * Host parasite interaction
+  * Selective biotic and abiotic interaction 
+  * Looking at the molecular level
+       * Molecular level
+       * Genotype
+       * Phenotypic plasticity
+  * Some limitation while working in the environment 
+       * You need to flash freeze your sample
+       * You are only getting a snapshot
+       
+* How does gene expression affect phenotype?
+  * Alternative phenotype
+  * Moving from transgenic, RNA and CRISPER/CAS
+
+#### Problems 
+* Bias in signal
+* Polyploidy
+* RNA pooling
+* Statistical analysis
+* Unannotated genes
 
 ------
 <div id='id-section8'/>
