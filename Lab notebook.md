@@ -485,5 +485,14 @@ Let’s check out our .sam files!
 :set nowrap
 ```
 
+Let’s see how many of our reads map uniquely
+
+```
+[aadas@pbio381 scripts]$ grep -c XT:A:U 10_5-20_S_2_bwaaln.sam
+3036521
+[aadas@pbio381 scripts]$ grep -c X0:i:1 10_5-20_S_2_bwaaln.sam
+3056482
+```
+
 
 
