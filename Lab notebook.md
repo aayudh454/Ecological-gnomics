@@ -413,17 +413,9 @@ Tissue--> Sequence-->Clean/trim-->assembly-->SNP detection-->validation
   * Fitness
   * Functional enrichment
 
+### Discussion paper: Zhao et al. 2016
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
+[Zhao et al. 2016 (https://academic.oup.com/mbe/article/33/3/707/2579453/Global-Transcriptional-Profiling-of-Diapause-and)
+```
+Go to the paper [Zhao et al. 2016] (https://academic.oup.com/mbe/article/33/3/707/2579453/Global-Transcriptional-Profiling-of-Diapause-and). 
