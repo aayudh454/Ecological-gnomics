@@ -365,8 +365,19 @@ cp command
 Go to the paper [Johnston et al. 2016] (http://onlinelibrary.wiley.com/doi/10.1111/mec.13879/abstract). 
 
 ------
+<div id='id-section8'/>
+### Page 9: 2017-02-15. Transcriptomics 4
+
+### INFO UPDATE: SNPs and population genomics
+* SNP data-expressed sequences
+
+#### Process
 ```
-#dataset I will be working
--rw-r--r--. 1 mlloyd   users  756575578 Feb  2 12:21 10_5-08_H_0_R1.fq.gz
--rw-r--r--. 1 mlloyd   users  820537378 Feb  2 12:21 10_5-08_H_0_R2.fq.gz
+Tissue--> Sequence-->Clean/trim-->assembly-->SNP detection-->validation
 ```
+##### Tissue
+* breadth of tissue, developmental stages, exon sapping
+
+
+
+
