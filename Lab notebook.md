@@ -365,7 +365,7 @@ cp command
 Go to the paper [Johnston et al. 2016] (http://onlinelibrary.wiley.com/doi/10.1111/mec.13879/abstract). 
 
 ------
-<div id='id-section8'/>
+<div id='id-section9'/>
 ### Page 9: 2017-02-15. Transcriptomics 4
 
 ### INFO UPDATE: SNPs and population genomics
