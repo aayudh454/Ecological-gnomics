@@ -494,5 +494,47 @@ Let’s see how many of our reads map uniquely
 3056482
 ```
 
+to go back to my directory
 
+```
+[aadas@pbio381 scripts]$ cd ~/
+```
+
+Extract read counts from the .sam file from each sample
+
+```
+[aadas@pbio381 scripts]$ cd /data/scripts/
+[aadas@pbio381 scripts]$ cp countxpression_PE.py ~/scripts/
+```
+
+To open it in python
+
+```
+[aadas@pbio381 scripts]$ sed -i 's/::/|_/g' 10_5-20_S_2_bwaaln.sam
+[aadas@pbio381 scripts]$ python countxpression_PE.py 20 35 countstatssummary.txt 10_5-20_S_2_bwaaln.sam
+
+#things to remeber 
+"sed" find and replace command
+"-i" find and replace right in the command line
+"s" search
+"/::/" search for two colons
+"/ \ _ /" replace with an underscore
+g = option
+```
+
+see my file
+
+```
+[aadas@pbio381 scripts]$ ll
+total 8830952
+-rw-r--r--. 1 aadas users     611483 Feb 15 11:33 10_5-20_S_2_bwaaln_counts.txt
+-rw-r--r--. 1 aadas users 8802028313 Feb 15 11:27 10_5-20_S_2_bwaaln.sam
+-rw-r--r--. 1 aadas users  119846624 Feb 13 11:20 10_5-20_S_2_R1.fq.gz_left_clean_paired.fq.sai
+-rw-r--r--. 1 aadas users  120349760 Feb 13 11:30 10_5-20_S_2_R2.fq.gz_right_clean_paired.fq.sai
+-rwxr-xr-x. 1 aadas users        902 Feb 13 11:09 bwaaln.sh
+-rw-r--r--. 1 aadas users        224 Feb 15 11:33 countstatssummary.txt
+-rwxr--r--. 1 aadas users       6487 Feb 15 11:13 countxpression_PE.py
+-rw-r--r--. 1 aadas users      27269 Feb 15 10:37 tail.sam
+-rwxr--r--. 1 aadas users        765 Feb  6 11:26 trim_example.sh
+```
 
