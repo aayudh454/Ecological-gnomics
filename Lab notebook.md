@@ -462,20 +462,28 @@ Go to the paper [Zhao et al. 2016] (https://academic.oup.com/mbe/article/33/3/70
 
 ### Terminal Codes (15th Feb):
 
-* How to go to the script folder
+How to go to the script folder
 
-  ```
-  ip0af52760:~ aayudhdas$ ssh aadas@pbio381.uvm.edu
-  [aadas@pbio381 ~]$ cd scripts/
+```
+ip0af52760:~ aayudhdas$ ssh aadas@pbio381.uvm.edu
+[aadas@pbio381 ~]$ cd scripts/
 
-  [aadas@pbio381 scripts]$ ll
-  total 8830312
-  -rw-r--r--. 1 aadas users 8802028313 Feb 13 11:33 10_5-20_S_2_bwaaln.sam
-  -rw-r--r--. 1 aadas users  119846624 Feb 13 11:20 10_5-20_S_2_R1.fq.gz_left_clean_paired.fq.sai
-  -rw-r--r--. 1 aadas users  120349760 Feb 13 11:30 10_5-20_S_2_R2.fq.gz_right_clean_paired.fq.sai
-  -rwxr-xr-x. 1 aadas users        902 Feb 13 11:09 bwaaln.sh
-  -rwxr--r--. 1 aadas users        765 Feb  6 11:26 trim_example.sh
-  ```
+[aadas@pbio381 scripts]$ ll
+total 8830312
+-rw-r--r--. 1 aadas users 8802028313 Feb 13 11:33 10_5-20_S_2_bwaaln.sam
+-rw-r--r--. 1 aadas users  119846624 Feb 13 11:20 10_5-20_S_2_R1.fq.gz_left_clean_paired.fq.sai
+-rw-r--r--. 1 aadas users  120349760 Feb 13 11:30 10_5-20_S_2_R2.fq.gz_right_clean_paired.fq.sai
+-rwxr-xr-x. 1 aadas users        902 Feb 13 11:09 bwaaln.sh
+-rwxr--r--. 1 aadas users        765 Feb  6 11:26 trim_example.sh
+```
 
-  ​
+Let’s check out our .sam files!
+
+```
+[aadas@pbio381 scripts]$ tail -n 100 10_5-20_S_2_bwaaln.sam > tail.sam
+[aadas@pbio381 scripts]$ vim tail.sam
+:set nowrap
+```
+
+
 
