@@ -108,14 +108,13 @@ Go to the paper [Rockman 2012] (https://www-ncbi-nlm-nih-gov.ezproxy.uvm.edu/pmc
 ```
 Go to the paper [Lee et al.2014] (https://academic-oup-com.ezproxy.uvm.edu/aobpla/article/doi/10.1093/aobpla/plu004/156429/Identifying-the-genes-underlying-quantitative)
 
-
 ------
 <div id='id-section4'/>
 ### Page 4: 2017-01-30. Group presentations of project ideas
 
 ### Discussion on Sea Star RNA seq data set
-  * one page proposal due in 2nd Feb
-  
+* one page proposal due in 2nd Feb
+
 #### Our grop idea:
 * Immune related gene expression
   * Reverse pathology
@@ -146,22 +145,22 @@ It was me who was giving all the updates
 * How to login to the terminal?
   * aayudhdas$ ssh aadas@pbio381.uvm.edu
   * Then give your UVM password to login
-  
+
 * Command: top 
   * Shows you whoever is working in the server
   * to quit: [aadas@pbio381 ~]$ q
-  
+
 * To see your present working directory
   * [aadas@pbio381 ~]$ pwd
 * To see what's the current contents of any folders and files in our current location
   * [aadas@pbio381 ~]$ ll
-  
+
 * Let’s make a new folder (aka, directory) using the mkdir command. Let’s name this folder “mydata”
 ```  
 [aadas@pbio381 ~]$ mkdir mydata
 [aadas@pbio381 ~]$ ll
 [aadas@pbio381 ~]$ mkdir scripts
-```  
+```
 * We can change our current location within the directory structure using the cd command. Let’s use cd to move inside the mydata/ directory and ll to list its contents:
 ``` 
 [aadas@pbio381 ~]$ cd mydata
@@ -169,34 +168,34 @@ It was me who was giving all the updates
 total 0
 [aadas@pbio381 mydata]$ cd /data/
 [aadas@pbio381 data]$ ll
-``` 
+```
 * We’ve placed the text file containing all the metadata information on the seastar sampling under a shared space on the server. The path to this shared space is:
   * /data/ Try using cd to navigate over to this location. Then ll to show its contents. You should see something like this:
 ``` 
 [aadas@pbio381 mydata]$ cd /data/
 [aadas@pbio381 data]$ ll
-``` 
+```
 
 * Now, cd into the folder called “project_data” and ll. Do you see this?
 ``` 
 [aadas@pbio381 data]$ cd project_data/
 [aadas@pbio381 project_data]$ ll
-``` 
+```
 * The file called “ssw_samples.txt” is the one with the seastar metadata. We don’t want to open and make changes to this file in the shared space, because we don’t want to have our edits affect the rest of the group. So, let’s first make a copy of this file over to our home directory and put it inside the “mydata” folder. Use the cp command, followed by the filename, and the path to your destination (remember the ~ signals your home directory, and each subdirectory is then separated by a /):
 ``` 
 [aadas@pbio381 project_data]$ cp ssw_samples.txt ~/mydata
-```   
+```
 * cd back to your ~/mydata/ directory and look inside. You should see your file… 
 ``` 
 [aadas@pbio381 project_data]$ cd ~/mydata/
 [aadas@pbio381 mydata]$ ll
-```   
+```
 * Let’s take a peek at this file with the head command, which prints the first 10 lines to screen.
 ``` 
 [aadas@pbio381 mydata]$ head ssw_samples.txt 
 Customize your lines-
 [aadas@pbio381 mydata]$ head -n 15 ssw_samples.txt 
-``` 
+```
 * Let’s see the last 10 lines
   * [aadas@pbio381 mydata]$ tail ssw_samples.txt 
 
@@ -204,7 +203,7 @@ Customize your lines-
 ``` 
 [aadas@pbio381 mydata]$ grep 'HH'ssw_samples.txt
 [aadas@pbio381 mydata]$ grep 'SS' ssw_samples.txt
-``` 
+```
 * What if instead of printing it to screen, we want to save the output of our search to a new file? This is easy, just use the “>” symbol to redirect the results of any command to an output file with your choice of name.
 ``` 
 [aadas@pbio381 mydata]$ grep 'SS' ssw_samples.txt >ssw_SSonly.txt
@@ -212,7 +211,7 @@ Customize your lines-
 [aadas@pbio381 mydata]$ mkdir sample_by_disease/
 [aadas@pbio381 mydata]$ grep 'HH' ssw_samples.txt >ssw_HHonly.txt
 [aadas@pbio381 mydata]$ ll
-``` 
+```
 
 ------
 <div id='id-section6'/>
@@ -320,7 +319,7 @@ cp command
 #### Brief overview of transcriptomics
 *	Microarray 
      * Easy for ecological analysis
-* RNA seq: 
+       *RNA seq: 
      * genome wide ecological transcripts, more involved analysis.
 
 #### Main questions
@@ -330,25 +329,25 @@ cp command
      * Epigenetics 
      * Qst-Fst comparison
      * qQTL expression and quantitative trait loci mapping 
-     
+
 * How does the gene expression affect phenotype?
- 
+
 * How to environmental stimuli affect gene expression?
-  * Abiotic stress
-  * Env heterogeneity 
-  * Host parasite interaction
-  * Selective biotic and abiotic interaction 
-  * Looking at the molecular level
-       * Molecular level
-       * Genotype
-       * Phenotypic plasticity
-  * Some limitation while working in the environment 
-       * You need to flash freeze your sample
-       * You are only getting a snapshot
-       
+     * Abiotic stress
+     * Env heterogeneity 
+     * Host parasite interaction
+     * Selective biotic and abiotic interaction 
+     * Looking at the molecular level
+          * Molecular level
+          * Genotype
+          * Phenotypic plasticity
+     * Some limitation while working in the environment 
+          * You need to flash freeze your sample
+          * You are only getting a snapshot
+
 * How does gene expression affect phenotype?
-  * Alternative phenotype
-  * Moving from transgenic, RNA and CRISPER/CAS
+     * Alternative phenotype
+     * Moving from transgenic, RNA and CRISPER/CAS
 
 #### Problems 
 * Bias in signal
@@ -368,10 +367,10 @@ cp command
   * Disease resistance 
   * Mating behavious 
   * Adaptive behaviour
-  
+
 * Molecular Mechanism 
   * Phenotypical/ behaviroal plasticity (migration pattern)
-  
+
 #### Limitation
 * Refernce genome quality gene annotation availablility expense per sample library preparation
 
@@ -381,7 +380,7 @@ cp command
   * Doesn't involved pooled samples
   * 23/158 studies 
   * Derive broad bio colclusions
-  
+
 * Priotonize sequence depth over replication (problem)
 
 * Nice dynamic range of RNA seq data-- Noisy
@@ -392,7 +391,7 @@ cp command
 #### Rules of thumb
 * Use of more biological replicates instead of depth
 * Seq. depth > 10 reads / transcript 
-  * ~10-20 Million mapped reads/sample
+   * ~10-20 Million mapped reads/sample
 * 3 Biological replicates per condition
 * Conduct a pilot experiment- 
    * What's the best/ powerful experiment I can afford? 
@@ -439,7 +438,7 @@ Tissue--> Sequence-->Clean/trim-->assembly-->SNP detection-->validation
   * Sequence error: Eliminate SNPs of low frequency
   * Artifacts caused by InDels
   * Quality score
-  
+
 ##### SNP validation 
 * Designing primers
 * Sequencing by Mass spectrometry 
@@ -460,3 +459,6 @@ Tissue--> Sequence-->Clean/trim-->assembly-->SNP detection-->validation
 [Zhao et al. 2016 (https://academic.oup.com/mbe/article/33/3/707/2579453/Global-Transcriptional-Profiling-of-Diapause-and)
 ```
 Go to the paper [Zhao et al. 2016] (https://academic.oup.com/mbe/article/33/3/707/2579453/Global-Transcriptional-Profiling-of-Diapause-and). 
+
+### Terminal Codes:
+
