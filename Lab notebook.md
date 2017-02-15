@@ -378,6 +378,29 @@ Tissue--> Sequence-->Clean/trim-->assembly-->SNP detection-->validation
 ##### Tissue
 * breadth of tissue, developmental stages, exon sapping
 
+##### Pool & sequencing libraries
+* ~30-100 million paired ending read
 
+##### Clean trim  
+* Process raw seq. data
+* Important for SNP detection
+* Digital normalization
+  * Remove high coverage reads and associated errors
+  * loss of quantitative information
+* Assemble cleaned paired long reads
+* Prune-reduce DNA contaminaiton, non-coding RNA, gene fragments
+
+##### Assembly
+* Evaluation-COGS
+
+##### SNP detection
+* Software-constant patterns of sequence validation
+  * Sequence error: Eliminate SNPs of low frequency
+  * Artifacts caused by InDels
+  * Quality score
+  
+##### SNP validation 
+* Designing primers
+* Sequencing by Mass spectrometry 
 
 
