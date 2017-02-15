@@ -403,4 +403,24 @@ Tissue--> Sequence-->Clean/trim-->assembly-->SNP detection-->validation
 * Designing primers
 * Sequencing by Mass spectrometry 
 
+#### Application
+* Difference in population structure
+* How natural selection acting on particular loci
+
+##### Methods of application 
+* Outliers: For a given locus what's the level of differentiation comapred to diff. across genome.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
