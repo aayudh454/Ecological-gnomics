@@ -409,6 +409,9 @@ Tissue--> Sequence-->Clean/trim-->assembly-->SNP detection-->validation
 
 ##### Methods of application 
 * Outliers: For a given locus what's the level of differentiation comapred to diff. across genome.
+* Non-outliers: Tests high FST loci for other factors associated with selection.
+  * Fitness
+  * Functional enrichment
 
 
 
