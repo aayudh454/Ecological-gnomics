@@ -554,6 +554,8 @@ total 8830952
 Copy  all the files from one directory to my location. "." signifies to the location that you are presently in.
 
 ```
-scp /data/project_data/DGE/* .
+[aadas@pbio381 mydata]$ scp /data/project_data/DGE/* .
+[aadas@pbio381 mydata]$ ll
 ```
+
 
