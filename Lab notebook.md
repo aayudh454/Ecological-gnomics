@@ -569,25 +569,25 @@ Copy  all the files from one directory to my location. "." signifies to the loca
 ```
 Now move to your MAC
 
-Open a new folder
+Open a new terminal, now that's your hard drive. I want to copy everything to my own folder in MAC
 
 ```
 ip0af52d66:~ aayudhdas$ pwd
 /Users/aayudhdas
-ip0af52d66:~ aayudhdas$ cd ~/Dropbox/Aayudh UVM
--bash: cd: /Users/aayudhdas/Dropbox/Aayudh: No such file or directory
-ip0af52d66:~ aayudhdas$ cd ~/Dropbox/Aayudh
-Aayudh 7th March.pptx           Aayudh-Arindam/
-Aayudh Das/                     Aayudh-Natalie (Grass project)/
-Aayudh UVM/                     
-ip0af52d66:~ aayudhdas$ cd ~/Dropbox/Aayudh$UVM/
--bash: cd: /Users/aayudhdas/Dropbox/Aayudh/: No such file or directory
 ip0af52d66:~ aayudhdas$ cd ~/Dropbox/Aayudh_UVM/ecological\ genomics/
+```
+
+Now lets make a folder in my dropbox
+
+```	
 ip0af52d66:ecological genomics aayudhdas$ mkdir RNA_seq
 ip0af52d66:ecological genomics aayudhdas$ cd RNA_seq
-ip0af52d66:RNA_seq aayudhdas$ ll
--bash: ll: command not found
-ip0af52d66:RNA_seq aayudhdas$ ls
+ip0af52d66:RNA_seq aayudhdas$ ls		
+```
+
+Now copy everything to the new folder
+
+```
 ip0af52d66:RNA_seq aayudhdas$ scp aadas@pbio381.uvm.edu:/users/a/a/aadas/mydata/* .
 aadas@pbio381.uvm.edu's password: 
 cols_data_trim.txt                            100% 1982     1.0MB/s   00:00    
@@ -599,7 +599,121 @@ scp: /users/a/a/aadas/mydata/sample_by_disease: not a regular file
 samples_by_disease                            100%  462    24.3KB/s   00:00    
 ssw_samples.txt                               100% 1255   223.0KB/s   00:00    
 ip0af52d66:RNA_seq aayudhdas$ 
+```
 
+## R Script
+
+```
+source("http://bioconductor.org/workflows.R")
+workflowInstall("rnaseqGene")
+
+source("https://bioconductor.org/biocLite.R")
+biocLite("DESeq2")
+
+setwd("~/Dropbox/Aayudh_UVM/ecological genomics/RNA_seq")
+library("DESeq2")
+
+library("ggplot2")
+
+countsTable <- read.delim('countsdata_trim.txt', header=TRUE, stringsAsFactors=TRUE, row.names=1)
+countData <- as.matrix(countsTable)
+head(countData)
+
+conds <- read.delim("cols_data_trim.txt", header=TRUE, stringsAsFactors=TRUE, row.names=1)
+head(conds)
+colData <- as.data.frame(conds)
+head(colData)
+
+#################### Build dataset, model, and run analyses
+
+dds <- DESeqDataSetFromMatrix(countData = countData, colData = colData, design = ~ day + location + health)
+# In this typical model, the "sex effect" represents the overall effect controlling for differences due to population and devstage. page 26-27 manual DESeq2.pdf
+# The last term in the model is what is tested.  In this case sex.
+#  This is not the same as an interaction.
+
+
+dim(dds)
+[1] 26550    65
+
+dds <- dds[ rowSums(counts(dds)) > 100, ]
+dim(dds)
+[1] 13334    65  # at > 100; little more than an average of 10 reads per sample for the 93 samples
+
+colSums(counts(dds))
+hist(colSums(counts(dds)), breaks = 80, xlim=c(0,max(colSums(counts(dds)))))
+
+
+colData(dds)$health <- factor(colData(dds)$health, levels=c("H","S"))
+
+dds <- DESeq(dds)  # this step takes a loooong time ~4 minutes with the trimmed data set
+# estimating size factors
+# estimating dispersions
+# gene-wise dispersion estimates
+# mean-dispersion relationship
+# final dispersion estimates
+# fitting model and testing
+# -- replacing outliers and refitting for 3308 genes
+# -- DESeq argument 'minReplicatesForReplace' = 7 
+# -- original counts are preserved in counts(dds)
+# estimating dispersions
+# fitting model and testing
+
+save(dds, file="dds.trim.Robject")
+
+res <- results(dds)
+res <- res[order(res$padj),]
+head(res)
+# log2 fold change (MAP): health S vs H 
+# Wald test p-value: health S vs H 
+# DataFrame with 6 rows and 6 columns
+# baseMean log2FoldChange     lfcSE
+# <numeric>      <numeric> <numeric>
+# TRINITY_DN46709_c0_g1_TRINITY_DN46709_c0_g1_i1_g.23138_m.23138 1950.0719       2.488783 0.4311875
+# TRINITY_DN43080_c1_g1_TRINITY_DN43080_c1_g1_i3_g.14110_m.14110  902.2693       2.475891 0.4599085
+# TRINITY_DN43359_c0_g1_TRINITY_DN43359_c0_g1_i1_g.14658_m.14658  889.9707       1.163219 0.2482335
+# TRINITY_DN47215_c1_g4_TRINITY_DN47215_c1_g4_i3_g.25054_m.25054  774.1126       1.723917 0.3650258
+# TRINITY_DN47215_c0_g1_TRINITY_DN47215_c0_g1_i5_g.25051_m.25051  911.7634       1.586693 0.3431307
+# TRINITY_DN45416_c4_g2_TRINITY_DN45416_c4_g2_i3_g.19333_m.19333 1629.8753       1.775765 0.3873817
+# stat       pvalue         padj
+# <numeric>    <numeric>    <numeric>
+# TRINITY_DN46709_c0_g1_TRINITY_DN46709_c0_g1_i1_g.23138_m.23138  5.771927 7.837024e-09 8.691260e-06
+# TRINITY_DN43080_c1_g1_TRINITY_DN43080_c1_g1_i3_g.14110_m.14110  5.383443 7.307426e-08 4.051968e-05
+# TRINITY_DN43359_c0_g1_TRINITY_DN43359_c0_g1_i1_g.14658_m.14658  4.685987 2.786136e-06 7.724563e-04
+# TRINITY_DN47215_c1_g4_TRINITY_DN47215_c1_g4_i3_g.25054_m.25054  4.722727 2.327027e-06 7.724563e-04
+# TRINITY_DN47215_c0_g1_TRINITY_DN47215_c0_g1_i5_g.25051_m.25051  4.624166 3.761091e-06 8.342101e-04
+# TRINITY_DN45416_c4_g2_TRINITY_DN45416_c4_g2_i3_g.19333_m.19333  4.584018 4.561241e-06 8.430694e-04
+
+summary(res)
+# out of 13334 with nonzero total read count
+# adjusted p-value < 0.1
+# LFC > 0 (up)     : 50, 0.37% 
+# LFC < 0 (down)   : 8, 0.06% 
+# outliers [1]     : 539, 4% 
+# low counts [2]   : 11686, 88% 
+# (mean count < 80)
+# [1] see 'cooksCutoff' argument of ?results
+# [2] see 'independentFiltering' argument of ?results
+
+plotMA(res, main="DESeq2", ylim=c(-2,2))
+
+## Check out one of the genes to see if it's behaving as expected....
+d <- plotCounts(dds, gene="TRINITY_DN46709_c0_g1_TRINITY_DN46709_c0_g1_i1_g.23138_m.23138", intgroup=(c("status","day","location")), returnData=TRUE)
+d
+p <- ggplot(d, aes(x= health, y=count, shape = date)) + theme_minimal() + theme(text = element_text(size=20), panel.grid.major = element_line(colour = "grey"))
+p <- p + geom_point(position=position_jitter(w=0.3,h=0), size = 3) + scale_y_log10(breaks=c(25,100,1000)) + ylim(0,2500)
+p
+
+# 2.2 Data quality assessment by sample clustering and visualization 
+
+vsd <- varianceStabilizingTransformation(dds, blind=FALSE)
+
+plotPCA(vsd, intgroup=c("health"))
+plotPCA(vsd, intgroup=c("day"))
+plotPCA(vsd, intgroup=c("location"))
+plotPCA(vsd, intgroup=c("health","location"))
+
+# rld <- rlog(dds, blind=FALSE) # this takes too long with such a large data set!
+# plotPCA(rld, intgroup=c("status","date"))
 ```
 
 
