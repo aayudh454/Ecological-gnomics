@@ -547,4 +547,13 @@ total 8830952
 
 ### Page 10: 2017-02-22. Transcriptomics 5
 
-### INFO UPDATE: 
+### INFO UPDATE: none 
+
+### Terminal code
+
+Copy  all the files from one directory to my location. "." signifies to the location that you are presently in.
+
+```
+scp /data/project_data/DGE/* .
+```
+
