@@ -551,11 +551,56 @@ total 8830952
 
 ### Terminal code
 
+First go to your current directory 
+
+``` 
+[aadas@pbio381 ~]$ pwd
+/users/a/a/aadas
+[aadas@pbio381 ~]$ ll
+```
+
+Let's go to my data
+
 Copy  all the files from one directory to my location. "." signifies to the location that you are presently in.
 
 ```
 [aadas@pbio381 mydata]$ scp /data/project_data/DGE/* .
 [aadas@pbio381 mydata]$ ll
 ```
+Now move to your MAC
+
+Open a new folder
+
+```
+ip0af52d66:~ aayudhdas$ pwd
+/Users/aayudhdas
+ip0af52d66:~ aayudhdas$ cd ~/Dropbox/Aayudh UVM
+-bash: cd: /Users/aayudhdas/Dropbox/Aayudh: No such file or directory
+ip0af52d66:~ aayudhdas$ cd ~/Dropbox/Aayudh
+Aayudh 7th March.pptx           Aayudh-Arindam/
+Aayudh Das/                     Aayudh-Natalie (Grass project)/
+Aayudh UVM/                     
+ip0af52d66:~ aayudhdas$ cd ~/Dropbox/Aayudh$UVM/
+-bash: cd: /Users/aayudhdas/Dropbox/Aayudh/: No such file or directory
+ip0af52d66:~ aayudhdas$ cd ~/Dropbox/Aayudh_UVM/ecological\ genomics/
+ip0af52d66:ecological genomics aayudhdas$ mkdir RNA_seq
+ip0af52d66:ecological genomics aayudhdas$ cd RNA_seq
+ip0af52d66:RNA_seq aayudhdas$ ll
+-bash: ll: command not found
+ip0af52d66:RNA_seq aayudhdas$ ls
+ip0af52d66:RNA_seq aayudhdas$ scp aadas@pbio381.uvm.edu:/users/a/a/aadas/mydata/* .
+aadas@pbio381.uvm.edu's password: 
+cols_data_trim.txt                            100% 1982     1.0MB/s   00:00    
+countsdata_trim.txt                           100% 5420KB   9.9MB/s   00:00    
+countstatsummary.txt                          100% 8122     2.4MB/s   00:00    
+DESeq2_exploreSSW_trim.R                      100% 9018     2.7MB/s   00:00    
+explore_expression_data.R                     100%  439   204.4KB/s   00:00    
+scp: /users/a/a/aadas/mydata/sample_by_disease: not a regular file
+samples_by_disease                            100%  462    24.3KB/s   00:00    
+ssw_samples.txt                               100% 1255   223.0KB/s   00:00    
+ip0af52d66:RNA_seq aayudhdas$ 
+
+```
+
 
 
