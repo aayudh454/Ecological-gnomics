@@ -735,6 +735,34 @@ None
 
 ### Terminal Code
 
+First open your own UVM server and do this
+
+```
+[aadas@pbio381 ~]$ scp /data/project_data/DGE/* .
+cp: omitting directory ‘/data/project_data/DGE/round1’
+[aadas@pbio381 ~]$ ll
+```
+
+Now open a new window
+
+```
+ip0af5257c:~ aayudhdas$ pwd
+/Users/aayudhdas
+ip0af5257c:~ aayudhdas$ cd ~/Dropbox/Aayudh_UVM/ecological\ genomics/
+ip0af5257c:ecological genomics aayudhdas$ mkdir RNA_seq1
+ip0af5257c:ecological genomics aayudhdas$ cd RNA_seq1
+ip0af5257c:RNA_seq1 aayudhdas$ ls
+ip0af5257c:RNA_seq1 aayudhdas$ scp aadas@pbio381.uvm.edu:/data/project_data/DGE/* .
+aadas@pbio381.uvm.edu's password: 
+allcountsdata.txt                                                100% 3883KB   9.6MB/s   00:00    
+cols_data_trim.txt                                               100% 2342   893.1KB/s   00:00    
+countsdata_trim2.txt                                             100% 3394KB  12.1MB/s   00:00    
+countstatsummary.txt                                             100% 8059     3.0MB/s   00:00    
+DESeq2_SSW_round2.R                                              100%   13KB   4.0MB/s   00:00    
+scp: /data/project_data/DGE/round1: not a regular file
+ip0af5257c:RNA_seq1 aayudhdas$ 
+```
+
 
 
 
