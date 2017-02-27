@@ -722,6 +722,10 @@ plotPCA(vsd, intgroup=c("health","location"))
 
 ### INFO UPDATE:  
 
+None 
+
+### Discussion paper: 
+
 1. Coalescnt 
 2. reticulation
 3. Purigying/background selection
@@ -729,6 +733,6 @@ plotPCA(vsd, intgroup=c("health","location"))
 5. Introgression / recombination 
 6. Incomplete linkage
 
-### Discussion paper:
+### 
 
 
