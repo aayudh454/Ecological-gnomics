@@ -714,14 +714,20 @@ plotPCA(vsd, intgroup=c("health","location"))
 # plotPCA(rld, intgroup=c("status","date"))
 ```
 
-
 ------
 
 <div id='id-section11'/>
 
 ### Page 11: 2017-02-27. Transcriptomics 5
 
-### INFO UPDATE: none 
+### INFO UPDATE:  
+
+1. Coalescnt 
+2. reticulation
+3. Purigying/background selection
+4. Gene trees vs species 
+5. Introgression / recombination 
+6. Incomplete linkage
 
 ### Discussion paper:
 
