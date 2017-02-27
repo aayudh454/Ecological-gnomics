@@ -539,8 +539,6 @@ total 8830952
 -rwxr--r--. 1 aadas users        765 Feb  6 11:26 trim_example.sh
 ```
 
-
-
 ------
 
 <div id='id-section10'/>
@@ -716,5 +714,15 @@ plotPCA(vsd, intgroup=c("health","location"))
 # plotPCA(rld, intgroup=c("status","date"))
 ```
 
+
+------
+
+<div id='id-section11'/>
+
+### Page 11: 2017-02-27. Transcriptomics 5
+
+### INFO UPDATE: none 
+
+### Discussion paper:
 
 
