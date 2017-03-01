@@ -769,6 +769,14 @@ ip0af5257c:RNA_seq1 aayudhdas$
 
 ### INFO UPDATE:  
 
-None 
+
+
+### Data anlysis
+
+LTR= log likelihood in R
+
+It's going to take liklihood of 4 models and then it will take the likelihood of reduced model.
+
+LR=chi square, df=#pair reduced
 
 
