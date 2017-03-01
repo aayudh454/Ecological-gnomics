@@ -19,7 +19,7 @@
 * [Page 9:2017-02-15](#id-section9). Transcriptomics 4
 * [Page 10:2017-02-20](#id-section10).Transcriptomics 5
 * [Page 11:2017-02-22](#id-section11). Transcriptomics 6
-* [Page 12:2017-02-27](#id-section12).
+* [Page 12:2017-02-27](#id-section12). Catch up day
 * [Page 13:2017-02-29](#id-section13).
 * [Page 14:2017-03-4](#id-section14).
 
@@ -718,7 +718,7 @@ plotPCA(vsd, intgroup=c("health","location"))
 
 <div id='id-section11'/>
 
-### Page 11: 2017-02-27. Transcriptomics 5
+### Page 11: 2017-02-27. Transcriptomics 6
 
 ### INFO UPDATE:  
 
@@ -762,15 +762,13 @@ DESeq2_SSW_round2.R                                              100%   13KB   4
 scp: /data/project_data/DGE/round1: not a regular file
 ip0af5257c:RNA_seq1 aayudhdas$ 
 ```
-
-
-
-
-
 ------
+<div id='id-section12'/>
 
+### Page 12: 2017-03-01. Catch up day and 'R' package update
 
+### INFO UPDATE:  
 
-### 
+None 
 
 
