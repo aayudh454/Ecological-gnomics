@@ -19,7 +19,7 @@
 * [Page 9:2017-02-15](#id-section9). Transcriptomics 4
 * [Page 10:2017-02-20](#id-section10).Transcriptomics 5
 * [Page 11:2017-02-22](#id-section11). Transcriptomics 6
-* [Page 12:2017-02-27](#id-section12). Catch up day
+* [Page 12:2017-02-27](#id-section12). Catch up day and WGCNA package
 * [Page 13:2017-02-29](#id-section13).
 * [Page 14:2017-03-4](#id-section14).
 
@@ -767,9 +767,34 @@ ip0af5257c:RNA_seq1 aayudhdas$
 
 ### Page 12: 2017-03-01. Catch up day and 'R' package update
 
-### INFO UPDATE:  
+### INFO UPDATE: WGCNA (weighted gene correlation network analysis) package  
 
+#### Outline
 
+##### Overview of WGCNA
+
+Describe correlation (co-expression) patterns among genes in micro-array samples.
+
+Network construction —> Module identification —> Relationship of modules to external info—> Relationship between/within modules—> Finding key drivers in modules of interest 
+
+##### Network construction
+
+Node=Gene
+
+Edge=Strength of co-rrleation in expression
+
+Signed network-positive correlation in expression
+
+Unsigned network- Absolute value of correlation in expression (+ve and -ve correlation)
+
+##### Module detection
+
+Unspecified clustering
+
+1. Incorporation of excel info into network
+2. Topological properties
+3. Other features
+4. Limitation
 
 ### Data anlysis
 
@@ -779,4 +804,9 @@ It's going to take liklihood of 4 models and then it will take the likelihood of
 
 LR=chi square, df=#pair reduced
 
+response variable: Gene expression
+
+#### For practice, let's work with fewer genes so that the models can run faster...
+
+dds <- dds[sample(nrow(dds), 1200), ] comment out that 
 
