@@ -864,13 +864,17 @@ Pinonsyn/Pisyn = measure of how strong the selection is
 
 
 
+```
+[aadas@pbio381 ~]$ cd /data/project_data/snps/reads2snps/
+[aadas@pbio381 reads2snps]$ ll
+[aadas@pbio381 reads2snps]$ ll *vcf
+[aadas@pbio381 reads2snps]$ vim head_SSW_bamlist.txt.vcf 
+:set nowrap
+[aadas@pbio381 reads2snps]$ vcftools --vcf SSW_bamlist.txt.vcf 
+[aadas@pbio381 reads2snps]$ grep "unres" SSW_bamlist.txt.vcf | wc
+```
 
-
-
-
-
-
-
+wc= word count
 
 
 
