@@ -875,10 +875,29 @@ Pinonsyn/Pisyn = measure of how strong the selection is
 5631864 185851488 1028494934
 [aadas@pbio381 reads2snps]$ grep "para" SSW_bamlist.txt.vcf | wc
    4354  143652  795592
-[aadas@pbio381 reads2snps]$ vcftools --vcf SSW_bamlist.txt.vcf --min-alleles 2 --max-alleles 2   
+[aadas@pbio381 reads2snps]$ vcftools --vcf SSW_bamlist.txt.vcf --min-alleles 2 --max-alleles 2
+[aadas@pbio381 reads2snps]$ vcftools --vcf SSW_bamlist.txt.vcf --maf 0.02
+[aadas@pbio381 reads2snps]$ vcftools --vcf SSW_bamlist.txt.vcf --max-missing 0.8
 ```
 
 wc= word count
+
+Now do it all this together
+
+```
+[aadas@pbio381 reads2snps]$ vcftools --vcf SSW_bamlist.txt.vcf --min-alleles 2 --max-alleles 2 --maf 0.02 --max-missing 0.8 --recode --out ~/biallelic.MAF0.02.Miss0.8
+```
+
+now go to your home directory
+
+```
+[aadas@pbio381 data]$ cd ~/
+[aadas@pbio381 ~]$ ll
+[aadas@pbio381 ~]$ vim biallelic.MAF0.2.Miss0.8.recode.vcf
+:set nowrap
+```
+
+
 
 
 
