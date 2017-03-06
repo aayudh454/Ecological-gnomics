@@ -872,6 +872,10 @@ Pinonsyn/Pisyn = measure of how strong the selection is
 :set nowrap
 [aadas@pbio381 reads2snps]$ vcftools --vcf SSW_bamlist.txt.vcf 
 [aadas@pbio381 reads2snps]$ grep "unres" SSW_bamlist.txt.vcf | wc
+5631864 185851488 1028494934
+[aadas@pbio381 reads2snps]$ grep "para" SSW_bamlist.txt.vcf | wc
+   4354  143652  795592
+[aadas@pbio381 reads2snps]$ vcftools --vcf SSW_bamlist.txt.vcf --min-alleles 2 --max-alleles 2   
 ```
 
 wc= word count
