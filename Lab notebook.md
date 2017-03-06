@@ -897,6 +897,44 @@ now go to your home directory
 :set nowrap
 ```
 
+To see the mannual 
+
+```
+[aadas@pbio381 ~]$ man vcftools
+```
+
+to hardy
+
+```
+[aadas@pbio381 ~]$ vcftools --vcf biallelic.MAF0.2.Miss0.8.recode.vcf --hardy
+[aadas@pbio381 ~]$ head out.hwe
+```
+
+Use R from this
+
+```
+[aadas@pbio381 ~]$ R
+> getwd()
+[1] "/data/users/a/a/aadas"
+> hardy <-read.table("out.hwe", header=T) 
+> str(hardy)
+```
+
+p value
+
+```
+> hardy[which(hardy$P_HET_EXCESS<0.001),]
+> hardy[which(hardy$P_HET_DEFICIT<0.001),]
+>hardy[which(hardy$P_HET_DEFICIT<0.001),2:7]
+```
+
+to quit R
+
+```
+> quit()
+Save workspace image? [y/n/c]: y
+```
+
 
 
 
