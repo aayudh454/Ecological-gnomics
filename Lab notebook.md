@@ -816,7 +816,7 @@ dds <- dds[sample(nrow(dds), 1200), ] comment out that
 
 ### Page 13: 2017-03-06. Population genomics
 
-### INFO UPDATE: 
+### INFO UPDATE: Population genetics
 
 #### Population genomics: 
 
@@ -838,3 +838,24 @@ Raw reads—>clean—> Assemble —> Mapped reads—>Count reads—>DGE
 
 ​											    —> Call SNPs + Genotypes (population genomics)
 
+##### Challenges of SNP coding
+
+1.  Sequencing error (Illumina 1:100)
+
+##### Filters
+
+1. Minor allele frequency 
+
+   #### Challenges of calling genotypes (AA, AT, TT) 
+
+   1. Multinomial distribution
+   2. Predicts A=T=0.5
+   3. 100% hetero (SNPs where its filtered out)
+
+#### pi heterozygocity
+
+For sequence of i and j, pi = Xi XjPiiy
+
+Pisyn = 4Neu
+
+Pinonsyn/Pisyn = measure of how strong the selection is
