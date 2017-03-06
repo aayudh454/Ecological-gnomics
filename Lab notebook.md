@@ -859,3 +859,32 @@ For sequence of i and j, pi = Xi XjPiiy
 Pisyn = 4Neu
 
 Pinonsyn/Pisyn = measure of how strong the selection is
+
+### Terminal Code
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
