@@ -810,3 +810,31 @@ response variable: Gene expression
 
 dds <- dds[sample(nrow(dds), 1200), ] comment out that 
 
+-----
+
+<div id='id-section13'/>
+
+### Page 13: 2017-03-06. Population genomics
+
+### INFO UPDATE: 
+
+#### Population genomics: 
+
+##### SNPs
+
+##### sampling unit is individuals 
+
+#### Processes: 
+
+1. Population structure 
+2. Diversity with populations
+3. Selections 
+   1. Positive
+   2. Negative; "purifying"
+
+#### Pipeline 
+
+Raw reads—>clean—> Assemble —> Mapped reads—>Count reads—>DGE
+
+​											    —> Call SNPs + Genotypes (population genomics)
+
