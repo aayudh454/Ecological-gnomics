@@ -937,59 +937,9 @@ Save workspace image? [y/n/c]: y
 
 ```
 [aadas@pbio381 ~]$ vcftools --vcf biallelic.MAF0.2.Miss0.8.recode.vcf --geno-r2
-
-VCFtools - 0.1.14
-(C) Adam Auton and Anthony Marcketta 2009
-
-Parameters as interpreted:
-	--vcf biallelic.MAF0.2.Miss0.8.recode.vcf
-	--max-alleles 2
-	--min-alleles 2
-	--geno-r2
-
-After filtering, kept 24 out of 24 Individuals
-Outputting Pairwise LD (bi-allelic only)
-	LD: Only using diploid individuals.
-After filtering, kept 1180 out of a possible 1180 Sites
-Run Time = 2.00 seconds
 [aadas@pbio381 ~]$ ll
-total 7976
--rw-r--r--. 1 aadas users 3976482 Feb 27 10:25 allcountsdata.txt
--rw-r--r--. 1 aadas users     395 Mar  6 10:54 biallelic.MAF0.2.Miss0.8.log
--rwxr--r--. 1 aadas users  210467 Mar  6 10:54 biallelic.MAF0.2.Miss0.8.recode.vcf
--rw-r--r--. 1 aadas users    2342 Feb 27 10:25 cols_data_trim.txt
--rw-r--r--. 1 aadas users 3475424 Feb 27 10:25 countsdata_trim2.txt
--rw-r--r--. 1 aadas users    8059 Feb 27 10:25 countstatsummary.txt
--rw-r--r--. 1 aadas users   13572 Feb 27 10:25 DESeq2_SSW_round2.R
-drwxr-xr-x. 3 aadas users    4096 Feb 22 10:36 mydata
--rw-r--r--. 1 aadas users  388746 Mar  6 11:24 out.geno.ld
--rw-r--r--. 1 aadas users   62715 Mar  6 11:11 out.hwe
--rw-r--r--. 1 aadas users     383 Mar  6 11:24 out.log
-drwxr-xr-x. 2 aadas users    4096 Mar  1 09:27 scripts
-[aadas@pbio381 ~]$ vim  out.geno.ld
-[aadas@pbio381 ~]$ 
 [aadas@pbio381 ~]$ vim out.geno.ld 
 [aadas@pbio381 ~]$ R
-
-R version 3.3.2 (2016-10-31) -- "Sincere Pumpkin Patch"
-Copyright (C) 2016 The R Foundation for Statistical Computing
-Platform: x86_64-redhat-linux-gnu (64-bit)
-
-R is free software and comes with ABSOLUTELY NO WARRANTY.
-You are welcome to redistribute it under certain conditions.
-Type 'license()' or 'licence()' for distribution details.
-
-  Natural language support but running in an English locale
-
-R is a collaborative project with many contributors.
-Type 'contributors()' for more information and
-'citation()' on how to cite R or R packages in publications.
-
-Type 'demo()' for some demos, 'help()' for on-line help, or
-'help.start()' for an HTML browser interface to help.
-Type 'q()' to quit R.
-
-[Previously saved workspace restored]
 
 > LD <- read.table("out.geno.ld", header=T)
 > str(LD)
@@ -1014,7 +964,7 @@ Type 'q()' to quit R.
 
 ```
 
-done
+
 
 
 
