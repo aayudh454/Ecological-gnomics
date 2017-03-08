@@ -862,8 +862,6 @@ Pinonsyn/Pisyn = measure of how strong the selection is
 
 ### Terminal Code
 
-
-
 ```
 [aadas@pbio381 ~]$ cd /data/project_data/snps/reads2snps/
 [aadas@pbio381 reads2snps]$ ll
@@ -967,7 +965,28 @@ Save workspace image? [y/n/c]: y
 <div id='id-section14'/>
 ### Page 13: 2017-03-08. Population genomics
 
-### INFO UPDATE: Population genetics
+### INFO UPDATE: Population genomics
+
+#### Rate of evolution due to relationship
+
+##### Ne=Effective popultion size
+
+4 methods:
+
+1.  From species life history
+2. From varioance in allele frequency between generation
+3. Genetic polymorphism
+4. Correlated trait ~ body size 
+
+Ne vary across:
+
+1.  Species
+2. Genome
+   1. Genetic hitchhiking~selective slope
+   2. Background selection
+   3. Fewer sex chromosomes if outcross goes high.
+
+
 
 
 
