@@ -1026,11 +1026,25 @@ Now base level mutation are two types
 4. With time in DNA sed will let us estimate better Ne, substitute rate, mutation rates.
 5. Most mutations are deletorious. 
 
+#### Terminal Code
 
+```
+[aadas@pbio381 ~]$ cd /data/project_data/snps/reads2snps/
+[aadas@pbio381 reads2snps]$ ll
+[aadas@pbio381 reads2snps]$ vcftools --gzvcf SSW_byind.txt.vcf.gz 
+```
 
+After filtering, kept 22 out of 22 Individuals
 
+After filtering, kept 7485987 out of a possible 7485987 Sites
 
+Run Time = 20.00 seconds
 
+```
+[aadas@pbio381 reads2snps]$ vcftools --gzvcf SSW_byind.txt.vcf.gz --min-alleles 2 --max-alleles 2 --maf 0.02 --max-missing 0.8 --recode --out ~/SSW_all_biallelic.MAF0.02.Miss0.8
+```
+
+After filtering, kept 5565 out of a possible 7485987 Sites
 
 
 
