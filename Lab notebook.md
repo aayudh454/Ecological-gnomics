@@ -1004,7 +1004,27 @@ Now base level mutation are two types
    1. Purifying selection
    2. Positive selection  
 
+5 classes
 
+1. Neutral mutation: Effect of fitness<1 
+2. slightly deletorious 
+3. Deletorius 
+4. Advantages
+
+##### Relationship between Ne and Substitution rate (NeRR)
+
+1. Selective sweeps
+2. Clonal interference 
+
+##### Take home:
+
+1. The study of NeRR help us to understand the process that drives and limits evolution
+
+
+2. Drift and selection are the most important forces determining NeRR.
+3. We need to work on better way to estimate Ne.
+4. With time in DNA sed will let us estimate better Ne, substitute rate, mutation rates.
+5. Most mutations are deletorious. 
 
 
 
