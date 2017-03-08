@@ -986,9 +986,23 @@ Ne vary across:
    2. Background selection
    3. Fewer sex chromosomes if outcross goes high.
 
+##### Mutation
 
+1. Across the whole gene and chromosome 
+   1. Duplication
+   2. Inversion
+   3. Delection
+   4. Translocation
+2. Mutation at the base level i.e. point mutation (main source is substitution)
+   1. Transition (Purine to Purine and Purine to pyriidine)
+   2. Transversion (purone to purine)
 
+Now base level mutation are two types
 
+1.  Synonymous (silent)
+2. Non-synonymous (Change in the DNA) / Natural selection operates
+   1. Purifying selection
+   2. Positive selection  
 
 
 
