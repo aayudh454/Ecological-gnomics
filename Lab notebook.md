@@ -1071,3 +1071,62 @@ in R now
 
 [1] 1001 1021 1023 1300 1302 1320 1407 1409
 
+```
+> hwe[which(hwe$P_HET_DEFICIT<0.01),]
+```
+
+read the file
+
+```
+[aadas@pbio381 ~]$ vi ssw_healthloc.txt
+then press o
+[aadas@pbio381 reads2snps]$ cat ssw_healthloc.txt 
+Individual	Trajectory	Location	SNPs
+10	HH	INT	N
+24	HH	INT	Y
+27	HH	INT	Y
+08	HS	INT	Y
+09	HS	INT	Y
+15	HS	INT	Y
+19	HS	INT	Y
+20	HS	INT	Y
+03	SS	INT	Y
+07	SS	INT	Y
+14	SS	INT	Y
+22	SS	INT	Y
+23	SS	INT	Y
+26	SS	INT	Y
+28	SS	INT	Y
+29	SS	INT	Y
+31	HH	SUB	Y
+32	HH	SUB	Y
+33	HH	SUB	Y
+34	HH	SUB	N
+35	HH	SUB	Y
+36	SS	SUB	Y
+37	MM	SUB	Y
+38	MM	SUB	Y
+
+```
+
+```
+[aadas@pbio381 reads2snps]$ grep "HH" ssw_healthloc.txt > ~/H_OneSampPerInd.txt
+[aadas@pbio381 reads2snps]$ grep "SS" ssw_healthloc.txt > ~/S_OneSampPerInd.txt
+[aadas@pbio381 reads2snps]$ grep "HS" ssw_healthloc.txt >> ~/S_OneSampPerInd.txt
+```
+
+go to directory
+
+```
+[aadas@pbio381 ~]$ cut -f 1 H_OneSampPerInd.txt >H_OneSampPerInd2.txt 
+[aadas@pbio381 ~]$ cat H_OneSampPerInd2.txt
+10
+24
+27
+31
+32
+33
+34
+35
+```
+
