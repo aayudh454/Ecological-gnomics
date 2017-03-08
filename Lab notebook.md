@@ -1164,6 +1164,7 @@ After filtering, kept 5565 out of a possible 5565 Sites
 [aadas@pbio381 ~]$ vim H_AlleleFreqs.frq
 :set nowrap
 edit by i
+then esc
 then :wq to save 
 ```
 
