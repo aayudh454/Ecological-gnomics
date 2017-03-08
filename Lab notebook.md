@@ -1128,5 +1128,35 @@ go to directory
 33
 34
 35
+[aadas@pbio381 ~]$ cut -f 1 S_OneSampPerInd.txt >S_OneSampPerInd2.txt 
+[aadas@pbio381 ~]$ cat S_OneSampPerInd2.txt
+03
+07
+14
+22
+23
+26
+28
+29
+36
+08
+09
+15
+19
+20
 ```
+
+To see the allele frequency
+
+```
+[aadas@pbio381 ~]$ vcftools --gzvcf SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf.gz  --freq2 --keep H_OneSampPerInd2.txt --out H_AlleleFreqs
+```
+
+After filtering, kept 5565 out of a possible 5565 Sites
+
+```
+[aadas@pbio381 ~]$ vcftools --gzvcf SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf.gz  --freq2 --keep S_OneSampPerInd2.txt --out S_AlleleFreqs
+```
+
+After filtering, kept 5565 out of a possible 5565 Sites
 
