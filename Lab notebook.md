@@ -1046,9 +1046,28 @@ Run Time = 20.00 seconds
 
 After filtering, kept 5565 out of a possible 7485987 Sites
 
+```
+[aadas@pbio381 reads2snps]$ cd ~/
+[aadas@pbio381 ~]$ ll
+[aadas@pbio381 ~]$ gzip SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf
+[aadas@pbio381 ~]$ ll
+[aadas@pbio381 ~]$ vcftools --gzvcf SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf.gz --hardy
+```
 
+After filtering, kept 5565 out of a possible 5565 Sites
 
+```
+[aadas@pbio381 ~]$ head out.hwe
+```
 
+in R now
 
+```
+> hwe<-read.table("out.hwe", header=T)
+> str(hwe)
+> summary(hwe)
+> which(hwe$P_HET_DEFICIT<0.01)
+```
 
+[1] 1001 1021 1023 1300 1302 1320 1407 1409
 
