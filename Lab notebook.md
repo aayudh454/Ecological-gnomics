@@ -1168,3 +1168,217 @@ then esc
 then :wq to save 
 ```
 
+### Homework codes
+
+For 'int'
+
+```
+countsTable <- read.delim('countsdata_trim2.txt', header=TRUE, stringsAsFactors=TRUE, row.names=1)
+countData <- as.matrix(countsTable)
+head(countData)
+
+conds <- read.delim("cols_data_trim.txt", header=TRUE, stringsAsFactors=TRUE, row.names=1)
+head(conds)
+colData <- as.data.frame(conds)
+head(colData)
+
+#Subsetting colData
+i=which(colData[,5]=="int")
+colData1=colData[i,]
+#Subsetting countsdataData, below 29 score is "int"
+countData1=(countData [,1:48])
+#Dimension of the matrices 
+dim(countData)
+dim(colData)
+dim(colData1)
+dim(countData1)
+#################### MODEL NUMBER 1: TEST EFFECT OF HEALTH CONTROLLING FOR 'int'
+
+dds <- DESeqDataSetFromMatrix(countData = countData1, colData = colData1, design = ~ + health)
+dim(dds)
+dds <- dds[ rowSums(counts(dds)) > 100, ]
+dim(dds)
+dds <- dds[sample(nrow(dds))]
+dim(dds)
+colData(dds)$health <- factor(colData(dds)$health, levels=c("H","S")) 
+dds <- DESeq(dds) 
+res <- results(dds)
+res <- res[order(res$padj),]
+head(res)
+summary(res)
+
+################################################################
+# Data quality assessment by sample clustering and visualization 
+
+plotMA(res, main="DESeq2", ylim=c(-3,3))
+
+## Check out one of the genes to see if it's behaving as expected....
+d <- plotCounts(dds, gene="TRINITY_DN43080_c1_g1_TRINITY_DN43080_c1_g1_i3_g.14110_m.14110", intgroup=(c("health","day","location")), returnData=TRUE)
+d
+p <- ggplot(d, aes(x= health, y=count, shape = location)) + theme_minimal() + theme(text = element_text(size=20), panel.grid.major = element_line(colour = "grey"))
+p <- p + geom_point(position=position_jitter(w=0.3,h=0), size = 3) + ylim(0,1000)
+p
+
+
+## Check out one of the genes to see interaction between score, health and expression....
+d <- plotCounts(dds, gene="TRINITY_DN43080_c1_g1_TRINITY_DN43080_c1_g1_i3_g.14110_m.14110", intgroup=(c("health","score","location")), returnData=TRUE)
+d
+p <- ggplot(d, aes(x= score, y=count, shape = health, color = location)) + theme_minimal() + theme(text = element_text(size=20), panel.grid.major = element_line(colour = "grey"))
+p <- p + geom_point(position=position_jitter(w=0.3,h=0), size = 3) 
+p
+
+p <- ggplot(d, aes(x=score, y=count, color=health, group=health)) 
+p <- p +  geom_point() + stat_smooth(se=FALSE,method="loess") +  scale_y_log10()
+p
+
+############## PCA plots
+vsd <- varianceStabilizingTransformation(dds, blind=FALSE)
+
+plotPCA(vsd, intgroup=c("score"))
+plotPCA(vsd, intgroup=c("health"))
+plotPCA(vsd, intgroup=c("day"))
+plotPCA(vsd, intgroup=c("location"))
+plotPCA(vsd, intgroup=c("health","location"))
+```
+
+for 'sub'
+
+```
+countsTable <- read.delim('countsdata_trim2.txt', header=TRUE, stringsAsFactors=TRUE, row.names=1)
+countData <- as.matrix(countsTable)
+head(countData)
+
+conds <- read.delim("cols_data_trim.txt", header=TRUE, stringsAsFactors=TRUE, row.names=1)
+head(conds)
+colData <- as.data.frame(conds)
+head(colData)
+
+#Subsetting colData
+i=which(colData[,5]=="sub")
+colData2=colData[i,]
+#Subsetting countsdataData, 49-77 column is "sub"
+countData2=(countData [,49:77])
+#Dimension of the matrices 
+dim(colData)
+dim(countData)
+dim(colData2)
+dim(countData2)
+#################### MODEL NUMBER 1: TEST EFFECT OF HEALTH CONTROLLING FOR LOCATION
+
+dds <- DESeqDataSetFromMatrix(countData = countData2, colData = colData2, design = ~ + health)
+dim(dds)
+dds <- dds[ rowSums(counts(dds)) > 100, ]
+dim(dds)
+dds <- dds[sample(nrow(dds))]
+dim(dds)
+colData(dds)$health <- factor(colData(dds)$health, levels=c("H","S")) 
+dds <- DESeq(dds) 
+
+res <- results(dds)
+res <- res[order(res$padj),]
+head(res)
+summary(res)
+
+
+################################################################
+# Data quality assessment by sample clustering and visualization 
+
+plotMA(res, main="'sub' location", ylim=c(-6,5))
+
+## Check out one of the genes to see if it's behaving as expected
+## change the ylim based on the scale
+d <- plotCounts(dds, gene="TRINITY_DN29480_c0_g1_TRINITY_DN29480_c0_g1_i1_g.3557_m.3557", intgroup=(c("health","day","location")), returnData=TRUE)
+d
+p <- ggplot(d, aes(x= health, y=count, shape = location)) + theme_minimal() + theme(text = element_text(size=20), panel.grid.major = element_line(colour = "grey"))
+p <- p + geom_point(position=position_jitter(w=0.3,h=0), size = 3) + ylim(0,100)
+p
+
+
+## Check out one of the genes to see interaction between score, health and expression....
+d <- plotCounts(dds, gene="TRINITY_DN29480_c0_g1_TRINITY_DN29480_c0_g1_i1_g.3557_m.3557", intgroup=(c("health","score","location")), returnData=TRUE)
+d
+p <- ggplot(d, aes(x= score, y=count, shape = health, color = location)) + theme_minimal() + theme(text = element_text(size=20), panel.grid.major = element_line(colour = "grey"))
+p <- p + geom_point(position=position_jitter(w=0.3,h=0), size = 3) 
+p
+
+p <- ggplot(d, aes(x=score, y=count, color=health, group=health)) 
+p <- p +  geom_point() + stat_smooth(se=FALSE,method="loess") +  scale_y_log10()
+p
+
+############## PCA plots
+vsd <- varianceStabilizingTransformation(dds, blind=FALSE)
+
+plotPCA(vsd, intgroup=c("score"))
+plotPCA(vsd, intgroup=c("health"))
+plotPCA(vsd, intgroup=c("day"))
+plotPCA(vsd, intgroup=c("location"))
+plotPCA(vsd, intgroup=c("health","location"))
+```
+
+both
+
+```
+countsTable <- read.delim('countsdata_trim2.txt', header=TRUE, stringsAsFactors=TRUE, row.names=1)
+countData <- as.matrix(countsTable)
+head(countData)
+
+conds <- read.delim("cols_data_trim.txt", header=TRUE, stringsAsFactors=TRUE, row.names=1)
+head(conds)
+colData <- as.data.frame(conds)
+head(colData)
+
+#Dimension of the matrices 
+dim(colData)
+dim(countData)
+
+#################### MODEL NUMBER 1: TEST EFFECT OF HEALTH CONTROLLING FOR LOCATION
+
+dds <- DESeqDataSetFromMatrix(countData = countData, colData = colData, design = ~ location + health)
+dim(dds)
+dds <- dds[ rowSums(counts(dds)) > 100, ]
+dim(dds)
+dds <- dds[sample(nrow(dds))]
+dim(dds)
+colData(dds)$health <- factor(colData(dds)$health, levels=c("H","S")) 
+dds <- DESeq(dds) 
+
+res <- results(dds)
+res <- res[order(res$padj),]
+head(res)
+summary(res)
+
+
+################################################################
+# Data quality assessment by sample clustering and visualization 
+
+plotMA(res, main="both location", ylim=c(-3,3))
+
+## Check out one of the genes to see if it's behaving as expected....
+d <- plotCounts(dds, gene="TRINITY_DN43080_c1_g1_TRINITY_DN43080_c1_g1_i3_g.14110_m.14110", intgroup=(c("health","day","location")), returnData=TRUE)
+d
+p <- ggplot(d, aes(x= health, y=count, shape = location)) + theme_minimal() + theme(text = element_text(size=20), panel.grid.major = element_line(colour = "grey"))
+p <- p + geom_point(position=position_jitter(w=0.3,h=0), size = 3) + ylim(0,5000)
+p
+
+
+## Check out one of the genes to see interaction between score, health and expression....
+d <- plotCounts(dds, gene="TRINITY_DN43080_c1_g1_TRINITY_DN43080_c1_g1_i3_g.14110_m.14110", intgroup=(c("health","score","location")), returnData=TRUE)
+d
+p <- ggplot(d, aes(x= score, y=count, shape = health, color = location)) + theme_minimal() + theme(text = element_text(size=20), panel.grid.major = element_line(colour = "grey"))
+p <- p + geom_point(position=position_jitter(w=0.3,h=0), size = 3) 
+p
+
+p <- ggplot(d, aes(x=score, y=count, color=health, group=health)) 
+p <- p +  geom_point() + stat_smooth(se=FALSE,method="loess") +  scale_y_log10()
+p
+
+############## PCA plots
+vsd <- varianceStabilizingTransformation(dds, blind=FALSE)
+
+plotPCA(vsd, intgroup=c("score"))
+plotPCA(vsd, intgroup=c("health"))
+plotPCA(vsd, intgroup=c("day"))
+plotPCA(vsd, intgroup=c("location"))
+plotPCA(vsd, intgroup=c("health","location"))
+```
+
