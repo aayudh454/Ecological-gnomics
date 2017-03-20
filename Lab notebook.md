@@ -21,7 +21,8 @@
 * [Page 11:2017-02-22](#id-section11). Transcriptomics 6
 * [Page 12:2017-03-01](#id-section12). Catch up day and WGCNA package
 * [Page 13:2017-03-06](#id-section13).Population genomics 1
-* [Page 14:2017-03-08](#id-section14).Population genomics 2
+* [Page 14:2017-03-08](#id-section14).Population genomics 2 and ASSIGNMENT 2 codes
+* [Page 14:2017-03-20](#id-section15).Population genomics 3
 
 ------
 <div id='id-section1'/>
@@ -1382,8 +1383,9 @@ plotPCA(vsd, intgroup=c("location"))
 plotPCA(vsd, intgroup=c("health","location"))
 ```
 
-----
+=======
+-----
+<div id='id-section15'/>
+### Page 13: 2017-03-20. Population genetics 3
 
-Info update
-
-#### Model dataset structure
+### INFO UPDATE: Population genetics 3
