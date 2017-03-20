@@ -964,7 +964,7 @@ Save workspace image? [y/n/c]: y
 ```
 ------
 <div id='id-section14'/>
-### Page 13: 2017-03-08. Population genomics
+### Page 14: 2017-03-08. Population genomics
 
 ### INFO UPDATE: Population genomics
 
@@ -1387,7 +1387,7 @@ plotPCA(vsd, intgroup=c("health","location"))
 =======
 -----
 <div id='id-section15'/>
-### Page 14: 2017-03-20. Population genetics 3
+### Page 15: 2017-03-20. Population genetics 3
 
 ### INFO UPDATE: Population genetics 3
 
