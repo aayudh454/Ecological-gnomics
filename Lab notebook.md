@@ -974,17 +974,17 @@ Save workspace image? [y/n/c]: y
 4 methods:
 
 1.  From species life history
-2. From varioance in allele frequency between generation
-3. Genetic polymorphism
-4. Correlated trait ~ body size 
+2.  From varioance in allele frequency between generation
+3.  Genetic polymorphism
+4.  Correlated trait ~ body size 
 
 Ne vary across:
 
 1.  Species
-2. Genome
-   1. Genetic hitchhiking~selective slope
-   2. Background selection
-   3. Fewer sex chromosomes if outcross goes high.
+2.  Genome
+    1. Genetic hitchhiking~selective slope
+    2. Background selection
+    3. Fewer sex chromosomes if outcross goes high.
 
 ##### Mutation
 
@@ -1000,9 +1000,9 @@ Ne vary across:
 Now base level mutation are two types
 
 1.  Synonymous (silent)
-2. Non-synonymous (Change in the DNA) / Natural selection operates
-   1. Purifying selection
-   2. Positive selection  
+2.  Non-synonymous (Change in the DNA) / Natural selection operates
+    1. Purifying selection
+    2. Positive selection  
 
 5 classes
 
@@ -1382,3 +1382,8 @@ plotPCA(vsd, intgroup=c("location"))
 plotPCA(vsd, intgroup=c("health","location"))
 ```
 
+----
+
+Info update
+
+#### Model dataset structure
