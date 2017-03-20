@@ -1427,6 +1427,19 @@ Genomics will produce dense SNPs.
 
 ```
 
+Transfer the file
+
+```
+#open a new window in your mac
+ip0af5268c:users aayudhdas$ cd ~/Dropbox/Aayudh_UVM/ecological\ genomics/
+# create new folder
+ip0af5268c:ecological genomics aayudhdas$ mkdir pop_gen
+#now transfer the file from the location, your directory is=pwd
+ip0af5268c:pop_gen aayudhdas$ scp aadas@pbio381.uvm.edu:/users/a/a/aadas/H_AlleleFreqs.frq .
+```
+
+
+
 R part
 
 ```
@@ -1442,6 +1455,10 @@ str(All_freq)
 head(All_freq)
 All_freq$diff <- (All_freq$H_ALT - All_freq$S_ALT)
 hist(All_freq$diff, breaks=50, col="red", main = "Allele frequency difference (H-S)")
+
+fst <- read.table("HvS_Fst.weir.fst", header=T)
+All_freq.fst <- merge(All_freq, fst, by=c("CHROM", "POS"))
+plot(All_freq.fst$diff, All_freq.fst$WEIR_AND_COCKERHAM_FST, xlab="Allele frequency difference (H-S)", ylab="Fst", main="Healthy vs. Sick SNP divergence")
 ```
 
 
