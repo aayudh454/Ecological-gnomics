@@ -1397,14 +1397,25 @@ plotPCA(vsd, intgroup=c("health","location"))
 
 admixture: Maximmum likelihood approach
 
-### Methods for SA estimation
+### Methods for GA (global ancestry) estimation
 
 #### Non parametric approach
 
 1. **Clustering**: pairise matrix; need some program
 2. PCA, multi-scale dimensioning (MSD) 
 
-### Method of LA estimation
+### Method of LA (local ancestry) estimation
 
 1. Hidden-Markov model
+2. **Program**: LAMP; Alternatively RFMix-uses discrimination of functionl analysis. 
+3. It's very accurate for 2 ways mixture.
+
+
+### Weakness 
+
+we know the no. of population and allele frequency. But we don't actually know. To fix this we need to simulate.  
+
+### Future perspective 
+
+Genomics will produce dense SNPs.
 
