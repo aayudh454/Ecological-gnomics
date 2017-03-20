@@ -1383,6 +1383,7 @@ plotPCA(vsd, intgroup=c("location"))
 plotPCA(vsd, intgroup=c("health","location"))
 ```
 
+
 =======
 -----
 <div id='id-section15'/>
