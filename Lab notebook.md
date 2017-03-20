@@ -1387,7 +1387,7 @@ plotPCA(vsd, intgroup=c("health","location"))
 =======
 -----
 <div id='id-section15'/>
-### Page 13: 2017-03-20. Population genetics 3
+### Page 14: 2017-03-20. Population genetics 3
 
 ### INFO UPDATE: Population genetics 3
 
