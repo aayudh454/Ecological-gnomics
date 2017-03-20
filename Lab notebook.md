@@ -1419,3 +1419,30 @@ we know the no. of population and allele frequency. But we don't actually know. 
 
 Genomics will produce dense SNPs.
 
+### Terminal codes
+
+```
+
+
+
+```
+
+R part
+
+```
+setwd("/Users/aayudhdas/Dropbox/Aayudh_UVM/ecological genomics/pop_gen")
+list.files()
+
+H_freq <- read.table("H_AlleleFreqs.frq", header=T)
+S_freq <- read.table("S_AlleleFreqs.frq", header=T)
+
+str(H_freq)
+All_freq <- merge(H_freq, S_freq, by=c("CHROM", "POS"))
+str(All_freq)
+head(All_freq)
+All_freq$diff <- (All_freq$H_ALT - All_freq$S_ALT)
+hist(All_freq$diff, breaks=50, col="red", main = "Allele frequency difference (H-S)")
+```
+
+
+
