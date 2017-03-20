@@ -1421,13 +1421,79 @@ Genomics will produce dense SNPs.
 
 ### Terminal codes
 
-```
-
 
 
 ```
+[aadas@pbio381 ~]$ cd /data/project_data/snps/reads2snps
+[aadas@pbio381 reads2snps]$ ll
+[aadas@pbio381 reads2snps]$ vcftools --gzvcf SSW_by24inds.txt.vcf.gz --min-alleles 2 --max-alleles 2 --maf 0.02 --max-missing 0.8 --recode --out ~/SSW_all_biallelic.MAF0.02.Miss0.8
+```
 
-Transfer the file
+After filtering, kept 5317 out of a possible 7486938 Sites
+
+```
+[aadas@pbio381 reads2snps]$ cd ~/
+[aadas@pbio381 ~]$ ll
+[aadas@pbio381 ~]$ gzip SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf
+[aadas@pbio381 ~]$ ll
+[aadas@pbio381 ~]$ cd /data/project_data/snps/reads2snps/ssw_healthloc.txt
+-bash: cd: /data/project_data/snps/reads2snps/ssw_healthloc.txt: Not a directory
+[aadas@pbio381 ~]$ ll
+[aadas@pbio381 ~]$ cd /data/project_data/snps/reads2snps/ssw_healthloc.txt
+-bash: cd: /data/project_data/snps/reads2snps/ssw_healthloc.txt: Not a directory
+[aadas@pbio381 ~]$ cd /data/project_data/snps/reads2snps/
+[aadas@pbio381 reads2snps]$ ll
+[aadas@pbio381 reads2snps]$ cat ssw_healthloc.txt 
+[aadas@pbio381 reads2snps]$ grep "HH" ssw_healthloc.txt | cut -f1 >~/H_SampleIDs.txt
+[aadas@pbio381 reads2snps]$ cd ~/
+[aadas@pbio381 ~]$ cat H_SampleIDs.txt
+```
+
+10
+
+24
+
+27
+
+31
+
+32
+
+33
+
+34
+
+35
+
+```
+[aadas@pbio381 ~]$ wc H_SampleIDs.txt
+ 8  8 24 H_SampleIDs.txt
+[aadas@pbio381 ~]$ cd /data/project_data/snps/reads2snps/
+[aadas@pbio381 reads2snps]$ ll
+[aadas@pbio381 reads2snps]$ cat ssw_healthloc.txt
+[aadas@pbio381 reads2snps]$ grep "HS\|SS" ssw_healthloc.txt | cut -f1 >~/S_SampleIDs.txt
+[aadas@pbio381 reads2snps]$ cd ~/
+[aadas@pbio381 ~]$ ll
+[aadas@pbio381 ~]$ wc S_SampleIDs.txt
+14 14 42 S_SampleIDs.txt
+[aadas@pbio381 ~]$ vcftools --gzvcf SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf.gz --freq2 --keep H_SampleIDs.txt --out H_AlleleFreqs
+```
+
+After filtering, kept 5317 out of a possible 5317 Sites
+
+```
+[aadas@pbio381 ~]$ vcftools --gzvcf SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf.gz --freq2 --keep S_SampleIDs.txt --out S_AlleleFreqs
+```
+
+After filtering, kept 5317 out of a possible 5317 Sites
+
+```
+vcftools --gzvcf SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf.gz --weir-fst-pop H_SampleIDs.txt --weir-fst-pop S_SampleIDs.txt --out HvS_Fst
+```
+
+After filtering, kept 5317 out of a possible 5317 Sites
+
+#### Transfer the file
 
 ```
 #open a new window in your mac
@@ -1437,8 +1503,6 @@ ip0af5268c:ecological genomics aayudhdas$ mkdir pop_gen
 #now transfer the file from the location, your directory is=pwd
 ip0af5268c:pop_gen aayudhdas$ scp aadas@pbio381.uvm.edu:/users/a/a/aadas/H_AlleleFreqs.frq .
 ```
-
-
 
 R part
 
@@ -1459,6 +1523,12 @@ hist(All_freq$diff, breaks=50, col="red", main = "Allele frequency difference (H
 fst <- read.table("HvS_Fst.weir.fst", header=T)
 All_freq.fst <- merge(All_freq, fst, by=c("CHROM", "POS"))
 plot(All_freq.fst$diff, All_freq.fst$WEIR_AND_COCKERHAM_FST, xlab="Allele frequency difference (H-S)", ylab="Fst", main="Healthy vs. Sick SNP divergence")
+# Which are the genes that are showing the highest divergence between Healthy and Sick?
+All_freq.fst[which(All_freq.fst$WEIR_AND_COCKERHAM_FST>0.2),]
+
+All_freq.fst[which(All_freq.fst$CHROM=="TRINITY_DN47139_c0_g1_TRINITY_DN47139_c0_g1_i1_g.24693_m.24693"),]
+
+points( 0.250000,0.2098250,bg="red", cex=2)
 ```
 
 
