@@ -1389,3 +1389,21 @@ plotPCA(vsd, intgroup=c("health","location"))
 ### Page 13: 2017-03-20. Population genetics 3
 
 ### INFO UPDATE: Population genetics 3
+
+### Introduction
+
+#### Model datastructure
+
+admixture: Maximmum likelihood approach
+
+### Methods for SA estimation
+
+#### Non parametric approach
+
+1. **Clustering**: pairise matrix; need some program
+2. PCA, multi-scale dimensioning (MSD) 
+
+### Method of LA estimation
+
+1. Hidden-Markov model
+
