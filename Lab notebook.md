@@ -1599,9 +1599,24 @@ points( 0.250000,0.2098250,bg="red", cex=2)
 2. diificult to ID migrant haplotypes
 3. other chemographic events - loci lengths
 
+**Approx of conditional likelihoods**
+
+ancestral recombination graphs (ARG)
+
+*Limitation:*
+
+very complex
+
+difficult to interpret the correct ARG
+
 #### 4. NGS advantages and limitation
 
+**Advantage:**
 
+1. Good estimation  of recombination genes
+2. Large area for genomic scans
+
+Limitation:
 
 
 
