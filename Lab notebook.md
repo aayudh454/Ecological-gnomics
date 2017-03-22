@@ -1558,38 +1558,38 @@ points( 0.250000,0.2098250,bg="red", cex=2)
 
 2.   **Liklihood/model based methods**:
 
-       **Allele frequency spectrum:** <u>is the [distribution](https://en.wikipedia.org/wiki/Frequency_distribution) of the [allele frequencies](https://en.wikipedia.org/wiki/Allele_frequency) of a given set of [loci](https://en.wikipedia.org/wiki/Locus_(genetics)) (often [SNPs](https://en.wikipedia.org/wiki/SNPs)) in a population or sample.
+         **Allele frequency spectrum:** <u>is the [distribution](https://en.wikipedia.org/wiki/Frequency_distribution) of the [allele frequencies](https://en.wikipedia.org/wiki/Allele_frequency) of a given set of [loci](https://en.wikipedia.org/wiki/Locus_(genetics)) (often [SNPs](https://en.wikipedia.org/wiki/SNPs)) in a population or sample.
 
-     Uses count data: distribution with characteristics shape
+       Uses count data: distribution with characteristics shape
 
-       Neutral, bottleneck and selective sweeps.
+         Neutral, bottleneck and selective sweeps.
 
-       *Assumptions:*
+         *Assumptions:*
 
-       a. Allele SNPs: independent 
+         a. Allele SNPs: independent 
 
-       b. Free recombination among SNPs
+         b. Free recombination among SNPs
 
-       c. mutation rates are equal
+         c. mutation rates are equal
 
-       *Limitation:*
+         *Limitation:*
 
-       a. Loose a lot of data
+         a. Loose a lot of data
 
-       B. Expensive
+         B. Expensive
 
-       **Genealogy sampling:** Multiple regions
+         **Genealogy sampling:** Multiple regions
 
-       *Assumptions-*
+         *Assumptions-*
 
 
      1. Free rcombination among gene
      2. Complete lineage with loci
      3. mutation rates vary across genome
      4. No recombination share common ancestor
-
+    
      **Liklihood free method**: Approx Bayesian comp. (ABC)
-
+    
      Simulations under model of interest (easy)			
 
 #### 3. Historical gene flow + LD patterns
@@ -1654,11 +1654,11 @@ Total number of contig used for sequence analysis: 1113
 
 Total number of SNPs: 5040
 
-  - Biallelic: 4991
+- Biallelic: 4991
 
-  - Triallelic: 49
+- Triallelic: 49
 
-  - Quadriallelic: 0
+- Quadriallelic: 0
 
 ##### higher values more homozygous
 
@@ -1732,8 +1732,6 @@ points(log(echino$piS), log(echino$piNpiS), pch=21, bg="red") # adds the points
 legend("bottomleft", cex=1, legend=c("Metazoans", "Echinoderms", "P. ochraceus"), pch=c(21,21,24), col=c("blue", "red", "red"))
 # Pisaster seems to be in a group with other echinoderms that have relaxed purifying selection (high piN/piS), given their Ne...Interesting! Can we hypothesize why this might be?
 ```
-
-
 
 
 
