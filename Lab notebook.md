@@ -23,6 +23,7 @@
 * [Page 13:2017-03-06](#id-section13).Population genomics 1
 * [Page 14:2017-03-08](#id-section14).Population genomics 2 and ASSIGNMENT 2 codes
 * [Page 15:2017-03-20](#id-section15).Population genomics 3
+* [Page 15:2017-03-22](#id-section16).Population genomics 4
 
 ------
 <div id='id-section1'/>
@@ -1531,5 +1532,11 @@ All_freq.fst[which(All_freq.fst$CHROM=="TRINITY_DN47139_c0_g1_TRINITY_DN47139_c0
 points( 0.250000,0.2098250,bg="red", cex=2)
 ```
 
+## =======
 
+<div id='id-section16'/>
+
+### Page 16: 2017-03-22. Population genetics 4
+
+### INFO UPDATE: Population genetics 4
 
