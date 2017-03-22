@@ -1621,15 +1621,117 @@ Limitation:
 
 ### Terminal codes
 
+in background
 
+```
+[aadas@pbio381 reads2snps]$ screen
+```
 
+```
+$ cd /data/project_data/snps/reads2snps
+$ /data/popgen/dNdSpiNpiS_1.0 -alignment_file=SSW_by24inds.txt.fas -ingroup=sp -out=~/dNdSpiNpiS_output
+```
 
+**detach:** Control + A + D
 
+**Reattach** 
 
+```
+screen -r
+```
 
+While we wait for that to chug along (it'll calculate confidence intervals from 10,000 bootstraps…which takes ~5 hours on our data), we can look at the summary output from the smaller VCF file run previously on just 1 sample library per individual:
 
+```
+$ cat SSW_bamlist.txt.sum
+```
 
+Selected ingroup species: sp
 
+Number of analyzed individual: 24 (from 1 population(s))
+
+Total number of contig used for sequence analysis: 1113
+
+Total number of SNPs: 5040
+
+  - Biallelic: 4991
+
+  - Triallelic: 49
+
+  - Quadriallelic: 0
+
+##### higher values more homozygous
+
+Fit:
+
+Average Fit: -0.0507419 [-0.06817; -0.031933]
+
+(Fit calculated in 902 contigs)
+
+Weir & Cockerham Fit (Evolution 1984):
+
+Average Weir & Cockerham Fit: 0.00703754 [-0.017669; 0.032047]
+
+(Fit calculated in 902 contigs)
+
+piN/piS ratio:
+
+**Synonymous-**
+
+Average piS in focal species: 0.00585312 [0.005172; 0.006598]
+
+##### Non-synonymous-
+
+*selection* is eliminating bcoz the value is really low
+
+higher values means slelection is not good eliminating the non-syn deletorious mutation
+
+Average piN in focal species: 0.00154546 [0.00133; 0.001782]
+
+Average piN / average piS: 0.264041 [0.223914; 0.310575]
+
+(piS and piN calculated in 902 contigs of average length 50)
+
+##### PiS: 0.00585 and confidence interval [0.005172; 0.006598]
+
+**piN / piS: 0.264041 confidence interval is [0.223914; 0.310575]**
+
+#### Transfer the file
+
+```
+#open a new window in your mac
+ip0af5268c:users aayudhdas$ cd ~/Dropbox/Aayudh_UVM/ecological\ genomics/pop_gen
+# create new folder
+ip0af5268c:ecological genomics aayudhdas$ mkdir pop_gen
+#now transfer the file from the location, your directory is=pwd
+ip0af5268c:pop_gen aayudhdas$ scp aadas@pbio381.uvm.edu:/data/project_data/snps/reads2snps/Romiguier_nature13685-s3.csv .
+```
+
+R script
+
+```
+setwd("/Users/aayudhdas/Dropbox/Aayudh_UVM/ecological genomics/pop_gen/")
+list.files()
+# Read in the Romiguier data:
+Rom <- read.csv("Romiguier_nature13685-s3.csv", header=T)
+# Import OK?
+str(Rom) 
+head(Rom)
+# Looks good!
+# Now let's look at how the strength of purifying selection (piN/piS) compares to the size of Ne (piS). We'll plot these on a log scale to linearize the relationship.
+plot(log(Rom$piS), log(Rom$piNpiS), pch=21, bg="blue", xlab="log Synonymous Nucleotide Diversity (piS)", ylab="log Ratio of Nonysn to Syn Diversity (piN/piS)", main="Purifying Selection vs. Effective Population Size")
+# Now let's add our SSW points to the existing plot and give them a different symbol
+points(log(0.00585312), log(0.264041), pch=24, cex=1.5, bg="red") 
+# We can also add a regression line to the plot to see how far off the SSW estimates are from expectation
+reg <- lm(log(Rom$piNpiS) ~ log(Rom$piS)) # Fits a linear regression
+abline(reg) # adds the regression line to the plot
+# It would be useful to highlight the other echinoderms in the dataset...do our seastars behave similarly?
+echino <- Rom[which(Rom$Phylum=="Echinodermata"),] # subsets the data
+points(log(echino$piS), log(echino$piNpiS), pch=21, bg="red") # adds the points
+# Lastly, let's add a legend:
+legend("bottomleft", cex=1, legend=c("Metazoans", "Echinoderms", "P. ochraceus"), pch=c(21,21,24), col=c("blue", "red", "red"))
+# Pisaster seems to be in a group with other echinoderms that have relaxed purifying selection (high piN/piS), given their Ne...Interesting! Can we hypothesize why this might be?
+```
 
 
 
