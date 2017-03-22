@@ -1544,14 +1544,60 @@ points( 0.250000,0.2098250,bg="red", cex=2)
 
 **Allopatric speciation**-species divergence in absence of gene flow; physical barrier present
 
-**Sympatric speciation** is the process through which new species evolve from a single ancestral species while inhabiting the same geographic region; Gene flow present; 
+**Sympatric speciation** is the process through which new species evolve from a single ancestral species while inhabiting the same geographic region; Gene flow present; selected genes appear diverging; related alleles appear homogenous. 
 
 #### 2. Inferring history of divergence 
 
-	1. Genomic scans
-	2. Liklihood/model based methods
+1.   **Genomic scans:** 
+
+     look island of differentiation (distribution, sumamry statistics that easures differentiation. High FST values region under selection) 
+
+     -gene vs population trees (compare assumed population trees to gene trees, compare different genes, D statistic determines introgression: ABBA-BABA; if no introgression then D=0 but introgression is there then D is not equal to 0)
+
+     *Limitation:* throws out data, requires many genomes, same value=multiple expectation.
+
+2.   **Liklihood/model based methods**:
+
+     **Allele frequency spectrum:** <u>is the [distribution](https://en.wikipedia.org/wiki/Frequency_distribution) of the [allele frequencies](https://en.wikipedia.org/wiki/Allele_frequency) of a given set of [loci](https://en.wikipedia.org/wiki/Locus_(genetics)) (often [SNPs](https://en.wikipedia.org/wiki/SNPs)) in a population or sample.
+
+     Uses count data: distribution with characteristics shape
+
+     Neutral, bottleneck and selective sweeps.
+
+     *Assumptions:*
+
+     a. Allele SNPs: independent 
+
+     b. Free recombination among SNPs
+
+     c. mutation rates are equal
+
+     *Limitation:*
+
+     a. Loose a lot of data
+
+     B. Expensive
+
+     **Genealogy sampling:** Multiple regions
+
+     *Assumptions-*
+
+     1. Free rcombination among gene
+     2. Complete lineage with loci
+     3. mutation rates vary across genome
+     4. No recombination share common ancestor
+
+     **Liklihood free method**: Approx Bayesian comp. (ABC)
+
+     Simulations under model of interest (easy)			
 
 #### 3. Historical gene flow + LD patterns
+
+**Distribution of haplotype lengths**
+
+1. recombination leads to shorter fragment over time
+2. diificult to ID migrant haplotypes
+3. other chemographic events - loci lengths
 
 #### 4. NGS advantages and limitation
 
