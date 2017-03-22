@@ -1,8 +1,10 @@
 # Ecological Genomics Lab notebook    
 
-## Author: Aayudh Das     
+## Author: Aayudh Das ()     
 
 ### We are going to discuss various aspects of Transcriptomics
+
+#### Login ID: ssh aadas@pbio381.uvm.edu
 
 ### Date started: (2017-01-18)   
 ### Date end:   (2017-05-02)
@@ -1558,29 +1560,29 @@ points( 0.250000,0.2098250,bg="red", cex=2)
 
 2.   **Liklihood/model based methods**:
 
-     **Allele frequency spectrum:** <u>is the [distribution](https://en.wikipedia.org/wiki/Frequency_distribution) of the [allele frequencies](https://en.wikipedia.org/wiki/Allele_frequency) of a given set of [loci](https://en.wikipedia.org/wiki/Locus_(genetics)) (often [SNPs](https://en.wikipedia.org/wiki/SNPs)) in a population or sample.
+       **Allele frequency spectrum:** <u>is the [distribution](https://en.wikipedia.org/wiki/Frequency_distribution) of the [allele frequencies](https://en.wikipedia.org/wiki/Allele_frequency) of a given set of [loci](https://en.wikipedia.org/wiki/Locus_(genetics)) (often [SNPs](https://en.wikipedia.org/wiki/SNPs)) in a population or sample.
 
-     Uses count data: distribution with characteristics shape
+       Uses count data: distribution with characteristics shape
 
-     Neutral, bottleneck and selective sweeps.
+       Neutral, bottleneck and selective sweeps.
 
-     *Assumptions:*
+       *Assumptions:*
 
-     a. Allele SNPs: independent 
+       a. Allele SNPs: independent 
 
-     b. Free recombination among SNPs
+       b. Free recombination among SNPs
 
-     c. mutation rates are equal
+       c. mutation rates are equal
 
-     *Limitation:*
+       *Limitation:*
 
-     a. Loose a lot of data
+       a. Loose a lot of data
 
-     B. Expensive
+       B. Expensive
 
-     **Genealogy sampling:** Multiple regions
+       **Genealogy sampling:** Multiple regions
 
-     *Assumptions-*
+       *Assumptions-*
 
      1. Free rcombination among gene
      2. Complete lineage with loci
