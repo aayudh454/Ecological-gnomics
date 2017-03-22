@@ -23,7 +23,7 @@
 * [Page 13:2017-03-06](#id-section13).Population genomics 1
 * [Page 14:2017-03-08](#id-section14).Population genomics 2 and ASSIGNMENT 2 codes
 * [Page 15:2017-03-20](#id-section15).Population genomics 3
-* [Page 15:2017-03-22](#id-section16).Population genomics 4
+* [Page 16:2017-03-22](#id-section16).Population genomics 4
 
 ------
 <div id='id-section1'/>
