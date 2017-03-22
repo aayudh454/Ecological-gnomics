@@ -1538,5 +1538,44 @@ points( 0.250000,0.2098250,bg="red", cex=2)
 
 ### Page 16: 2017-03-22. Population genetics 4
 
-### INFO UPDATE: Population genetics 4
+### INFO UPDATE: Species divergence with gene flow
+
+#### 1. Allopatric vs sympatric
+
+**Allopatric speciation**-species divergence in absence of gene flow; physical barrier present
+
+**Sympatric speciation** is the process through which new species evolve from a single ancestral species while inhabiting the same geographic region; Gene flow present; 
+
+#### 2. Inferring history of divergence 
+
+	1. Genomic scans
+	2. Liklihood/model based methods
+
+#### 3. Historical gene flow + LD patterns
+
+#### 4. NGS advantages and limitation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
