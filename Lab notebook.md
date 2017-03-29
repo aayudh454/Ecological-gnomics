@@ -2109,7 +2109,91 @@ loadingplot(abs(disease.dapc$var.load),
 
 
 
+### Terminal code
 
+Tutorial 
+
+```
+
+ 
+/data/project_data/snps/reads2snps/SSW_tidal.pops
+/data/project_data/snps/reads2snps/vcf2admixture_SSW.spid
+/data/project_data/snps/reads2snps/vcf2geno.sh
+The ready-to-go geno file is located on our server here:
+
+ 
+/data/project_data/snps/reads2snps/SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf.geno
+In the same path, you should also see a bash script:
+
+ 
+/data/project_data/snps/reads2snps/ADMIX.sh
+Use cp to copy the .geno and ADMIX.sh files to your home directory on the server, then cd there and confirm the files are present.
+
+From within your home directory, open the ADMIX.sh script in vim. Let's walk through what each step is doing:
+
+ 
+#!/bin/bash
+​
+# Run ADMIXTURE to determine the number of genetic clusters in the SNP data, 
+# and the ancestry proportions of each individual
+​
+# Here's the utility of 'for loops'...
+​
+for K in {1..10}
+​
+do
+​
+admixture -C 0.000001 --cv ./SSW_all_biallelic.MAF0.02.Miss1.0.recode.vcf.geno $K \
+| tee log${K}.out
+​
+done
+​
+# After the for loop finishes, you can use 'grep' to grab the values of the CV from each separate log file and append them into a new summary text file.
+​
+grep CV log*.out >chooseK.txt
+When you're ready to go, exit vim to return to the command line, and execute the script.
+
+ 
+$ bash ADMIX.sh
+```
+
+code
+
+```
+  383  2017-03-29 10:33:16 cp ADMIX.sh .
+  384  2017-03-29 10:34:38 cp /data/project_data/snps/reads2snps/ADMIX.sh/* . 
+  385  2017-03-29 10:35:33 cp -r /data/project_data/snps/reads2snps/* . &
+  386  2017-03-29 10:35:56 cd..
+  387  2017-03-29 10:36:02 pd
+  388  2017-03-29 10:36:04 pwd
+  389  2017-03-29 10:36:14 cd ~/
+  390  2017-03-29 10:36:28 cp -r /data/project_data/snps/reads2snps/* . &
+  391  2017-03-29 10:36:32 ll
+  392  2017-03-29 10:38:28 cd /data/project_data/snps/reads2snps/
+  393  2017-03-29 10:38:29 ll
+  394  2017-03-29 10:38:52 cp SSW_tidal.pops ~/
+  395  2017-03-29 10:39:08 cp vcf2admixture_SSW.spid ~/
+  396  2017-03-29 10:39:20 cp vcf2geno.sh ~/
+  397  2017-03-29 10:39:24 cd ~/
+  398  2017-03-29 10:39:27 l
+  399  2017-03-29 10:39:28 ll
+  400  2017-03-29 10:39:57 gunzip SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf.gz 
+  401  2017-03-29 10:39:59 ll
+  402  2017-03-29 10:41:08 vi vcf2geno.sh 
+  403  2017-03-29 10:47:08 vi vcf2geno.sh
+  404  2017-03-29 10:50:48 ./vcf2geno.sh 
+  405  2017-03-29 10:51:05 ll
+  406  2017-03-29 10:51:57 vi SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf.geno
+  407  2017-03-29 10:54:40 vi vcf2geno.sh
+  408  2017-03-29 11:01:26 vi ADMIX.sh 
+  409  2017-03-29 11:07:20 bash ADMIX.sh 
+  410  2017-03-29 11:07:31 vi ADMIX.sh 
+  411  2017-03-29 11:08:13 bash ADMIX.sh 
+  412  2017-03-29 11:11:17 cat chooseK.txt 
+  413  2017-03-29 11:16:05 vi ADMIX.sh 
+  414  2017-03-29 11:16:25 bash ADMIX.sh 
+  415  2017-03-29 11:19:02 cat chooseK.txt 
+```
 
 
 
