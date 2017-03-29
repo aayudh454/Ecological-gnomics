@@ -1735,7 +1735,335 @@ legend("bottomleft", cex=1, legend=c("Metazoans", "Echinoderms", "P. ochraceus")
 # Pisaster seems to be in a group with other echinoderms that have relaxed purifying selection (high piN/piS), given their Ne...Interesting! Can we hypothesize why this might be?
 ```
 
-## =======
+## 
+
+<div id='id-section17'/>
+
+### Page 17: 2017-03-27. Population genetics 5
+
+Load libraries:
+
+```
+library(vcfR)
+library(adegenet)
+
+```
+
+Read the vcf SNP data (the one I unzipped) into R and call it "vcf1"
+
+```
+vcf1 <- read.vcfR("SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf")
+
+```
+
+I got an error message saying that this file dosn't seem to exist.
+
+Tried again, this time instead of running the version straight up; I copied and pasted my direct file name into the command line (see below):
+
+```
+vcf1 <- read.vcfR("SSW_all_biallelic.MAF0.02.Miss0.8..recode.vcf")
+
+```
+
+It worked!
+
+*I edited the script to work with my file
+
+Since we have SOOOO many SNPS we will use one of the packages we loaded (adegenet) to store the large # of SNPS; this lets us analyze the SNPs easier
+
+```
+gl1 <- vcfR2genlight(vcf1)
+print(gl1)
+
+```
+
+By printing the resulting file you can see that it has the right number of SNPs (5,317) and individuals (24)
+
+We can check the file for certain information using the following commands:
+
+```
+gl1$ind.names
+gl1$loc.names[1:10]
+gl1$chromosome[1:3]
+
+```
+
+The first command (gl1$ind.names) tells you the names of each individual (they just didn't all fit on the same row so they are broken up *# in [] = # individual it starts with
+
+The 2nd command (gl1$loc.names[1:10]) tells you the names of each loci
+
+- Everything to the LEFT of the "_" = transcript ID
+- Everything to the RIGHT of the "_" = position (ie 7456=bp location where loci (SNP) occurs within the transcript
+
+The 3rd command (gl1$chromosome[1:3]) shows you the transcript ID
+
+At this point we are adding pop to the field (actually happens at line 46 but we are building up to it)
+
+```
+ssw_meta <- read.table("ssw_healthloc.txt", header=T) # read in the metadata
+ssw_meta <- ssw_meta[order(ssw_meta$Individual),] # sort by Individual ID, just like the VCF file
+
+```
+
+The first command read in the meta data and called it "ssw_meta"
+
+The second command organized the meta data so that it was sorted by individual ID
+
+We want to confirm that the IDs are ordered the same in both the SNP data file (the we read in earlier and called "gl1") and the meta data file (that we just read in and called "ssw_meta"
+
+When we match data from ssw_meta to gl1 they just read it in in the order that it is in. That is why we are making sure that the order is the same for each file so that the data will match up correctly
+
+```
+gl1$ind.names
+ssw_meta$Individual
+
+```
+
+Here is what it looks like after running those commands:
+
+```
+> gl1$ind.names
+ [1] "03" "07" "08" "09" "10" "14" "15" "19"
+ [9] "20" "22" "23" "24" "26" "27" "28" "29"
+[17] "31" "32" "33" "34" "35" "36" "37" "38"
+> ssw_meta$Individual
+ [1]  3  7  8  9 10 14 15 19 20 22 23 24 26 27
+[15] 28 29 31 32 33 34 35 36 37 38
+
+```
+
+They don't have to match exactly (07 and 7 is ok in this case) The # in the brackets is only indicating where the line picks up (for example [15] means it picks up with ind #15 (not ind15); it is NOT the row #
+
+Now we will assign locality (first line of code below) and disease status (second line of code below)
+
+- when we say "assign" locality etc we mean we will use tell the gl1 file what the location and disease status of each individual is
+- basically we are merging the files to have one file with all the info we need to make the comparisons and calculations we will do later today.
+
+```
+gl1$pop <- ssw_meta$Locality 
+gl1$other <- as.list(ssw_meta)
+
+```
+
+We can look at the SNP data by generating the following plot:
+
+```
+glPlot(gl1, posi="bottomleft")
+
+```
+
+Notes on the plot:
+
+- white space = missing data
+- Number of 2nd allele key explained:
+- 0= AA
+- 1= AT
+- 2= TT
+- x-axis: each column is a different SNP (there are 5000+ columns)
+- y-axis: each row is a different individual
+
+If you want to know which individuals have missing data (white) use the following command to have it tell you what individual is at which row (right now the y axis list the individuals but dosn't correlate with the ind ID (ie row 2 is actually individual 7)
+
+```
+gl1$ind.names[2]
+
+```
+
+too look up more then one at a time:
+
+```
+gl1$ind.names[c(2, 10)]
+
+```
+
+Now we will calculate THEN plot the PCA (principle coordinate analysis) *NOTE: "pca1" does NOT equal principle componant 1 (its just what we are calling the first pca we are running)
+
+1. Calculate PCA(1) (line 41)
+
+```
+pca1 <- glPca(gl1, nf=4, parallel = F)
+pca1 
+
+```
+
+nf = # of principle componants to fit in one model second command prints summary
+
+"$" in summary (line 42) show you the lines you can look at (ie scores, loadings etc) if you want to look at specific categories you can run the following command:
+
+```
+pca1$scores
+
+```
+
+1. Plot PCA(1) (line 45)
+
+```
+plot(pca1$scores[,1], pca1$scores[,2], 
+     cex=2, pch=20, col=gl1$pop, 
+     xlab="Principal Component 1", 
+     ylab="Principal Component 2", 
+     main="PCA on SSW data (Freq missing=20%; 5317 SNPs)")
+legend("topleft", 
+       legend=unique(gl1$pop), 
+       pch=20, 
+       col=c("black", "red"))
+
+```
+
+The above command:
+
+- plots the principle component calcualtions performed by running line 41
+  - line 41 calculated PC for ALL SNPs (not just ones specific to health or location, etc)
+  - "col=gl1$pop" is the specific part that tells it to color the dots based on location
+  - NOTE: by telling it to color them by location it does NOT change where the points are; it mearly colors them based on extra info. The dots are ploted based on PC which was calculated for SNPs and did NOT take these extra variable into acount
+
+Detailed explination of what means what in the command we ran (line 45-53)
+
+```
+plot(pca1$scores[,1], pca1$scores[,2], #Calc 4 but only looking at 1 and 2
+     cex=2, #point/dot size; will assume cex=1 if you don't specify
+	 pch=20 #type of symbol (20=filled circle; can seach for other codes via google or "?pch")
+	 col=gl1$pop, #Tell it what to look at (col=color, we said to look at location (which we assigned to "pop")
+     xlab="Principal Component 1", #title for x-axis 
+     ylab="Principal Component 2", #title for y-axis 
+     main="PCA on SSW data (Freq missing=20%; 5317 SNPs)") #title
+legend("topleft", #where to put legend 
+       legend=unique(gl1$pop), #if you don't specify "unique" it will list allllll the int and subs (ie int int int sub sub int..); "legend=unique" tells it list each diff variable once (int, sub)
+       pch=20, 
+       col=c("black", "red")) #telling it to match the colors used in the plot
+
+```
+
+Extra explination of PCA plots (in general):
+
+- the data points in the (+) associate more with the alternative allele
+- data points in the (-) associate more with the reference allele (which was determined during the transcriptome assembly (using trinity))
+- Each data point represents the AVERAGE of the SNPs per individual (aka its not showing us which SNP associate with which allele; it shows us OVERALL more SNPs associate with the alt/ref allele)
+
+Now we will change the color of the dots to show health staus
+
+- NOTE: remember this will NOT change the data itself but will mearly show you the health status vs location associate with each individual
+
+```
+plot(pca1$scores[,1], pca1$scores[,2], 
+     cex=2, pch=20, col=gl1$other$Trajectory, 
+     xlab="Principal Component 1", 
+     ylab="Principal Component 2", 
+     main="PCA on SSW data (Freq missing=20%; 5317 SNPs)")
+legend("topleft", 
+       legend=unique(gl1$other$Trajectory), 
+       pch=20, 
+       col=unique(gl1$other$Trajectory))
+
+```
+
+Now that we have out PCA data we can ask more specific questions like:
+
+*Which SNPs load most strongly on the 1st PC axis?*
+
+```
+loadingplot(abs(pca1$loadings[,1]),
+            threshold=quantile(abs(pca1$loadings), 0.999))
+
+```
+
+Some notes about the command you just ran above:
+
+- 0.999 = 99.9 percentile (it set the threshold (the horizontal line in the figure) to "cut off" and identify SNPs that were beyond that percentile (?right?)
+  - you can try running it at 0.95 (95th percentile) and it will identify MANY more SNPs; this is because it is a less stringent cut off
+  - with SNPs since we have so many you need a super stringent cut off (which is why we use 0.999; acceptable = <1%)
+
+If we want to identify (name those SNPs that were above the threshold we can run the following command:
+
+```
+gl1$loc.names[which(abs(pca1$loadings)>quantile(abs(pca1$loadings), 0.999))]
+
+```
+
+to look up the actual loading value associated with a particular SNP (for example SNP#3412) we do the following:
+
+```
+pca1$loadings[3412]
+
+```
+
+it spat out:
+
+```
+[1] 0.1397889
+
+```
+
+**NOW WE MOVE ONTO THE DAPC METHODS**
+
+DAPC (Discriminant analysis of principle componants)
+
+- Tries to decide which SNPs *attributed* to the health statusnot grouping "these SNPs were found in indiv with HH or HS...instead we are trying to find that SNPs that might have caused/that attribute to the health statusgetting more specific then PCA
+
+*The below command does the dapc and will re-run the PCA calc:
+
+```
+disease.dapc <- dapc(gl1, pop=gl1$other$Trajectory, n.pca=8, n.da=3,
+                     var.loadings=T, pca.info=T, parallel=F)
+
+```
+
+Detailed expliation of each part of the above command:
+
+```
+disease.dapc <- dapc(gl1,
+				pop=gl1$other$Trajectory, #pop = what you are grouping it by (here we are grouping it by disease)
+				n.pca=8, #how many pcs to use; it will calculate 8 here); rule of thumb: don't want to use n/3 pcs (ie for us don't use mroe then # of ind/3; 24/3=8)
+				n.da=3, # number of discriminant functions it is using; we have 4 health statuses and you should be able to describe anything with the #variables-1 (ie for us 4-1=3)
+                var.loadings=T, # means we want to look at them so output them
+				pca.info=T, #we want to beable to ask info abt pc axis in the output 
+				parallel=F) #if you need more cores you tell it to use more by making "parallel=T"; here we tell it to use only one because this command can't seem to use more then one 
+
+```
+
+Look at summary of dapc we just ran by running the following:
+
+```
+disease.dapc
+
+```
+
+*loadings = info for each pc we calc (should be 8) *PC.loadings = info for all the SNPs
+
+Now we will take the dapc data and plot it; we will use a scatter plot:
+
+```
+scatter.dapc(disease.dapc, grp=gl1$other$Trajectory, legend=T)
+
+```
+
+shows all three DA (Discriminant analyses) in the bottom right bar graph style shaded box but it ploted only 1 and 2 (the horizontal and vertical lines that form a "+" in your figure)
+
+We can also show the data as a stacked bar graph
+
+- this helps us to see the probablity for each health status that dacp calculated for each individaul
+
+```
+compoplot(disease.dapc)
+
+```
+
+You can use the above plot to compare to the scatter plot generated just before (line 84) to help identify individuals who are linked as (for example) HS but their dot is very close to HH
+
+Finally (for today) you can generate another loading plot to see which SNPs contribute most to distiguishing H vs S individuals
+
+```
+loadingplot(abs(disease.dapc$var.load), 
+            lab.jitter=1, 
+            threshold=quantile(abs(disease.dapc$var.load), probs=0.999))
+
+```
+
+------
+
+### 
+
+## =====
 
 <div id='id-section18'/>
 
