@@ -1560,29 +1560,29 @@ points( 0.250000,0.2098250,bg="red", cex=2)
 
 2.   **Liklihood/model based methods**:
 
-           **Allele frequency spectrum:** <u>is the [distribution](https://en.wikipedia.org/wiki/Frequency_distribution) of the [allele frequencies](https://en.wikipedia.org/wiki/Allele_frequency) of a given set of [loci](https://en.wikipedia.org/wiki/Locus_(genetics)) (often [SNPs](https://en.wikipedia.org/wiki/SNPs)) in a population or sample.
+      **Allele frequency spectrum:** <u>is the [distribution](https://en.wikipedia.org/wiki/Frequency_distribution) of the [allele frequencies](https://en.wikipedia.org/wiki/Allele_frequency) of a given set of [loci](https://en.wikipedia.org/wiki/Locus_(genetics)) (often [SNPs](https://en.wikipedia.org/wiki/SNPs)) in a population or sample.
 
-         Uses count data: distribution with characteristics shape
+     Uses count data: distribution with characteristics shape
 
-           Neutral, bottleneck and selective sweeps.
+     Neutral, bottleneck and selective sweeps.
 
-           *Assumptions:*
+       *Assumptions:*
 
-           a. Allele SNPs: independent 
+       a. Allele SNPs: independent 
 
-           b. Free recombination among SNPs
+       b. Free recombination among SNPs
 
-           c. mutation rates are equal
+       c. mutation rates are equal
 
-           *Limitation:*
+       *Limitation:*
 
-           a. Loose a lot of data
+       a. Loose a lot of data
 
-           B. Expensive
+       B. Expensive
 
-           **Genealogy sampling:** Multiple regions
+       **Genealogy sampling:** Multiple regions
 
-           *Assumptions-*
+       *Assumptions-*
 
 
      1. Free rcombination among gene
@@ -1764,11 +1764,23 @@ legend("bottomleft", cex=1, legend=c("Metazoans", "Echinoderms", "P. ochraceus")
    2. Missing structural variants in reference
    3. Loss of repetititve regions /paralogs
 3. Missing landscape
-   1. Low as 
+   1. Low resolution environment data
+   2. Scale of local adaptation
+   3. Multi colinearity 
 
 #### Solutions
 
+1. Confounding factor
+   1. null geographic models
+   2. Relatedness among samples
+2. Missing genome: exome and RNA seq. WGS and reference genome, depth coverage.
+3. Missing landscape: Know systems
+
 #### Other considerations
+
+1. Sampling strategy
+2. Multiple comparison
+3. Genomic objective
 
 #### Final notes 
 
