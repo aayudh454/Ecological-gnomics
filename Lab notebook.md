@@ -2056,14 +2056,9 @@ Finally (for today) you can generate another loading plot to see which SNPs cont
 loadingplot(abs(disease.dapc$var.load), 
             lab.jitter=1, 
             threshold=quantile(abs(disease.dapc$var.load), probs=0.999))
-
 ```
 
 ------
-
-### 
-
-## =====
 
 <div id='id-section18'/>
 
