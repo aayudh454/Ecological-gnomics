@@ -177,4 +177,49 @@ See SS,HH and HS
 [aadas@pbio381 homework3]$ grep "HS" ssw_healthloc.txt > ~/HS_OneSampPerInd.txt
 ```
 
+Remove and concatenate files:
+
+```
+[aadas@pbio381 homework3]$ cut -f 1 H_OneSampPerInd.txt >H_OneSampPerInd2.txt 
+[aadas@pbio381 homework3]$ cat H_OneSampPerInd2.txt
+```
+
+10
+
+24
+
+27
+
+31
+
+32
+
+33
+
+34
+
+35
+
+```
+[aadas@pbio381 homework3]$ cut -f 1 S_OneSampPerInd.txt >S_OneSampPerInd2.txt 
+[aadas@pbio381 homework3]$ cat S_OneSampPerInd2.txt
+```
+
+03
+
+07
+
+14
+
+22
+
+23
+
+26
+
+28
+
+29
+
+36
 
