@@ -2219,8 +2219,18 @@ code
 
 Concepts
 
-1. Inbreeding produces structural popultion 
-2. Selective sweeps change allele freq. in pops
-3. Empirical p-values created from distilled of previously neutral loci are useful for find Ns
-4. Method Out Flank (2015)
+### Inbreeding produces structural popultion 
 
+Fst = (Ht -Ht)/Ht
+
+Fis = [Exp(Hs)-Obs(Hs)]/Exp(Hs)
+
+Fit = (Ht-Hi)/Ht
+
+
+
+
+
+1. Selective sweeps change allele freq. in pops
+2. Empirical p-values created from distilled of previously neutral loci are useful for find Ns
+3. Method Out Flank (2015)
