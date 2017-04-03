@@ -169,4 +169,12 @@ TRINITY_DN45147_c0_g1_TRINITY_DN45147_c0_g1_i3_g.18680_m.18680:  32
 > plot(LD$dist,LD$R.2)
 > dev.off()
 ```
+See SS,HH and HS
+
+```
+[aadas@pbio381 homework3]$ grep "HH" ssw_healthloc.txt > ~/H_OneSampPerInd.txt
+[aadas@pbio381 homework3]$ grep "SS" ssw_healthloc.txt > ~/S_OneSampPerInd.txt
+[aadas@pbio381 homework3]$ grep "HS" ssw_healthloc.txt > ~/HS_OneSampPerInd.txt
+```
+
 
