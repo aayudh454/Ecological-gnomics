@@ -29,6 +29,7 @@
 * [Page 17:2017-03-27](#id-section17).Population genomics 5
 * [Page 18:2017-03-29](#id-section18).Population genomics 6
 * [Page 19:2017-03-31](#id-section19).Homework3_population genetics
+* [Page 20:2017-04-03](#id-section120).Catch up day
 
 ------
 <div id='id-section1'/>
@@ -1561,29 +1562,29 @@ points( 0.250000,0.2098250,bg="red", cex=2)
 
 2.   **Liklihood/model based methods**:
 
-          **Allele frequency spectrum:** <u>is the [distribution](https://en.wikipedia.org/wiki/Frequency_distribution) of the [allele frequencies](https://en.wikipedia.org/wiki/Allele_frequency) of a given set of [loci](https://en.wikipedia.org/wiki/Locus_(genetics)) (often [SNPs](https://en.wikipedia.org/wiki/SNPs)) in a population or sample.
+            **Allele frequency spectrum:** <u>is the [distribution](https://en.wikipedia.org/wiki/Frequency_distribution) of the [allele frequencies](https://en.wikipedia.org/wiki/Allele_frequency) of a given set of [loci](https://en.wikipedia.org/wiki/Locus_(genetics)) (often [SNPs](https://en.wikipedia.org/wiki/SNPs)) in a population or sample.
 
-         Uses count data: distribution with characteristics shape
+           Uses count data: distribution with characteristics shape
 
-         Neutral, bottleneck and selective sweeps.
+           Neutral, bottleneck and selective sweeps.
 
-           *Assumptions:*
+             *Assumptions:*
 
-           a. Allele SNPs: independent 
+             a. Allele SNPs: independent 
 
-           b. Free recombination among SNPs
+             b. Free recombination among SNPs
 
-           c. mutation rates are equal
+             c. mutation rates are equal
 
-           *Limitation:*
+             *Limitation:*
 
-           a. Loose a lot of data
+             a. Loose a lot of data
 
-           B. Expensive
+             B. Expensive
 
-           **Genealogy sampling:** Multiple regions
+             **Genealogy sampling:** Multiple regions
 
-           *Assumptions-*
+             *Assumptions-*
 
 
      1. Free rcombination among gene
@@ -2206,4 +2207,20 @@ code
 
 ### Page 19: 2017-03-31. Homework3_population genetics
 
+
+
+
+
+------
+
+<div id='id-section19'/>
+
+### Page 20: 2017-04-03. Karl intro
+
+Concepts
+
+1. Inbreeding produces structural popultion 
+2. Selective sweeps change allele freq. in pops
+3. Empirical p-values created from distilled of previously neutral loci are useful for find Ns
+4. Method Out Flank (2015)
 
