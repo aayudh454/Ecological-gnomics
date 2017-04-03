@@ -2234,3 +2234,8 @@ Fit = (Ht-Hi)/Ht
 1. Selective sweeps change allele freq. in pops
 2. Empirical p-values created from distilled of previously neutral loci are useful for find Ns
 3. Method Out Flank (2015)
+
+Questions:
+
+1. What challenges do outlier detection methods face?
+2. How is LD our friend or foe ?
