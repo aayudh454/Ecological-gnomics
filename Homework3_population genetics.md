@@ -182,44 +182,88 @@ Remove and concatenate files:
 ```
 [aadas@pbio381 homework3]$ cut -f 1 H_OneSampPerInd.txt >H_OneSampPerInd2.txt 
 [aadas@pbio381 homework3]$ cat H_OneSampPerInd2.txt
-```
-
 10
-
 24
-
 27
-
 31
-
 32
-
 33
-
 34
-
 35
+```
 
 ```
 [aadas@pbio381 homework3]$ cut -f 1 S_OneSampPerInd.txt >S_OneSampPerInd2.txt 
 [aadas@pbio381 homework3]$ cat S_OneSampPerInd2.txt
+03
+07
+14
+22
+23
+26
+28
+29
+36
 ```
 
-03
+```
+[aadas@pbio381 homework3]$ cut -f 1 HS_OneSampPerInd.txt >HS_OneSampPerInd2.txt 
+[aadas@pbio381 homework3]$ cat HS_OneSampPerInd2.txt 
+08
+09
+15
+19
+20
+```
 
-07
+To see the allele frequency
 
-14
+```
+[aadas@pbio381 homework3]$ vcftools --gzvcf SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf.gz  --freq2 --keep H_OneSampPerInd2.txt --out H_AlleleFreqs
+[aadas@pbio381 homework3]$ vcftools --gzvcf SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf.gz  --freq2 --keep S_OneSampPerInd2.txt --out S_AlleleFreqs
+[aadas@pbio381 homework3]$ vcftools --gzvcf SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf.gz  --freq2 --keep HS_OneSampPerInd2.txt --out HS_AlleleFreqs
+```
 
-22
+PCA analysis
 
-23
+```
+library(vcfR)
+library(adegenet)
+file.choose()
+setwd("/Users/aayudhdas/Dropbox/Aayudh_UVM/ecological genomics/homework")
+list.files()
+vcf1 <- read.vcfR("SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf")
+gl1 <- vcfR2genlight(vcf1)
+print(gl1) # Looks good! Right # of SNPs and individuals!
+# For info, try:
+gl1$ind.names
+gl1$loc.names[1:10]
+gl1$chromosome[1:3]
 
-26
+# Notice there's nothing in the field that says "pop"? Let's fix that...
+ssw_meta <- read.table("ssw_healthloc.txt", header=T) # read in the metadata
+ssw_meta <- ssw_meta[order(ssw_meta$Individual),] # sort by Individual ID, just like the VCF file
 
-28
+gl1$ind.names
+ssw_meta$Individual
 
-29
+gl1$pop <- ssw_meta$Location # assign locality info
 
-36
+gl1$other <- as.list(ssw_meta) # assign disease status
+
+glPlot(gl1, posi="bottomleft")
+
+pca1 <- glPca(gl1, nf=4, parallel=F) # nf = number of PC axes to retain (here, 4)
+pca1 # prints summary
+# Plot the individuals in SNP-PCA space, with locality labels:
+plot(pca1$scores[,1], pca1$scores[,2], 
+     cex=2, pch=20, col=gl1$pop, 
+     xlab="Principal Component 1", 
+     ylab="Principal Component 2", 
+     main="PCA on SSW data (Freq missing=20%; 5317 SNPs)")
+legend("topleft", 
+       legend=unique(gl1$pop), 
+       pch=20, 
+       col=c("black", "red"))
+```
 
