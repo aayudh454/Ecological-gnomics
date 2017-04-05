@@ -12,7 +12,7 @@ After filtering, kept 7486938 out of a possible 7486938 Sites
 
 ***a) Biallelic vs. multi-allelic SNPs*:** So, SNPs with >2 alleles probably reflect sequence or mapping errors. We also want to get rid of SNPs showing <2 alleles. **b)** ***Minor allele frequency (MAF):*** Sequencing errors are relatively common, but they tend to happen randomly and affect only 1 read at a time. Thus, if we have a SNP that is only seen very rarely, it may be a sequencing error, and should be discarded. For us, the most liberal MAF filters would be 1 allele copy out of the total 2N copies, or 1/48 = 0.02. *Missing data across individuals:* **c)** ***Missing data across individuals:*** Get rid of sites where  fewer than 80% of our samples have data. Missing data is a problem for any analysis, and population genetic statistics can behave oddly (i.e.. become biased) when a lot of individuals are missing data for a given SNP. 
 
-20% missing data-
+getting rid of all missing data missing data-
 
 ```
 [aadas@pbio381 homework3]$ vcftools --gzvcf SSW_by24inds.txt.vcf.gz --min-alleles 2 --max-alleles 2 --maf 0.02 --max-missing 1.0 --recode --out ~/SSW_all_biallelic.MAF0.02.Miss1.0
@@ -26,49 +26,54 @@ Now if we do 10% Missing data across individuals
 vcftools --gzvcf SSW_by24inds.txt.vcf.gz --min-alleles 2 --max-alleles 2 --maf 0.02 --max-missing 0.9 --recode --out ~/SSW_all_biallelic.MAF0.02.Miss0.9
 ```
 
-After filtering, kept 3371 out of a possible 7486938 Sites
+After filtering, kept **3371** out of a possible 7486938 Sites
 
 #### 2. Filtering Strategy 2 (removing individual)
 
 Check the missing individual
 
 ```
-[aadas@pbio381 homework3]$ vcftools --vcf SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf --missing-indv --out ~/SSW_class_filtered_missing-indv
-[aadas@pbio381 homework3]$ cat SSW_class_filtered_missing-indv.imiss
+[aadas@pbio381 homework3]$ vcftools --vcf SSW_all_biallelic.MAF0.02.Miss0.9.recode.vcf --missing-indv --out ~/SSW_class_filtered_missing-indv
 ```
 
 see the individuals
 
 ```
+[aadas@pbio381 pipeline2]$ cat SSW_class_filtered_missing0.9-indv.imiss 
 INDV	N_DATA	N_GENOTYPES_FILTERED	N_MISS	F_MISS
-03	5317	0	45		0.00846342
-07	5317	0	1938	0.364491
-08	5317	0	118		0.022193
-09	5317	0	182		0.0342298
-10	5317	0	322		0.0605605
-14	5317	0	606		0.113974
-15	5317	0	34		0.00639458
-19	5317	0	25		0.0047019
-20	5317	0	55		0.0103442
-22	5317	0	2114	0.397593
-23	5317	0	265		0.0498401
-24	5317	0	1309	0.246191
-26	5317	0	1489	0.280045
-27	5317	0	14		0.00263306
-28	5317	0	108		0.0203122
-29	5317	0	392		0.0737258
-31	5317	0	48		0.00902765
-32	5317	0	53		0.00996803
-33	5317	0	38		0.00714689
+03	3371	0	7	0.00207654
+07	3371	0	752	0.223079
+08	3371	0	10	0.00296648
+09	3371	0	34	0.010086
+10	3371	0	41	0.0121626
+14	3371	0	144	0.0427173
+15	3371	0	6	0.00177989
+19	3371	0	7	0.00207654
+20	3371	0	4	0.00118659
+22	3371	0	705	0.209137
+23	3371	0	46	0.0136458
+24	3371	0	421	0.124889
+26	3371	0	421	0.124889
+27	3371	0	2	0.000593296
+28	3371	0	11	0.00326313
+29	3371	0	66	0.0195788
+31	3371	0	11	0.00326313
+32	3371	0	11	0.00326313
+33	3371	0	18	0.00533966
+34	3371	0	14	0.00415307
+35	3371	0	12	0.00355977
+36	3371	0	15	0.00444972
+37	3371	0	42	0.0124592
+38	3371	0	6	0.00177989
 ```
 
-Individual 07, 14, 22, 24, 26 
+Individual 07, 14, 22, 24, 26 can be removed.
 
 ```
-vcftools --gzvcf SSW_by24inds.txt.vcf.gz --min-alleles 2 --max-alleles 2 --maf 0.02 --max-missing 0.8 --remove-indv 07 --remove-indv 14 --remove-indv 22 --remove-indv 24 --remove-indv 26 --recode --out ~/SSW_all_biallelic.MAF0.02.Miss0.8.remove07.14.22.24.26
+vcftools --gzvcf SSW_by24inds.txt.vcf.gz --min-alleles 2 --max-alleles 2 --maf 0.02 --max-missing 0.9 --remove-indv 07 --remove-indv 14 --remove-indv 22 --remove-indv 24 --remove-indv 26 --recode --out ~/SSW_all_biallelic.MAF0.02.Miss0.9.remove07.14.22.24.26
 ```
 
-After filtering, kept **7432** out of a possible 7486938 Sites
+After filtering, kept **4762** out of a possible 7486938 Sites
 
 **d) Hardy-Weinberg equilibrium expectations**: **(1=p^2 + 2pq + q^2)**. Use the quality-filtered file we generated above as input.
 
