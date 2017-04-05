@@ -2214,7 +2214,7 @@ code
 
 <div id='id-section20'/>
 
-### Page 20: 2017-04-03. Karl intro
+### Page 20: 2017-04-03. Detecting local adaptation from population genomic outlier analyses 
 
 Concepts
 
@@ -2237,11 +2237,54 @@ Questions:
 1. What challenges do outlier detection methods face?
 2. How is LD our friend or foe ?
 
+### R script
+
+```
+setwd("/Users/aayudhdas/Dropbox/Aayudh_UVM/ecological genomics/karl")
+install.packages("devtools")
+library("devtools")
+source("https://bioconductor.org/biocLite.R")
+biocLite("qvalue")
+library("qvalue")
+install_github("whitlock/OutFLANK")
+
+library(OutFLANK)
+install.packages("vcfR")
+library(vcfR)
+install.packages("adegenet")
+library("adegenet")
+
+ssw.geno_in =read.fwf("SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf.geno", width=rep(1,24))
+ssw.geno = t(ssw.geno_in)
+
+ssw_meta = read.table("ssw_healthloc.txt",T)
+ssw_meta = ssw_meta[order(ssw_meta$Individual),]
+ssw_meta$Trajectory[which(ssw_meta$Trajectory == "MM")] = NA
+
+OF_SNPs = MakeDiploidFSTMat(ssw.geno, locusNames = seq(1, 5317,1), popNames = ssw_meta$Trajectory)
+head(OF_SNPs)
+OF_out = OutFLANK(FstDataFrame = OF_SNPs, LeftTrimFraction = 0.05, RightTrimFraction = 0.05, Hmin = 0.1, NumberOfSamples = 3, qthreshold = 0.1)
+OutFLANKResultsPlotter(OF_out, withOutliers = T, NoCorr = T, Hmin = 0.1, binwidth = 0.005, titletext = "Scan for local selection")
+outliers = which(OF_out$results$OutlierFlag=="TRUE")
+outliers
+
+vcf1 = read.vcfR("SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf")
+dim(vcf1)
+vcfann = as.data.frame(getFIX(vcf1))
+vcfann[outliers,]
+
+```
+
 
 
 ------
 
 <div id='id-section21'/>
 
-### Page 21: 2017-04-05. Metagenomics
+### Page 21: 2017-04-05. Annotations
 
+### INFO UPDATE: 
+
+1. After assembly, annotation map reads .sam files using BWA program.
+2. Annotation using .fasta file with BLAST program: This will tell us Biological function and match prediction.
+3. Annotation: Blast2GO-paid, Brute force, Pipelines-Trinotate
