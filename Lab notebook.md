@@ -2288,3 +2288,6 @@ vcfann[outliers,]
 1. After assembly, annotation map reads .sam files using BWA program.
 2. Annotation using .fasta file with BLAST program: This will tell us Biological function and match prediction.
 3. Annotation: Blast2GO-paid, Brute force, Pipelines-Trinotate
+
+### Terminal code
+
