@@ -30,7 +30,7 @@
 * [Page 18:2017-03-29](#id-section18).Population genomics 6
 * [Page 19:2017-03-31](#id-section19).Homework3_population genetics
 * [Page 20:2017-04-03](#id-section20).Catch up day
-* [Page 20:2017-04-05](#id-section21).Meta
+* [Page 21:2017-04-05](#id-section21).Enrichment and annotation
 
 ------
 <div id='id-section1'/>
@@ -2385,7 +2385,7 @@ vcfann[outliers,]
 
 <div id='id-section21'/>
 
-### Page 21: 2017-04-05. Annotations
+### Page 21: 2017-04-05. Enrichment and annotation
 
 ### INFO UPDATE: 
 
