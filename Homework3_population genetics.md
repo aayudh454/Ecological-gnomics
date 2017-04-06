@@ -289,7 +289,7 @@ library(adegenet)
 file.choose()
 setwd("/Users/aayudhdas/Dropbox/Aayudh_UVM/ecological genomics/homework")
 list.files()
-vcf1 <- read.vcfR("SSW_all_biallelic.MAF0.02.Miss0.8.recode.vcf")
+vcf1 <- read.vcfR("SSW_all_biallelic.MAF0.02.Miss0.9.recode.vcf")
 gl1 <- vcfR2genlight(vcf1)
 print(gl1) # Looks good! Right # of SNPs and individuals!
 # For info, try:

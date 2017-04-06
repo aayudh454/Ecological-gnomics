@@ -1563,29 +1563,29 @@ points( 0.250000,0.2098250,bg="red", cex=2)
 
 2.   **Liklihood/model based methods**:
 
-                **Allele frequency spectrum:** <u>is the [distribution](https://en.wikipedia.org/wiki/Frequency_distribution) of the [allele frequencies](https://en.wikipedia.org/wiki/Allele_frequency) of a given set of [loci](https://en.wikipedia.org/wiki/Locus_(genetics)) (often [SNPs](https://en.wikipedia.org/wiki/SNPs)) in a population or sample.
+                  **Allele frequency spectrum:** <u>is the [distribution](https://en.wikipedia.org/wiki/Frequency_distribution) of the [allele frequencies](https://en.wikipedia.org/wiki/Allele_frequency) of a given set of [loci](https://en.wikipedia.org/wiki/Locus_(genetics)) (often [SNPs](https://en.wikipedia.org/wiki/SNPs)) in a population or sample.
 
-               Uses count data: distribution with characteristics shape
+                 Uses count data: distribution with characteristics shape
 
-               Neutral, bottleneck and selective sweeps.
+                 Neutral, bottleneck and selective sweeps.
 
-                 *Assumptions:*
+                   *Assumptions:*
 
-                 a. Allele SNPs: independent 
+                   a. Allele SNPs: independent 
 
-                 b. Free recombination among SNPs
+                   b. Free recombination among SNPs
 
-                 c. mutation rates are equal
+                   c. mutation rates are equal
 
-                 *Limitation:*
+                   *Limitation:*
 
-                 a. Loose a lot of data
+                   a. Loose a lot of data
 
-                 B. Expensive
+                   B. Expensive
 
-                 **Genealogy sampling:** Multiple regions
+                   **Genealogy sampling:** Multiple regions
 
-                 *Assumptions-*
+                   *Assumptions-*
 
 
      1. Free rcombination among gene
@@ -2198,17 +2198,121 @@ code
   415  2017-03-29 11:19:02 cat chooseK.txt 
 ```
 
-
-
-
-
 ------
 
 <div id='id-section19'/>
 
 ### Page 19: 2017-03-31. Homework3_population genetics
 
+#### 1. Filtering strategy 1
 
+```
+[aadas@pbio381 homework3]$ vcftools --gzvcf SSW_by24inds.txt.vcf.gz
+```
+
+After filtering, kept 24 out of 24 Individuals
+
+After filtering, kept 7486938 out of a possible 7486938 Sites
+
+***a) Biallelic vs. multi-allelic SNPs*:** So, SNPs with >2 alleles probably reflect sequence or mapping errors. We also want to get rid of SNPs showing <2 alleles. **b)** ***Minor allele frequency (MAF):*** Sequencing errors are relatively common, but they tend to happen randomly and affect only 1 read at a time. Thus, if we have a SNP that is only seen very rarely, it may be a sequencing error, and should be discarded. For us, the most liberal MAF filters would be 1 allele copy out of the total 2N copies, or 1/48 = 0.02. *Missing data across individuals:* **c)** ***Missing data across individuals:*** Get rid of sites where  fewer than 80% of our samples have data. Missing data is a problem for any analysis, and population genetic statistics can behave oddly (i.e.. become biased) when a lot of individuals are missing data for a given SNP. 
+
+Now if we do 10% Missing data across individuals
+
+```
+vcftools --gzvcf SSW_by24inds.txt.vcf.gz --min-alleles 2 --max-alleles 2 --maf 0.02 --max-missing 0.9 --recode --out ~/SSW_all_biallelic.MAF0.02.Miss0.9
+```
+
+After filtering, kept **3371** out of a possible 7486938 Sites
+
+#### 2. Filtering Strategy 2 (removing individual)
+
+Check the missing individual
+
+```
+[aadas@pbio381 homework3]$ vcftools --vcf SSW_all_biallelic.MAF0.02.Miss0.9.recode.vcf --missing-indv --out ~/SSW_class_filtered_missing-indv
+```
+
+see the individuals
+
+```
+[aadas@pbio381 pipeline2]$ cat SSW_class_filtered_missing0.9-indv.imiss 
+INDV	N_DATA	N_GENOTYPES_FILTERED	N_MISS	F_MISS
+03	3371	0	7	0.00207654
+07	3371	0	752	0.223079
+08	3371	0	10	0.00296648
+09	3371	0	34	0.010086
+10	3371	0	41	0.0121626
+14	3371	0	144	0.0427173
+15	3371	0	6	0.00177989
+19	3371	0	7	0.00207654
+20	3371	0	4	0.00118659
+22	3371	0	705	0.209137
+23	3371	0	46	0.0136458
+24	3371	0	421	0.124889
+26	3371	0	421	0.124889
+27	3371	0	2	0.000593296
+28	3371	0	11	0.00326313
+29	3371	0	66	0.0195788
+31	3371	0	11	0.00326313
+32	3371	0	11	0.00326313
+33	3371	0	18	0.00533966
+34	3371	0	14	0.00415307
+35	3371	0	12	0.00355977
+36	3371	0	15	0.00444972
+37	3371	0	42	0.0124592
+38	3371	0	6	0.00177989
+```
+
+Individual 07, 14, 22, 24, 26 can be removed.
+
+```
+vcftools --gzvcf SSW_by24inds.txt.vcf.gz --min-alleles 2 --max-alleles 2 --maf 0.02 --max-missing 0.9 --remove-indv 07 --remove-indv 14 --remove-indv 22 --remove-indv 24 --remove-indv 26 --recode --out ~/SSW_all_biallelic.MAF0.02.Miss0.9.remove07.14.22.24.26
+```
+
+After filtering, kept **4762** out of a possible 7486938 Sites
+
+## PCA analysis (R script)
+
+```
+library(vcfR)
+library(adegenet)
+file.choose()
+setwd("/Users/aayudhdas/Dropbox/Aayudh_UVM/ecological genomics/homework")
+list.files()
+vcf1 <- read.vcfR("SSW_all_biallelic.MAF0.02.Miss0.9.recode.vcf")
+gl1 <- vcfR2genlight(vcf1)
+print(gl1) # Looks good! Right # of SNPs and individuals!
+# For info, try:
+gl1$ind.names
+gl1$loc.names[1:10]
+gl1$chromosome[1:3]
+
+# Notice there's nothing in the field that says "pop"? Let's fix that...
+ssw_meta <- read.table("ssw_healthloc.txt", header=T) # read in the metadata
+ssw_meta <- ssw_meta[order(ssw_meta$Individual),] # sort by Individual ID, just like the VCF file
+
+gl1$ind.names
+ssw_meta$Individual
+
+gl1$pop <- ssw_meta$Location # assign locality info
+
+gl1$other <- as.list(ssw_meta) # assign disease status
+
+glPlot(gl1, posi="bottomleft")
+
+pca1 <- glPca(gl1, nf=4, parallel=F) # nf = number of PC axes to retain (here, 4)
+pca1 # prints summary
+# Plot the individuals in SNP-PCA space, with locality labels:
+plot(pca1$scores[,1], pca1$scores[,2], 
+     cex=2, pch=20, col=gl1$pop, 
+     xlab="Principal Component 1", 
+     ylab="Principal Component 2", 
+     main="PCA on SSW data (Freq missing=20%; 5317 SNPs)")
+legend("topleft", 
+       legend=unique(gl1$pop), 
+       pch=20, 
+       col=c("black", "red"))
+```
 
 ------
 
