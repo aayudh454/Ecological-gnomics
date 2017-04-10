@@ -1564,29 +1564,29 @@ points( 0.250000,0.2098250,bg="red", cex=2)
 
 2.   **Liklihood/model based methods**:
 
-                    **Allele frequency spectrum:** <u>is the [distribution](https://en.wikipedia.org/wiki/Frequency_distribution) of the [allele frequencies](https://en.wikipedia.org/wiki/Allele_frequency) of a given set of [loci](https://en.wikipedia.org/wiki/Locus_(genetics)) (often [SNPs](https://en.wikipedia.org/wiki/SNPs)) in a population or sample.
+                      **Allele frequency spectrum:** <u>is the [distribution](https://en.wikipedia.org/wiki/Frequency_distribution) of the [allele frequencies](https://en.wikipedia.org/wiki/Allele_frequency) of a given set of [loci](https://en.wikipedia.org/wiki/Locus_(genetics)) (often [SNPs](https://en.wikipedia.org/wiki/SNPs)) in a population or sample.
 
-                   Uses count data: distribution with characteristics shape
+                     Uses count data: distribution with characteristics shape
 
-                   Neutral, bottleneck and selective sweeps.
+                     Neutral, bottleneck and selective sweeps.
 
-                     *Assumptions:*
+                       *Assumptions:*
 
-                     a. Allele SNPs: independent 
+                       a. Allele SNPs: independent 
 
-                     b. Free recombination among SNPs
+                       b. Free recombination among SNPs
 
-                     c. mutation rates are equal
+                       c. mutation rates are equal
 
-                     *Limitation:*
+                       *Limitation:*
 
-                     a. Loose a lot of data
+                       a. Loose a lot of data
 
-                     B. Expensive
+                       B. Expensive
 
-                     **Genealogy sampling:** Multiple regions
+                       **Genealogy sampling:** Multiple regions
 
-                     *Assumptions-*
+                       *Assumptions-*
 
 
      1. Free rcombination among gene
@@ -2396,7 +2396,15 @@ vcfann[outliers,]
 
 ### Terminal code
 
+```
+R code in folder
+```
 
+how to make table?
+
+| a    | b    | c    |
+| ---- | ---- | ---- |
+|      |      |      |
 
 ------
 
@@ -2406,9 +2414,122 @@ vcfann[outliers,]
 
 ### Info update
 
-1. Announcements
-2. SSW projects: Metagenomics 
-3. Microbiomes vs Metagenomes
-4. Process of generating and analyzing data
-5. Microbial revolution 
-6. The big questions
+16S ribosomal RNA genes we will be analyzing
+
+Ans the questions like
+
+a. what micobes are present?
+
+b. what are they doing ?
+
+This is called metagenomics
+
+#### Microbiome: 
+
+assemblage of microbial taxa associated with a host or environment.
+
+* pathogens
+* Symbiont 
+  * mutualist
+  * commensals 
+* Holobiont 
+
+How to measure micro biome?
+
+* 16s rRNA
+* ITS (Internal Transcribed Spacers)
+
+#### SSW projects: Metagenomics 
+
+* genes being expressed by the microbiome
+
+* function
+
+* All RNA or DNA coming from RNA seq or shot-gun DNA seq
+
+  ### Processing: 
+
+  * Sample tissue extract DNA/RNA
+  * PCR target gene (16s)
+  * Barcode amplified fragment 
+  * cluster based on similarity (97%)
+  * BLAST OTUs to determine taxonomy.  
+
+#### The big questions
+
+* Is there a "core" micro biome shared in common among many organisms?
+* How much diversity is unique to individuals, populations and communities? Heritable?
+* Evolution of micro biome—> adaptation of host to environment ?
+* Can knowledge of microbiome predict a response to env selection? 
+
+
+### Terminal code
+
+```
+[aadas@pbio381 ~]$ mkdir 16s_analysis
+[aadas@pbio381 ~]$ ll
+[aadas@pbio381 16s_analysis]$ cd /data/project_data/16s/map.txt
+[aadas@pbio381 16s]$ vi map.txt 
+[aadas@pbio381 16s_analysis]$ validate_mapping_file.py -m /data/project_data/16s/^Cp.txt -o validate_map -p -b
+[aadas@pbio381 16s_analysis]$ validate_mapping_file.py -m /users/a/a/aadas/16s_analysis/map.txt -o validate_map -p -b
+[aadas@pbio381 16s_analysis]$ cd validate_map/
+[aadas@pbio381 validate_map]$ ll
+[aadas@pbio381 16s_analysis]$ multiple_join_paired_ends.py -i /data/project_data/16s/data_files -o ~/16s_analysis/joined --read1_indicator _R1 --read2_indicator _R2
+[aadas@pbio381 16s_analysis]$ ll
+[aadas@pbio381 16s_analysis]$ cd joined/
+[aadas@pbio381 joined]$ ll
+[aadas@pbio381 joined]$ bash /data/project_data/16s/remove-underscore.sh
+[aadas@pbio381 joined]$ bash /data/project_data/16s/remove-R1.sh
+[aadas@pbio381 joined]$ multiple_split_libraries_fastq.py -i ~/16s_analysis/joined -o ~/16s_analysis/filtered -m sampleid_by_file --include_input_dir_path --remove_filepath_in_name  --mapping_indicator /data/project_data/16s/map.txt
+```
+
+after 10 min
+
+```
+[aadas@pbio381 16s_analysis]$ cd filtered/
+[aadas@pbio381 filtered]$ head seqs.fna 
+```
+
+Also, run this command on a few samples and make sure the output ‘test’ file contains some sequences
+
+```
+extract_seqs_by_sample_id.py -i seqs.fna -o test -s 04-5-05
+```
+
+Have a look at the files produces by the pick_open_reference_otus.py. In the interest of time, we won’t go over what all of these files are but the above links gives a great description of what they are and how they were made. We just want to make sure there are the correct number of samples in the biom file and get a sense of the number of reads per sample.
+
+```	
+[aadas@pbio381 otu_table]$ biom summarize-table -i /data/project_data/16s/otu_table/otu_table_mc2_w_tax_no_pynast_failures.biom
+```
+
+Num samples: 176
+
+Num observations: 93033
+
+Total count: 8362869
+
+Table density (fraction of non-zero values): 0.028
+
+Counts/sample summary:
+
+ Min: 28412.0
+
+ Max: 77866.0
+
+ Median: 47051.500
+
+ Mean: 47516.301
+
+ Std. dev.: 7637.541
+
+ Sample Metadata Categories: None provided
+
+ Observation Metadata Categories: taxonomy
+
+##### phyloseq in R
+
+```
+source('http://bioconductor.org/biocLite.R')
+biocLite('phyloseq')
+```
+
