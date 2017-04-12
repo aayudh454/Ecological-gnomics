@@ -2560,5 +2560,29 @@ Proportion of variance in a host trait; Measured across population;
 
 Explained by genetic (environmental) 
 
-* Directy
+* Directy: Twin pairs
 * GAS
+
+#### GWAS
+
+* MB-traits
+* SNP data (host)
+* 16s rRNA (MB)
+
+#### Cross study comparisons
+
+* Mice QTL
+  * immune flexibility
+* Plants QTL
+  * species niches and abundances of individual taxa
+* Flies 
+  * GWAS
+  * Barrier defense (digestive)
+  * Immunity
+
+#### Limitations 
+
+1. Small sample size so not significant result 
+2. Lacking taxa
+3. Meta analysis results are inconclusive
+
