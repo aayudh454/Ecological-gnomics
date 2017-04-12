@@ -2586,3 +2586,65 @@ Explained by genetic (environmental)
 2. Lacking taxa
 3. Meta analysis results are inconclusive
 
+### Terminal code
+
+##### 1. Identify chimeric OTUs
+
+```
+[aadas@pbio381 ~]$ cd 16s_analysis/
+[aadas@pbio381 16s_analysis]$ vsearch --uchime_ref /data/project_data/16s/otu_table/rep_set.fna --chimeras ~/16s_analysis/mc2_w_tax_no_pynast_failures_chimeras.fasta --db /usr/lib/python2.7/site-packages/qiime_default_reference/gg_13_8_otus/rep_set/97_otus.fasta 
+```
+
+##### 2. Remove these chimeric OTUs from OTU table
+
+```
+[aadas@pbio381 16s_analysis]$ filter_otus_from_otu_table.py -i /data/project_data/16s/otu_table/otu_table_mc2_w_tax_no_pynast_failures.biom -o otu_table_mc2_w_tax_no_pynast_failures_no_chimeras.biom -e ~/16s_analysis/mc2_w_tax_no_pynast_failures_chimeras.fasta
+```
+
+##### 3. Remove these chimeric OTUs from rep_set_aligned and re-make the phylogenetic tree
+
+```
+[aadas@pbio381 16s_analysis]$ filter_fasta.py -f /data/project_data/16s/otu_table/pynast_aligned_seqs/rep_set_aligned_pfiltered.fasta -o ~/16s_analysis/rep_set_aligned_pfiltered_no_chimeras.fasta -a ~/16s_analysis/mc2_w_tax_no_pynast_failures_chimeras.fasta -n
+```
+
+```
+[aadas@pbio381 16s_analysis]$ make_phylogeny.py -i ~/16s_analysis/rep_set_aligned_pfiltered_no_chimeras.fasta -o ~/16s_analysis/rep_set_no_chimeras.tre
+^C[aadas@pbio381 16s_analysis]$ screen
+[detached from 45250.pts-6.pbio381]
+```
+
+#### Frequency filtering (##How many OTUs are left?)
+
+Now we will get rid of low frequency OTUs. We will get rid of any OTU with fewer than 50 total counts across all samples (–min_count 50) as well as any OTU that is in fewer than 25% of samples (–min_samples 44)
+
+```
+[aadas@pbio381 16s_analysis]$ filter_otus_from_otu_table.py -i otu_table_mc2_w_tax_no_pynast_failures_no_chimeras.biom -o otu_table_mc2_w_tax_no_pynast_failures_no_chimeras_frequency_filtered.biom --min_count 50 --min_samples 44
+
+##How many OTUs are left?
+[aadas@pbio381 16s_analysis]$ biom summarize-table -i otu_table_mc2_w_tax_no_pynast_failures_no_chimeras_frequency_filtered.biom
+```
+
+Num samples: 176
+
+Num observations: 1064
+
+Total count: 7221141
+
+Table density (fraction of non-zero values): 0.538
+
+Counts/sample summary:
+
+ Min: 18858.0
+
+ Max: 66754.0
+
+ Median: 40720.500
+
+ Mean: 41029.210
+
+ Std. dev.: 8381.006
+
+ Sample Metadata Categories: None provided
+
+ Observation Metadata Categories: taxonomy
+
