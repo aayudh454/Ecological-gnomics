@@ -2648,3 +2648,10 @@ Counts/sample summary:
 
  Observation Metadata Categories: taxonomy
 
+#### Core diversity analyses in QIIME
+
+```
+core_diversity_analyses.py -o core_diversity_filtered -i otu_table_mc2_w_tax_no_pynast_failures_no_chimeras_frequency_filtered.biom -m ~/Po/MiSeq/joined/map.txt -t rep_set_no_chimeras.tre -e 20000 -a 8
+```
+
+This command also takes a long time so we’ll just look at the output online: [http://www.uvm.edu/~mlloyd/mc2_w_tax_no_pynast_failures_no_chimeras_frequency_filtered_core_diversity/](http://www.uvm.edu/~mlloyd/mc2_w_tax_no_pynast_failures_no_chimeras_frequency_filtered_core_diversity/)
