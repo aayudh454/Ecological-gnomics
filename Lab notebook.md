@@ -33,6 +33,7 @@
 * [Page 21:2017-04-05](#id-section21).Enrichment and annotation
 * [Page 22:2017-04-10](#id-section22).Metagenomics 1
 * [Page 23:2017-04-12](#id-section23).Metagenomics 2
+* [Page 24:2017-04-17](#id-section24).Metagenomics 3
 
 ------
 <div id='id-section1'/>
@@ -1565,29 +1566,29 @@ points( 0.250000,0.2098250,bg="red", cex=2)
 
 2.   **Liklihood/model based methods**:
 
-                        **Allele frequency spectrum:** <u>is the [distribution](https://en.wikipedia.org/wiki/Frequency_distribution) of the [allele frequencies](https://en.wikipedia.org/wiki/Allele_frequency) of a given set of [loci](https://en.wikipedia.org/wiki/Locus_(genetics)) (often [SNPs](https://en.wikipedia.org/wiki/SNPs)) in a population or sample.
+                          **Allele frequency spectrum:** <u>is the [distribution](https://en.wikipedia.org/wiki/Frequency_distribution) of the [allele frequencies](https://en.wikipedia.org/wiki/Allele_frequency) of a given set of [loci](https://en.wikipedia.org/wiki/Locus_(genetics)) (often [SNPs](https://en.wikipedia.org/wiki/SNPs)) in a population or sample.
 
-                       Uses count data: distribution with characteristics shape
+                         Uses count data: distribution with characteristics shape
 
-                       Neutral, bottleneck and selective sweeps.
+                         Neutral, bottleneck and selective sweeps.
 
-                         *Assumptions:*
+                           *Assumptions:*
 
-                         a. Allele SNPs: independent 
+                           a. Allele SNPs: independent 
 
-                         b. Free recombination among SNPs
+                           b. Free recombination among SNPs
 
-                         c. mutation rates are equal
+                           c. mutation rates are equal
 
-                         *Limitation:*
+                           *Limitation:*
 
-                         a. Loose a lot of data
+                           a. Loose a lot of data
 
-                         B. Expensive
+                           B. Expensive
 
-                         **Genealogy sampling:** Multiple regions
+                           **Genealogy sampling:** Multiple regions
 
-                         *Assumptions-*
+                           *Assumptions-*
 
 
      1. Free rcombination among gene
@@ -2655,3 +2656,12 @@ core_diversity_analyses.py -o core_diversity_filtered -i otu_table_mc2_w_tax_no_
 ```
 
 This command also takes a long time so we’ll just look at the output online: [http://www.uvm.edu/~mlloyd/mc2_w_tax_no_pynast_failures_no_chimeras_frequency_filtered_core_diversity/](http://www.uvm.edu/~mlloyd/mc2_w_tax_no_pynast_failures_no_chimeras_frequency_filtered_core_diversity/)
+
+
+
+------
+
+<div id='id-section24'/>
+
+### Page 24: 2017-04-17. Metagenomics 3
+
