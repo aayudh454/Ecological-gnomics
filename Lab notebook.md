@@ -2683,4 +2683,36 @@ Past method
 1. Proportion
 2. High rate of false positives
 3. Heteroscedasticity
+4. Reduced power
 
+##### Rarefying 
+
+-steps
+
+1. Small N and Nmin
+2. Discard Libs with fewer than Lmin
+3. Sub-sample longer Ns without replacement
+
+What this does?
+
+* Normaility data
+* Removing individual no. of reads
+
+Problems with Raerifying 
+
+* High rate of false positives
+* Requires emission actual data
+* Reduces statistical power
+
+#### Mixture model
+
+* Not decreasing power 
+* Increasing accuracy over other method 
+
+#### Distribution
+
+Binomial with o-inflated gaussian 
+
+accounts for biological variability
+
+* edgeR, DESeq2, phyloseq
