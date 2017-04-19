@@ -2716,3 +2716,92 @@ Binomial with o-inflated gaussian
 accounts for biological variability
 
 * edgeR, DESeq2, phyloseq
+
+### Terminal code
+
+PICRUST can only work with OTUS that were picked by closed reference OTU picking.
+
+How many closed ref OTUs?
+
+```
+[aadas@pbio381 ~]$ cd 16s_analysis/
+[aadas@pbio381 16s_analysis]$ filter_otus_from_otu_table.py -i ~/16s_analysis/otu_table_mc2_w_tax_no_pynast_failures_no_chimeras_frequency_filtered.biom -o ~/16s_analysis/closed_otu_table.biom --negate_ids_to_exclude -e /usr/lib/python2.7/site-packages/qiime_default_reference/gg_13_8_otus/rep_set/97_otus.fasta 
+[aadas@pbio381 16s_analysis]$ biom summarize-table -i closed_otu_table.biom
+```
+
+Num samples: 176
+Num observations: **259**
+Total count: 1493357
+Table density (fraction of non-zero values): 0.546
+
+Counts/sample summary:
+ Min: 152.0
+ Max: 32426.0
+ Median: 6333.500
+ Mean: 8484.983
+ Std. dev.: 6937.648
+ Sample Metadata Categories: None provided
+ Observation Metadata Categories: taxonomy
+
+normalize by picrust’s method
+
+```
+normalize_by_copy_number.py -i ~/16s_analysis/closed_otu_table.biom -o ~/16s_analysis/closed_otu_table_norm.biom
+```
+
+The output of PICRUST is the same format as an OTU table but instead of OTUS, KEGG Orthology terms are used. For a tab delimited output:
+
+```
+predict_metagenomes.py -f -i ~/16s_analysis/closed_otu_table_norm.biom -o ~/16s_analysis/metagenome_predictions.txt -a nsti_per_sample.txt 
+```
+
+For a .biom output:
+
+```
+predict_metagenomes.py -i ~/16s_analysis/closed_otu_table_norm.biom -o ~/16s_analysis/metagenome_predictions.biom -a nsti_per_sample.txt
+```
+
+We can take a look at the tab delimited otu table
+
+```
+head metagenome_predictions.txt
+```
+
+And count the rows to see how many KO were predicted
+
+```
+wc -l metagenome_predictions.txt
+```
+
+**6910 metagenome_predictions.txt**
+
+What do you think about the number of KOs predicted considering the number of OTUs we’re using in this analysis? 
+
+Collapse to higher KO hierarchy term
+
+```
+categorize_by_function.py -f -i metagenome_predictions.biom -c KEGG_Pathways -l 3 -o metagenome_predictions.L3.txt
+```
+
+We also want this output in .biom format to use in R
+
+```
+categorize_by_function.py -i metagenome_predictions.biom -c KEGG_Pathways -l 3 -o metagenome_predictions.L3.biom
+```
+
+Files I have
+
+-rw-r--r--.  1 aadas users 230K Apr 19 10:42 closed_otu_table.biom
+
+-rw-r--r--.  1 aadas users 254K Apr 19 10:50 closed_otu_table_norm.biom
+
+-rw-r--r--.  1 aadas users 6.2M Apr 19 10:52 metagenome_predictions.txt
+
+-rw-r--r--.  1 aadas users 5.5M Apr 19 10:56 metagenome_predictions.biom
+
+-rw-r--r--.  1 aadas users 6.6K Apr 19 10:56 nsti_per_sample.txt
+
+-rw-r--r--.  1 aadas users 397K Apr 19 11:01 metagenome_predictions.L3.txt
+
+-rw-r--r--.  1 aadas users 417K Apr 19 11:01 metagenome_predictions.L3.biom
+
