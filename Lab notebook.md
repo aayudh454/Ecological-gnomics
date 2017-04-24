@@ -35,6 +35,7 @@
 * [Page 23:2017-04-12](#id-section23).Metagenomics 2
 * [Page 24:2017-04-17](#id-section24).Metagenomics 3
 * [Page 25:2017-04-17](#id-section25).Metagenomics 4
+* [Page 25:2017-04-24](#id-section26).Project Code
 
 ------
 <div id='id-section1'/>
@@ -1567,29 +1568,29 @@ points( 0.250000,0.2098250,bg="red", cex=2)
 
 2.   **Liklihood/model based methods**:
 
-                            **Allele frequency spectrum:** <u>is the [distribution](https://en.wikipedia.org/wiki/Frequency_distribution) of the [allele frequencies](https://en.wikipedia.org/wiki/Allele_frequency) of a given set of [loci](https://en.wikipedia.org/wiki/Locus_(genetics)) (often [SNPs](https://en.wikipedia.org/wiki/SNPs)) in a population or sample.
+                              **Allele frequency spectrum:** <u>is the [distribution](https://en.wikipedia.org/wiki/Frequency_distribution) of the [allele frequencies](https://en.wikipedia.org/wiki/Allele_frequency) of a given set of [loci](https://en.wikipedia.org/wiki/Locus_(genetics)) (often [SNPs](https://en.wikipedia.org/wiki/SNPs)) in a population or sample.
 
-                           Uses count data: distribution with characteristics shape
+                             Uses count data: distribution with characteristics shape
 
-                           Neutral, bottleneck and selective sweeps.
+                             Neutral, bottleneck and selective sweeps.
 
-                             *Assumptions:*
+                               *Assumptions:*
 
-                             a. Allele SNPs: independent 
+                               a. Allele SNPs: independent 
 
-                             b. Free recombination among SNPs
+                               b. Free recombination among SNPs
 
-                             c. mutation rates are equal
+                               c. mutation rates are equal
 
-                             *Limitation:*
+                               *Limitation:*
 
-                             a. Loose a lot of data
+                               a. Loose a lot of data
 
-                             B. Expensive
+                               B. Expensive
 
-                             **Genealogy sampling:** Multiple regions
+                               **Genealogy sampling:** Multiple regions
 
-                             *Assumptions-*
+                               *Assumptions-*
 
 
      1. Free rcombination among gene
@@ -2843,5 +2844,78 @@ final_pheno_sigtab= cbind(as(final_pheno_sigtab, "data.frame"), as(tax_table(phy
 head(final_pheno_sigtab)
 final_pheno_sigtab
 write.table(final_pheno_sigtab, "Final_pheno_L3.txt", sep="\t")
+```
+
+
+
+------
+
+<div id='id-section26'/>
+
+### Page 26: 2017-04-24. Project code
+
+Transcoder is-
+
+/data/popgen/TransDecoder-3.0.1
+
+**So, how many genes related to immune response?**
+
+[aadas@pbio381 ~]$ grep "immune" poch_uniprot_GO_nr.txt | wc -l
+
+279
+
+[aadas@pbio381 ~]$ grep "immun*" poch_uniprot_GO_nr.txt | wc -l
+
+321
+
+**put it in a text file**
+
+grep "immun*" poch_uniprot_GO_nr.txt > poch_uniprot_GO_nr_immune.txt
+
+**Now you need the header**
+
+head poch_uniprot_GO_nr.txt -n 1 > head_poch_uniprot_GO_nr_immune.txt
+
+Make a file including the header
+
+cat head_poch_uniprot_GO_nr_immune.txt poch_uniprot_GO_nr_immune.txt > immune.txt
+
+**Now from UPS and ARMS paper FASTA file**
+
+[aadas@pbio381 ~]$ /data/popgen/TransDecoder-3.0.1/TransDecoder.LongOrfs -t Phel_transcriptome_clc_v3.fasta
+
+**make the database** 
+
+```
+makeblastdb -in Pycnopodia_longest_orfs.pep -dbtype prot
+```
+
+**Script to work on**
+
+```
+#!/bin/bash
+
+blastp -query ~/Pisaster_longest_orfs.pep \
+       -db ~/Pycnopodia_longest_orfs.pep \
+       -out ~/Pisaster_vs_Pycnopodia.outfmt6 \
+       -outfmt 6 \
+       -evalue 1e-3 \
+       -max_target_seqs 1
+```
+
+[aadas@pbio381 ~]$ wc -l Pisaster_vs_Pycnopodia.outfmt6
+
+12916 Pisaster_vs_Pycnopodia.outfmt6
+
+R code
+
+```
+setwd("~/Dropbox/Aayudh_UVM/ecological genomics/project")
+read.table("poch_uniprot_GO_nr.txt")
+read.table("Pisaster_vs_Pycnopodia.txt")
+PivsPyc <- read.delim('Pisaster_vs_Pycnopodia.txt', header=FALSE)
+head(PivsPyc)
+Pisaster <- read.delim('poch_uniprot_GO_nr.txt', header=TRUE)
+head(Pisaster)
 ```
 
