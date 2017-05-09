@@ -1568,29 +1568,29 @@ points( 0.250000,0.2098250,bg="red", cex=2)
 
 2.   **Liklihood/model based methods**:
 
-                              **Allele frequency spectrum:** <u>is the [distribution](https://en.wikipedia.org/wiki/Frequency_distribution) of the [allele frequencies](https://en.wikipedia.org/wiki/Allele_frequency) of a given set of [loci](https://en.wikipedia.org/wiki/Locus_(genetics)) (often [SNPs](https://en.wikipedia.org/wiki/SNPs)) in a population or sample.
+                                **Allele frequency spectrum:** <u>is the [distribution](https://en.wikipedia.org/wiki/Frequency_distribution) of the [allele frequencies](https://en.wikipedia.org/wiki/Allele_frequency) of a given set of [loci](https://en.wikipedia.org/wiki/Locus_(genetics)) (often [SNPs](https://en.wikipedia.org/wiki/SNPs)) in a population or sample.
 
-                             Uses count data: distribution with characteristics shape
+                               Uses count data: distribution with characteristics shape
 
-                             Neutral, bottleneck and selective sweeps.
+                               Neutral, bottleneck and selective sweeps.
 
-                               *Assumptions:*
+                                 *Assumptions:*
 
-                               a. Allele SNPs: independent 
+                                 a. Allele SNPs: independent 
 
-                               b. Free recombination among SNPs
+                                 b. Free recombination among SNPs
 
-                               c. mutation rates are equal
+                                 c. mutation rates are equal
 
-                               *Limitation:*
+                                 *Limitation:*
 
-                               a. Loose a lot of data
+                                 a. Loose a lot of data
 
-                               B. Expensive
+                                 B. Expensive
 
-                               **Genealogy sampling:** Multiple regions
+                                 **Genealogy sampling:** Multiple regions
 
-                               *Assumptions-*
+                                 *Assumptions-*
 
 
      1. Free rcombination among gene
@@ -2917,5 +2917,54 @@ PivsPyc <- read.delim('Pisaster_vs_Pycnopodia.txt', header=FALSE)
 head(PivsPyc)
 Pisaster <- read.delim('poch_uniprot_GO_nr.txt', header=TRUE)
 head(Pisaster)
+```
+
+Box plot code:
+
+```
+setwd("~/Dropbox/Aayudh_UVM/ecological genomics/project")
+library("ggplot2")
+stressgenes <- read.delim("stress.final.txt", header=TRUE, stringsAsFactors=TRUE, row.names=1)
+countsTable <- read.delim('countsdata_trim2.txt', header=TRUE, stringsAsFactors=TRUE, row.names=1)
+countData <- as.matrix(countsTable)
+head(countData)
+countData <- data.frame(gene=row.names(countData),countData)
+head(countData)
+str(countData)
+
+conds <- read.delim("cols_data_trim.txt", header=TRUE, stringsAsFactors=TRUE, row.names=1)
+conds$individual<-as.factor(rownames(conds))
+head(conds)
+conds$day<-as.numeric(substr(conds$day,4,5))
+
+colData <- as.data.frame(conds)
+head(colData)
+
+dim(colData)
+dim(conds)
+
+library(tidyr)
+data_long <- gather(countData, individual, counts, I03_5.08_S_2:I38_6.12_H_0, factor_key=TRUE)
+head(data_long)
+dim(data_long)
+#install.packages("dplyr")
+library(dplyr)
+names(conds)
+alldata<-inner_join(data_long,conds,by="individual")
+names(alldata)[1]<- "trinID"
+dim(alldata)
+head(alldata)
+head(stressgenes)
+stress_final<-inner_join(alldata,stressgenes,by="trinID")
+dim(stress_final)
+
+
+ggplot(stress_final,aes(x=day,y=log(counts+1),colour=health))+geom_jitter()
+ggplot(stress_final,aes(x=health,y=log(counts+1),colour=individual))+geom_jitter()
+
+ggplot(stress_final,aes(x=factor(day),y=log(counts+1),colour=health))+geom_boxplot()
+#+geom_line()
+ggplot(stress_final,aes(x=factor(health),y=log(counts+1),colour=score))+geom_boxplot()
+plotPCA(stress_final)
 ```
 
