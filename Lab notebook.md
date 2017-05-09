@@ -2968,7 +2968,7 @@ ggplot(stress_final,aes(x=factor(health),y=log(counts+1),colour=score))+geom_box
 plotPCA(stress_final)
 ```
 
-Differential gene expression analysis 
+Differential gene expression analysis (Team Sherlock)
 
 ```
 
