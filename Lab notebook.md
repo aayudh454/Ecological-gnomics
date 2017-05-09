@@ -2968,3 +2968,307 @@ ggplot(stress_final,aes(x=factor(health),y=log(counts+1),colour=score))+geom_box
 plotPCA(stress_final)
 ```
 
+Differential gene expression analysis 
+
+```
+
+library(DESeq2)
+
+#Subsetting data
+conds <- read.delim("cols_data_trim.txt", header=TRUE, stringsAsFactors=TRUE, row.names=1, sep="")
+colData1 <- as.data.frame(conds)
+colDataDay6<-subset(colData1, colData1$day=="day06")
+colDataDay6
+colData<-subset(colDataDay6, colDataDay6$indiv != "37")
+colData # 7 sick # 11 healthy
+# Day 15 H: 10, 24, 27, 31, 33, 34
+# Day 15 S: 8, 9, 15, 19, 20, 23
+# no 7, 22 (sick) in day 6
+#sample log2foldchange of 279 genes with replacement - calculate average 10000 times to generate distribution; which proportion are sig on their own
+
+colDataDay15<-subset(colData1, colData1$day=="day15")
+colDataDay15
+countsTable <- read.delim('countsdata_trim2.txt', header=TRUE, stringsAsFactors=TRUE, row.names=1)
+countData <- as.matrix(countsTable)
+countData<-countData[, which(colnames(countData) %in% row.names(colData))]
+
+#DESeq Model: Day 6, no MMs, 18 individuals (7 sick, 11 healthy); 
+library(DESeq2)
+ddsFULL <- DESeqDataSetFromMatrix(countData = countData, colData = colData, design = ~ location + health)
+
+ddsFULL <- ddsFULL[ rowSums(counts(ddsFULL)) > 100, ]
+
+colData(ddsFULL)$health <- factor(colData(ddsFULL)$health, levels=c("H","S"))
+
+ddsFULL <- DESeq(ddsFULL)
+resFULL <- results(ddsFULL)
+resFULL <- resFULL[order(resFULL$padj),] #sorts according to pvalue
+head(resFULL)
+summary(resFULL)
+names(resFULL)
+
+#immune related genes (269/final 254)
+immuneNames <- read.delim("immune.txt", header=TRUE, stringsAsFactors=FALSE, row.names=1)
+row.names(immuneNames) <- immuneNames$trinID
+immuneRes<-resFULL[which(row.names(resFULL) %in% row.names(immuneNames)),]
+dim(immuneRes) # 254 matched -  less than 321 because of low read counts
+
+#Reading in stress related genes (276/ final 271)
+stressNames <- read.delim("Pisaster_stress.txt", header=TRUE, stringsAsFactors=FALSE, row.names=1)
+row.names(stressNames) <- stressNames$trinID
+stressRes<-resFULL[which(row.names(resFULL) %in% row.names(stressNames)),]
+dim(stressRes) 
+
+#Reading in virus related genes (325/final 323)
+virusNames <- read.delim("virus.txt", header=TRUE, stringsAsFactors=FALSE, row.names=1)
+row.names(virusNames) <- virusNames$trinID
+virusRes<-resFULL[which(row.names(resFULL) %in% row.names(virusNames)),]
+dim(virusRes) 
+
+# Reading in bacteria related genes (1320/final 1299)
+bacteriaNames <- read.delim("bacteria.txt", header=TRUE, stringsAsFactors=FALSE, row.names=1)
+row.names(bacteriaNames) <- bacteriaNames$trinID
+bacteriaRes<-resFULL[which(row.names(resFULL) %in% row.names(bacteriaNames)),]
+dim(bacteriaRes)
+
+# Random distribution of full data set 
+oPar <- par(no.readonly=TRUE)
+
+par(mfrow=c(1,4))
+par(mar=c(1,1,1,1))
+
+# Immune Random null distribution
+logfoldrandoMean0 <- vector(mode="numeric")
+for(i in 1:10000){
+    logfoldrando0<-vector(mode='numeric')
+    logfoldrando0 <- sample(x=resFULL$log2FoldChange, size=dim(immuneRes)[1], replace=T)
+    logfoldrandoMean0[i]<-mean(logfoldrando0)
+}
+
+#Histogram immune
+hist(logfoldrandoMean0, 
+     breaks=50, 
+     main="IMMUNE GENES",
+     xlab=NULL,
+     ylim=c(0,800),
+     xlim=c(-.3, .15),
+     cex.axis=1,
+     cex.lab=1.2,
+     font.lab=2 
+)
+
+Interval0 <- quantile(x=logfoldrandoMean0, probs=c(0.025,0.975))
+abline(v = Interval0,col="black",lwd=2,lty="dotted")
+abline(v=mean(immuneRes$log2FoldChange), col="red",lwd=2)
+t.test(x=logfoldrandoMean0, y=immuneRes$log2FoldChange) #pvalue 0.1403
+
+#Stress Random null distribution
+logfoldrandoMean1 <- vector(mode="numeric")
+for(i in 1:10000){
+    logfoldrando1<-vector(mode='numeric')
+    logfoldrando1 <- sample(x=resFULL$log2FoldChange, size=dim(stressRes)[1], replace=T)
+    logfoldrandoMean1[i]<-mean(logfoldrando1)
+}
+
+#Histogram - stress
+hist(logfoldrandoMean1, 
+     breaks=70, 
+     main="STRESS GENES",
+     xlab=NULL,
+     ylim=c(0,800),
+     xlim=c(-.3, .15),
+     cex.axis=1,
+     cex.lab=1.2,
+     font.lab=2 
+)
+
+Interval1 <- quantile(x=logfoldrandoMean1, probs=c(0.025,0.975))
+abline(v = Interval1,col="black",lwd=2,lty="dotted")
+abline(v=mean(stressRes$log2FoldChange), col="red",lwd=2)
+t.test(x=logfoldrandoMean1, y=stressRes$log2FoldChange, alternative="two.sided") #p-value = 0.05001
+
+# Stress Random null distribution
+logfoldrandoMean2 <- vector(mode="numeric")
+for(i in 1:10000){
+    logfoldrando2<-vector(mode='numeric')
+    logfoldrando2 <- sample(x=resFULL$log2FoldChange, size=dim(virusRes)[1], replace=T)
+    logfoldrandoMean2[i]<-mean(logfoldrando2)
+}
+
+#Histogram - virus
+hist(logfoldrandoMean2,
+     breaks=50,
+     main="VIRUS GENES",
+     xlab="log(fold change)",
+     ylim=c(0,900),
+     xlim=c(-.3, .15),
+     cex.axis=1,
+     cex.lab=1.2,
+     font.lab=2 
+)
+
+Interval2 <- quantile(x=logfoldrandoMean2, probs=c(0.025,0.975))
+abline(v = Interval2,col="black",lwd=2,lty="dotted")
+abline(v=mean(virusRes$log2FoldChange), col="red",lwd=2)
+t.test(x=logfoldrandoMean2, y=virusRes$log2FoldChange) #p-value = 0.5967
+
+# Stress Random null distribution
+logfoldrandoMean3 <- vector(mode="numeric")
+for(i in 1:10000){
+    logfoldrando3<-vector(mode='numeric')
+    logfoldrando3 <- sample(x=resFULL$log2FoldChange, size=dim(bacteriaRes)[1], replace=T)
+    logfoldrandoMean3[i]<-mean(logfoldrando3)
+}
+
+#Histogram - bacteria
+hist(logfoldrandoMean3, 
+     breaks=50,
+     main="BACTERIA GENES",
+     xlab="log(fold change)",
+     ylim=c(0,900),
+     xlim=c(-.3, .15),
+     cex.axis=1,
+     cex.lab=1.2,
+     font.lab=2) 
+
+
+Interval3 <- quantile(x=logfoldrandoMean3, probs=c(0.025,0.975))
+abline(v = Interval3,col="black",lwd=2,lty="dotted")
+abline(v=mean(bacteriaRes$log2FoldChange), col="red",lwd=2)
+t.test(x=logfoldrandoMean3, y=bacteriaRes$log2FoldChange, alternative="two.sided") #p-value = 0.03746
+
+pvalue <- function(nullDat=logfoldrandoMean1, obsDat=stressRes){
+    
+    obsDat <- obsDat[,2]
+    
+    xbar <- mean(obsDat)
+    mu <- mean(nullDat)
+    n <- length(obsDat)
+    SD <- sd(obsDat)
+    SE <- SD/sqrt(n)
+    
+    z <- (xbar - mu)/(SE)
+    
+    pval <- 2*pnorm(-abs(z), lower.tail = TRUE)
+    
+    out <- list(xbar=xbar, mu=mu, n=n, SD=SD, SE=SE, z=z, pval=pval)
+    
+    return(out)
+}
+
+running test (pvalue) for each of 6 groups
+
+
+immune <- pvalue(nullDat=logfoldrandoMean0, obsDat=immuneRes)
+stress <- pvalue(nullDat=logfoldrandoMean1, obsDat=stressRes)
+virus <- pvalue(nullDat=logfoldrandoMean2, obsDat=virusRes)
+bacteria <- pvalue(nullDat=logfoldrandoMean3, obsDat=bacteriaRes)
+
+# creating data frame for figure: (genegroup, mean, SE etc.)
+GeneGroup <- c("immune",
+               "stress",
+               "virus",
+               "bacteria")
+
+
+xBar <- c(immune$xbar,
+          stress$xbar,
+          virus$xbar,
+          bacteria$xbar)
+
+
+SE <- c(immune$SE,
+        stress$SE,
+        virus$SE,
+        bacteria$SE)
+
+pVal <- c(immune$pval,
+          stress$pval,
+          virus$pval,
+          bacteria$pval)
+
+
+DF3 <- data.frame(GeneGroup, xBar, SE, pVal)
+
+# calculating confidence interval from null data:
+meanCI <- mean(immune$mu,
+               stress$mu,
+               virus$mu,
+               bacteria$mu)
+
+# caclulating quantiles foe each group
+IntervalIM <- quantile(x=logfoldrandoMean0, probs=c(0.025,0.975))
+IntervalST<- quantile(x=logfoldrandoMean1, probs=c(0.025,0.975))
+IntervalVI <- quantile(x=logfoldrandoMean2, probs=c(0.025,0.975))
+IntervalBA <- quantile(x=logfoldrandoMean3, probs=c(0.025,0.975))
+
+lower <- mean(IntervalIM[1],IntervalST[1],IntervalVI[1],IntervalBA[1])
+upper <- mean(IntervalIM[2],IntervalST[2],IntervalVI[2],IntervalBA[2])
+
+# plotting using ggplot
+
+#choosing color pallet
+colors <- c(rep("dodgerblue4",4))
+
+#Create a bar graph for with CI and SE bars
+plot1 <- ggplot(DF3, aes(x=GeneGroup,
+                         y=xBar,
+                         fill=GeneGroup)) + 
+    geom_bar(stat="identity",
+             color = "black",
+             position=position_dodge()) + labs(x="Gene Group", y = "log(Fold Change)") + geom_errorbar(aes(ymin=xBar-SE, ymax=xBar+SE), width=.2, position=position_dodge(.9)) 
+
+plot1 + theme_minimal(base_size = 17) + scale_fill_manual(values=colors) + coord_cartesian(ylim = c(-.3, .3)) + annotate("segment", x = .5,xend = 4.5 ,y = meanCI, yend = meanCI, col = "red") + annotate("segment", x = .5, xend = 4.5, y = upper, yend = upper, col = "red", linetype = 2, size = 0.3) + annotate("segment", x = .5, xend = 4.5, y = lower, yend = lower, col = "red", linetype = 2, size = 0.3) + annotate("segment", x = .5, xend = 4.5, y = 0, yend = 0, col = "black", size = 1) + annotate(geom = "text", x = 3, y = .2, label = "*",cex = 8) + theme(legend.position=c(3, 3))
+
+
+# Normalizing count data
+library(DESeq2)
+dds2 <- estimateSizeFactors(ddsFULL)
+normcounts<-as.data.frame(counts(dds2, normalized=TRUE))
+
+# Immune-related counts
+immuneNormCounts<-normcounts[which(row.names(normcounts) %in% row.names(immuneNames)),]
+immuneNorm<-as.data.frame(immuneNormCounts)
+hstat<-c("S","S","H","S","H","H","H","H","S","H","S","S","H","H","H","H","H","S")
+library(data.table)
+immuneNormList<-as.list(immuneNorm)
+immNorm<-rbindlist(list(immuneNormList))
+timmNorm<-as.data.frame(t(immNorm))
+
+## Random Normalized Counts
+randomNormCounts<-normcounts[sample(row.names(normcounts), 254),]
+randNorm<-as.data.frame(randomNormCounts)
+hstat<-c("S","S","H","S","H","H","H","H","S","H","S","S","H","H","H","H","H","S")
+library(data.table)
+randList<-as.list(randNorm)
+randNorm2<-rbindlist(list(randList))
+tRandNorm<-as.data.frame(t(randNorm2))
+
+random<-as.data.frame(tRandNorm)
+randomMeans<-apply(random, 1, mean)
+
+immune<-as.data.frame(timmNorm)
+immuneMeans<-apply(immune,1,mean)
+
+genes<-rep(c("Immune","Random"), each=18)
+means<-as.data.frame(c(immuneMeans,randomMeans))
+means$genes<-genes
+names(means)[1]<-"counts"
+summary(aov(counts~genes, data=means))
+par(mar=c(5,5,5,5))
+boxplot(counts~genes, data=means, col=c("goldenrod","forestgreen"),ylab="Normalized read counts", cex=1, cex.axis=2, cex.lab=2)
+
+
+#Volcano Plot
+par(mfrow=c(1,1))
+library(DESeq2)
+with(resFULL, plot(log2FoldChange, -log10(padj), pch=20, main="", xlim=c(-6,5),cex.main=1.8, cex.axis=1.5, cex.lab=1.5))
+with(subset(resFULL, abs(log2FoldChange)>1.5), points(log2FoldChange, -log10(padj), pch=20, col="orange"))
+with(subset(resFULL, padj<.1 ), points(log2FoldChange, -log10(padj), pch=20, col="blue"))
+with(subset(resFULL, padj<.05 & abs(log2FoldChange)>1.5), points(log2FoldChange, -log10(padj), pch=20, col="red"))
+max(resFULL$log2FoldChange)
+library(calibrate)
+resFULL$Gene<-substr(row.names(resFULL), 9,21) #Made a new column so I can label genes
+with(subset(resFULL, padj<.005 & abs(log2FoldChange)>2), textxy(log2FoldChange, -log10(padj), labs=Gene, cex=0.8))
+```
+
